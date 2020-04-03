@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/common/Header";
+import Header from "./components/Common/Header";
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
@@ -10,7 +10,7 @@ const App = (props) => {
 
     return (
         <div className='app-wrapper'>
-            <Header />
+            <Header state={props.state.common.header}/>
             <Navbar />
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'

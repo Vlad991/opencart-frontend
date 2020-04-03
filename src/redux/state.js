@@ -1,6 +1,14 @@
 import {rerenderEntireTree} from "../render";
 
 let state = {
+    common: {
+        header: {
+
+        },
+        footer: {
+
+        }
+    },
     profilePage: {
         posts: [
             {id: 1, message: 'Hi, how are you?', likesCount: 12},

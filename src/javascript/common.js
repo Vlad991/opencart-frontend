@@ -166,7 +166,7 @@ var cart = {
 
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
 
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
+					$('#cart > ul').load('index.php?route=Common/cart/info ul li');
 				}
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -195,7 +195,7 @@ var cart = {
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
+					$('#cart > ul').load('index.php?route=Common/cart/info ul li');
 				}
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -224,7 +224,7 @@ var cart = {
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
+					$('#cart > ul').load('index.php?route=Common/cart/info ul li');
 				}
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -259,7 +259,7 @@ var voucher = {
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
+					$('#cart > ul').load('index.php?route=Common/cart/info ul li');
 				}
 			},
 			error: function(xhr, ajaxOptions, thrownError) {

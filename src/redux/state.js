@@ -4,7 +4,8 @@ let state = {
     common: {
         cart: {
             text_loading: 'Loading...',
-            text_items: '0 item(s) - £0.00'
+            text_items: '0 item(s) - £0.00',
+            text_empty: 'Your shopping cart is empty!'
         },
         currency: {
             action: 'http://localhost:3000/index.php?route=common/currency/currency',

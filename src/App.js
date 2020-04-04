@@ -1,5 +1,13 @@
 import React from 'react';
 import './App.css';
+import './javascript/bootstrap/css/bootstrap.min.css';
+import './javascript/font-awesome/css/font-awesome.min.css';
+import './stylesheet/fonts.css';
+import './stylesheet/stylesheet.css';
+import 'jquery/dist/jquery.js';
+// import 'bootstrap/dist/js/bootstrap.min.js';
+
+
 import Header from "./components/Common/Header";
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -7,10 +15,9 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 
 const App = (props) => {
-
     return (
         <div className='app-wrapper'>
-            <Header state={props.state.common.header}/>
+            <Header state={props.state.common}/>
             <Navbar />
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'

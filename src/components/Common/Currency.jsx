@@ -1,48 +1,55 @@
 import React from 'react';
-import '../../javascript/bootstrap/css/bootstrap.css';
-import '../../stylesheet/stylesheet.css';
+import DialogItem from "../Dialogs/DialogItem/DialogItem";
 
 const Currency = (props) => {
-
-    props = {
-        currency: {}
-    };
-
-    return (
-        // {% if currencies|length > 1 %}
-        <div className={'pull-left'}>
-            <form action={props.action} method="post" enctype="multipart/form-data" id="form-currency">
-                <div className="btn-group">
-                    <button className="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                        {/*{% for currency in currencies %}*/}
-                        {/*{% if currency.symbol_left and currency.code == code %}*/}
-                        <strong>{props.currency.symbol_left}</strong>
-                        {/*{% elseif currency.symbol_right and currency.code == code %} */}
-                        <strong>{props.currency.symbol_right}</strong>
-                        {/*{% endif %}*/}
-                        {/*{% endfor %} */}
-                        <span className="hidden-xs hidden-sm hidden-md">{props.text_currency}</span>&nbsp;<i className="fa fa-caret-down"></i>
-                    </button>
-                    <ul className="dropdown-menu">
-                        {/*{% for currency in currencies %}*/}
-                        {/*{% if currency.symbol_left %}*/}
-                        <li>
-                            <button className="currency-select btn btn-link btn-block" type="button" name={ props.currency.code }>{props.currency.symbol_left} {props.currency.title}</button>
-                        </li>
-                        {/*{% else %}*/}
-                        <li>
-                            <button className="currency-select btn btn-link btn-block" type="button" name={ props.currency.code }>{props.currency.symbol_right} {props.currency.title}</button>
-                        </li>
-                        {/*{% endif %}*/}
-                        {/*{% endfor %}*/}
-                    </ul>
-                </div>
-                <input type="hidden" name="code" value=""/>
-                <input type="hidden" name="redirect" value={ props.redirect }/>
-            </form>
-        </div>
-        // {% endif %}
-    )
+    if (props.state.currencies.length > 1) {
+        return (
+            <div className={'pull-left'}>
+                <form action={props.state.action} method="post" encType="multipart/form-data" id="form-currency">
+                    <div className="btn-group">
+                        <button className="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                            {props.state.currencies.map(currency => {
+                                if (currency.symbol_left && currency.code === props.state.code) {
+                                    return (
+                                        <strong>{currency.symbol_left}</strong>
+                                    );
+                                } else if (currency.symbol_right && currency.code === props.state.code) {
+                                    return (
+                                        <strong>{currency.symbol_right}</strong>
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })} <span className="hidden-xs hidden-sm hidden-md">{props.state.text_currency}</span>&nbsp;<i className="fa fa-caret-down"></i>
+                        </button>
+                        <ul className="dropdown-menu">
+                            {props.state.currencies.map(currency => {
+                                if (currency.symbol_left) {
+                                    return (
+                                        <li>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code}>{currency.symbol_left} {currency.title}</button>
+                                        </li>
+                                    );
+                                } else if (currency.symbol_right && currency.code === props.state.code) {
+                                    return (
+                                        <li>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code}>{currency.symbol_right} {currency.title}</button>
+                                        </li>
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })}
+                        </ul>
+                    </div>
+                    <input type="hidden" name="code" value=""/>
+                    <input type="hidden" name="redirect" value={props.state.redirect}/>
+                </form>
+            </div>
+        );
+    } else {
+        return '';
+    }
 };
 
 export default Currency;

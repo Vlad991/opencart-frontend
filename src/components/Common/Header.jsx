@@ -1,26 +1,29 @@
 import React from 'react';
-import '../../javascript/bootstrap/css/bootstrap.css';
-import '../../stylesheet/stylesheet.css';
 import Currency from "./Currency";
+import Language from "./Language";
+import Search from "./Search";
+import Cart from "./Cart";
+import Menu from "./Menu";
 
 const Header = (props) => {
+    let stateHeader = props.state.header;
     return [
         <nav id={'top'}>
             <div className={'container'}>
-                <Currency/>
-                {/*{{language}}*/}
+                <Currency state={props.state.currency}/>
+                <Language state={props.state.language}/>
                 <div id={'top-links'} className={'nav pull-right'}>
                     <ul className={'list-inline'}>
-                        <li><a href={props.state.contact}><i className={'fa fa-phone'}></i></a> <span className={'hidden-xs hidden-sm hidden-md'}>{props.state.telephone}</span></li>
+                        <li><a href={stateHeader.contact}><i className={'fa fa-phone'}></i></a> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
                         <li className={'dropdown'}>
-                            <a href={props.state.account} title={props.state.text_account} className={'dropdown-toggle'} data-toggle="dropdown"><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{props.state.text_account}</span> <span className={'caret'}></span></a>
+                            <a href={stateHeader.account} title={stateHeader.text_account} className={'dropdown-toggle'} data-toggle="dropdown"><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_account}</span> <span className={'caret'}></span></a>
                             <ul className={'dropdown-menu dropdown-menu-right'}>
-                                <Account state={props.state}/>
+                                <Account state={stateHeader}/>
                             </ul>
                         </li>
-                        <li><a href={props.state.wishlist} id="wishlist-total" title={props.state.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{props.state.text_wishlist}</span></a></li>
-                        <li><a href={props.state.shopping_cart} title={props.state.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{props.state.text_shopping_cart}</span></a></li>
-                        <li><a href={props.state.checkout} title={props.state.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{props.state.text_checkout}</span></a></li>
+                        <li><a href={stateHeader.wishlist} id="wishlist-total" title={stateHeader.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_wishlist}</span></a></li>
+                        <li><a href={stateHeader.shopping_cart} title={stateHeader.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_shopping_cart}</span></a></li>
+                        <li><a href={stateHeader.checkout} title={stateHeader.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_checkout}</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -30,14 +33,19 @@ const Header = (props) => {
                 <div className={'row'}>
                     <div className={'col-sm-4'}>
                         <div id="logo">
-                            <Logo state={props.state}/>
+                            <Logo state={stateHeader}/>
                         </div>
                     </div>
-                    <div className={'col-sm-5'}>{props.state.search}</div>
-                    <div className={'col-sm-3'}>{props.state.cart}</div>
+                    <div className={'col-sm-5'}>
+                        <Search state={props.state.search}/>
+                    </div>
+                    <div className={'col-sm-3'}>
+                        <Cart state={props.state.cart}/>
+                    </div>
                 </div>
             </div>
-        </header>
+        </header>,
+        <Menu state={props.state.menu}/>
     ]
 };
 

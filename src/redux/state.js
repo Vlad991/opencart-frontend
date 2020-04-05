@@ -96,7 +96,9 @@ let state = {
             text_newsletter: 'Newsletter',
             powered: ''
         },
-        home: {},
+        home: {
+            content_top: true
+        },
         language: {
             language: 'EN',
             languages: [
@@ -333,6 +335,75 @@ let state = {
                     },
                 ]
             },
+            category: {
+                category_id: 2,
+                categories: [
+                    {
+                        category_id: 1,
+                        href: '#',
+                        name: 'Desktops (13)',
+                        children: [
+                            {
+                                category_id: 11,
+                                href: '#',
+                                name: 'PC (0)'
+                            },
+                            {
+                                category_id: 12,
+                                href: '#',
+                                name: 'Mac (1)'
+                            }
+                        ]
+                    },
+                    {
+                        category_id: 2,
+                        href: '#',
+                        name: 'Laptops & Notebooks (5)',
+                        children: [
+                            {
+                                category_id: 22,
+                                href: '#',
+                                name: 'Macs (0)'
+                            },
+                            {
+                                category_id: 23,
+                                href: '#',
+                                name: 'Windows (0)'
+                            }
+                        ]
+                    },
+                    {
+                        category_id: 3,
+                        href: '#',
+                        name: 'Components (2)'
+                    },
+                    {
+                        category_id: 4,
+                        href: '#',
+                        name: 'Tablets (1)'
+                    },
+                    {
+                        category_id: 5,
+                        href: '#',
+                        name: 'Software (0)'
+                    },
+                    {
+                        category_id: 6,
+                        href: '#',
+                        name: 'Phones & PDAs (3)'
+                    },
+                    {
+                        category_id: 7,
+                        href: '#',
+                        name: 'Cameras (2)'
+                    },
+                    {
+                        category_id: 8,
+                        href: '#',
+                        name: 'MP3 Players (4)'
+                    }
+                ]
+            },
             featured: {
                 heading_title: 'Featured',
                 text_tax: 'Ex Tax:',
@@ -413,9 +484,71 @@ let state = {
                     text: 'PC'
                 }
             ],
-            categories: {
-
-            }
+            column_left: true,
+            heading_title: 'Laptops & Notebooks',
+            thumb: '/image/catalog/demo/hp_2.jpg',
+            description: 'Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.',
+            text_refine: 'Refine Search',
+            categories: [
+                {
+                    name: 'Macs (0)',
+                    href: '#'
+                },
+                {
+                    name: 'Windows (0)',
+                    href: '#'
+                }
+            ],
+            text_sort: 'Sort By',
+            sorts: [{href: '#', text: 'Default'}, {href: '#', text: 'Name (A-Z)'}, {href: '#', text: 'Name (Z-A)'},],
+            text_limit: 'Show',
+            limits: [{href: '#', text: '5'}, {href: '#', text: '10'}, {href: '#', text: '25'}],
+            text_compare: 'Product Compare(0)',
+            products: [
+                {
+                    name: 'MacBook',
+                    description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                    href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                    thumb: '/image/catalog/demo/macbook_1.jpg',
+                    price: '£368.73',
+                    special: '£300',
+                    tax: '£306.25',
+                    rating: 4
+                },
+                {
+                    name: 'MacBook',
+                    description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                    href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                    thumb: '/image/catalog/demo/macbook_1.jpg',
+                    price: '£368.73',
+                    special: '£300',
+                    tax: '£306.25',
+                    rating: 2
+                },
+                {
+                    name: 'MacBook',
+                    description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                    href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                    thumb: '/image/catalog/demo/macbook_1.jpg',
+                    price: '£368.73',
+                    special: '£300',
+                    tax: '£306.25',
+                    rating: 4
+                },
+                {
+                    name: 'MacBook',
+                    description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                    href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                    thumb: '/image/catalog/demo/macbook_1.jpg',
+                    price: '£368.73',
+                    special: '£300',
+                    tax: '£306.25',
+                    rating: 4
+                },
+            ],
+            text_empty: 'There are no products to list in this category.',
+            button_continue: 'Continue',
+            button_cart: 'Add to Cart'
         },
         product: {}
     },

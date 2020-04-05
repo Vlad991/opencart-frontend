@@ -8,22 +8,16 @@ import './stylesheet/vendor/jquery/swiper/css/swiper.min.css'
 import './stylesheet/vendor/jquery/swiper/css/opencart.css'
 
 import Header from "./components/Common/Header";
-import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Common/Home";
-import Slideshow from "./components/Extension/Module/Slideshow";
-import Featured from "./components/Extension/Module/Featured";
-import Carousel from "./components/Extension/Module/Carousel";
 import Category from "./components/Product/Category";
 
 const App = (props) => {
     return [
         <Header state={props.state.common}/>,
         <Route exact path='/' render={() => <Home state={props.state}/>}/>,
-        <Route exact path='/product/category/' render={() => <Category state={props.state}/>}/>,
+        <Route path='/product/category/' render={() => <Category state={props.state}/>}/>,
         // <Navbar/>,
         // <div className='app-wrapper-content'>
         //     <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>

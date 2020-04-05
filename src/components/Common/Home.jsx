@@ -17,12 +17,12 @@ const Home = (props) => {
     return (
         <div id="common-home" className="container">
             <div className="row">
-                <ColumnLeft state={props.state.extension.module}/>
+                {stateHome.column_left ? <ColumnLeft state={props.state.extension.module}/> : ''}
                 <div id="content" className={classVal}>
-                    <ContentTop state={props.state.extension.module}/>
-                    <ContentBottom state={props.state.extension.module}/>
+                    {stateHome.content_top ? <ContentTop state={props.state.extension.module}/> : ''}
+                    {stateHome.content_bottom ? <ContentBottom state={props.state.extension.module}/> : ''}
                 </div>
-                <ColumnRight state={props.state.extension.module}/>
+                {stateHome.column_right ? <ColumnRight state={props.state.extension.module}/> : ''}
             </div>
         </div>
     )

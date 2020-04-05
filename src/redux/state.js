@@ -269,6 +269,125 @@ let state = {
             text_search: 'Search'
         }
     },
+    extension: {
+        module: {
+            carousel: {
+                module: 0,
+                banners: [
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/nintendo.png',
+                        title: 'Nintendo'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/nfl.png',
+                        title: 'NFL'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/redbull.png',
+                        title: 'RedBull'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/sony.png',
+                        title: 'Sony'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/cocacola.png',
+                        title: 'Coca Cola'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/burgerking.png',
+                        title: 'Burger King'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/canon.png',
+                        title: 'Canon'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/harley.png',
+                        title: 'Harley Davidson'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/dell.png',
+                        title: 'Dell'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/disney.png',
+                        title: 'Disney'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/manufacturer/starbucks.png',
+                        title: 'Starbucks'
+                    },
+                ]
+            },
+            featured: {
+                heading_title: 'Featured',
+                text_tax: 'Ex Tax:',
+                button_cart: 'Add to Cart',
+                products: [
+                    {
+                        name: 'MacBook',
+                        description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                        href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                        thumb: '/image/catalog/demo/macbook_1.jpg',
+                        price: '£368.73',
+                        special: '£300',
+                        tax: '£306.25'
+                    },
+                    {
+                        name: 'MacBook',
+                        description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                        href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                        thumb: '/image/catalog/demo/macbook_1.jpg',
+                        price: '£368.73',
+                        tax: '£306.25'
+                    },
+                    {
+                        name: 'MacBook',
+                        description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                        href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                        thumb: '/image/catalog/demo/macbook_1.jpg',
+                        price: '£368.73',
+                        tax: '£306.25'
+                    },
+                    {
+                        name: 'MacBook',
+                        description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
+                        href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+                        thumb: '/image/catalog/demo/macbook_1.jpg',
+                        price: '£368.73',
+                        tax: '£306.25'
+                    },
+                ]
+            },
+            slideshow: {
+                module: 0,
+                banners: [
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/banners/iPhone6.jpg',
+                        title: 'iPhone'
+                    },
+                    {
+                        link: '#',
+                        image: '/image/catalog/demo/banners/MacBookAir.jpg',
+                        title: 'MacBook'
+                    }
+                ]
+            }
+        }
+    },
     profilePage: {
         posts: [
             {id: 1, message: 'Hi, how are you?', likesCount: 12},

@@ -44,7 +44,6 @@ const CategoryChildren = (props) => {
     for (let i = 0; i < columnCount; i++) {
         childrenGroups[i] = category.children.slice((i * size), (i * size) + size);
     }
-    console.log(childrenGroups);
     return (
         childrenGroups.map(children => {
             return (

@@ -14,16 +14,21 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Common/Home";
+import Slideshow from "./components/Extension/Module/Slideshow";
+import Featured from "./components/Extension/Module/Featured";
+import Carousel from "./components/Extension/Module/Carousel";
+import Category from "./components/Product/Category";
 
 const App = (props) => {
     return [
         <Header state={props.state.common}/>,
-        <Home state={props.state}/>,
-        <Navbar/>,
-        <div className='app-wrapper-content'>
-            <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-            <Route path='/profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
-        </div>,
+        <Route exact path='/' render={() => <Home state={props.state}/>}/>,
+        <Route exact path='/product/category/' render={() => <Category state={props.state}/>}/>,
+        // <Navbar/>,
+        // <div className='app-wrapper-content'>
+        //     <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+        //     <Route path='/profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+        // </div>,
         <Footer state={props.state.common}/>
     ]
 };

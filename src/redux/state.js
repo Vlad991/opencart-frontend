@@ -1,4 +1,5 @@
 import {rerenderEntireTree} from "../render";
+import React from 'react';
 
 let state = {
     common: {
@@ -95,6 +96,7 @@ let state = {
             text_newsletter: 'Newsletter',
             powered: ''
         },
+        home: {},
         language: {
             language: 'EN',
             languages: [
@@ -343,7 +345,8 @@ let state = {
                         thumb: '/image/catalog/demo/macbook_1.jpg',
                         price: '£368.73',
                         special: '£300',
-                        tax: '£306.25'
+                        tax: '£306.25',
+                        rating: 4
                     },
                     {
                         name: 'MacBook',
@@ -351,7 +354,9 @@ let state = {
                         href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
                         thumb: '/image/catalog/demo/macbook_1.jpg',
                         price: '£368.73',
-                        tax: '£306.25'
+                        special: '£300',
+                        tax: '£306.25',
+                        rating: 2
                     },
                     {
                         name: 'MacBook',
@@ -359,7 +364,9 @@ let state = {
                         href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
                         thumb: '/image/catalog/demo/macbook_1.jpg',
                         price: '£368.73',
-                        tax: '£306.25'
+                        special: '£300',
+                        tax: '£306.25',
+                        rating: 4
                     },
                     {
                         name: 'MacBook',
@@ -367,7 +374,9 @@ let state = {
                         href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
                         thumb: '/image/catalog/demo/macbook_1.jpg',
                         price: '£368.73',
-                        tax: '£306.25'
+                        special: '£300',
+                        tax: '£306.25',
+                        rating: 4
                     },
                 ]
             },
@@ -387,6 +396,28 @@ let state = {
                 ]
             }
         }
+    },
+    product: {
+        category: {
+            breadcrumbs: [
+                {
+                    href: 'http://localhost:3000/index.php?route=common/home',
+                    text: <i class="fa fa-home"></i>
+                },
+                {
+                    href: 'http://localhost:3000/index.php?route=product/category&path=20',
+                    text: 'Desktops'
+                },
+                {
+                    href: 'http://localhost:3000/index.php?route=product/category&path=20_26',
+                    text: 'PC'
+                }
+            ],
+            categories: {
+
+            }
+        },
+        product: {}
     },
     profilePage: {
         posts: [

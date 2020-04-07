@@ -6,7 +6,7 @@ const ColumnLeft = (props) => {
     return [
         <Route path='/product/category' render={() => (
             <aside id="column-left" className="col-sm-3 hidden-xs">
-                <Category state={props.state.category}/>
+                <Category state={props.state.categoryReducer}/>
             </aside>
         )}/>,
     ]

@@ -15,15 +15,15 @@ import Category from "./components/Product/Category";
 
 const App = (props) => {
     return [
-        <Header state={props.state.common}/>,
+        <Header state={props.state.commonReducer}/>,
         <Route exact path='/' render={() => <Home state={props.state}/>}/>,
-        <Route path='/product/category/' render={() => <Category state={props.state}/>}/>,
+        <Route path='/product/category' render={() => <Category state={props.state}/>}/>,
         // <Navbar/>,
         // <div className='app-wrapper-content'>
-        //     <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-        //     <Route path='/profile' render={() => <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+        //     <Route path='/dialogs' render={() => <Dialogs store={props.store.dialogsPage}/>}/>
+        //     <Route path='/profile' render={() => <Profile store={props.store.profilePage} addPost={props.addPost}/>}/>
         // </div>,
-        <Footer state={props.state.common}/>
+        <Footer state={props.state.commonReducer.footerReducer}/>
     ]
 };
 

@@ -4,14 +4,15 @@ import Language from "./Language";
 import Search from "./Search";
 import Cart from "./Cart";
 import Menu from "./Menu";
+import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    let stateHeader = props.state.header;
+    let stateHeader = props.state.headerReducer;
     return [
         <nav id={'top'}>
             <div className={'container'}>
-                <Currency state={props.state.currency}/>
-                <Language state={props.state.language}/>
+                <Currency state={props.state.currencyReducer}/>
+                <Language state={props.state.languageReducer}/>
                 <div id={'top-links'} className={'nav pull-right'}>
                     <ul className={'list-inline'}>
                         <li><a href={stateHeader.contact}><i className={'fa fa-phone'}></i></a> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
@@ -37,15 +38,15 @@ const Header = (props) => {
                         </div>
                     </div>
                     <div className={'col-sm-5'}>
-                        <Search state={props.state.search}/>
+                        <Search state={props.state.searchReducer}/>
                     </div>
                     <div className={'col-sm-3'}>
-                        <Cart state={props.state.cart}/>
+                        <Cart state={props.state.cartReducer}/>
                     </div>
                 </div>
             </div>
         </header>,
-        <Menu state={props.state.menu}/>
+        <Menu state={props.state.menuReducer}/>
     ]
 };
 
@@ -69,13 +70,13 @@ const Account = (props) => {
 const Logo = (props) => {
     if (props.state.logo) {
         return (
-            <a href={props.state.home}>
+            <NavLink to={props.state.home}>
                 <img src={props.state.logo} title={props.state.name} alt={props.state.name} className={'img-responsive'}/>
-            </a>
+            </NavLink>
         );
     } else {
         return (
-            <h1><a href={props.state.home}>{props.state.name}</a></h1>
+            <h1><NavLink to={props.state.home}>{props.state.name}</NavLink></h1>
         );
     }
 };

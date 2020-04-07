@@ -1,7 +1,7 @@
 import {rerenderEntireTree} from "../render";
 import React from 'react';
 
-let state = {
+let store = {
     common: {
         cart: {
             text_loading: 'Loading...',
@@ -48,7 +48,7 @@ let state = {
             login: 'http://localhost:3000/index.php?route=account/login',
             text_login: 'Login',
             logo: false,
-            home: 'http://localhost:3000/index.php?route=common/home',
+            home: '/',
             name: 'Your Store'
         },
         footer: {
@@ -586,9 +586,9 @@ export let addPost = (postMessage) => {
         message: postMessage,
         likesCount: 0
     };
-    state.profilePage.posts.push(newPost);
-    rerenderEntireTree(state);
+    store.profilePage.posts.push(newPost);
+    rerenderEntireTree(store);
 };
 
 
-export default state;
+//export default store;

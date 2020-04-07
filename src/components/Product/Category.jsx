@@ -5,7 +5,7 @@ import ContentBottom from "../Common/ContentBottom";
 import ColumnRight from "../Common/ColumnRight";
 
 const Category = (props) => {
-    let stateCategory = props.state.product.category;
+    let stateCategory = props.state.productReducer.categoryReducer;
     let classVal;
     if (stateCategory.column_left && stateCategory.column_right) {
         classVal = 'col-sm-6';
@@ -24,9 +24,9 @@ const Category = (props) => {
                 })}
             </ul>
             <div className="row">
-                {stateCategory.column_left ? <ColumnLeft state={props.state.extension.module}/> : ''}
+                {stateCategory.column_left ? <ColumnLeft state={props.state.extensionReducer.moduleReducer}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateCategory.content_top ? <ContentTop state={props.state.extension.module}/> : ''}
+                    {stateCategory.content_top ? <ContentTop state={props.state.extensionReducer.moduleReducer}/> : ''}
                     <h2>{stateCategory.heading_title}</h2>
                     {(stateCategory.thumb || stateCategory.description) ? [
                         <div className="row">
@@ -140,9 +140,9 @@ const Category = (props) => {
                             <div className="pull-right"><a href={stateCategory.continue} className="btn btn-primary"> {stateCategory.button_continue}</a></div>
                         </div>
                     ] : ''}
-                    {stateCategory.content_bottom ? <ContentBottom state={props.state.extension.module}/> : ''}
+                    {stateCategory.content_bottom ? <ContentBottom state={props.state.extensionReducer.moduleReducer}/> : ''}
                 </div>
-                {stateCategory.column_right ? <ColumnRight state={props.state.extension.module}/> : ''}
+                {stateCategory.column_right ? <ColumnRight state={props.state.extensionReducer.moduleReducer}/> : ''}
             </div>
         </div>
     )

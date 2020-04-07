@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = (props) => {
-    let stateFooter = props.state.footer;
+    let stateFooter = props.state;
     return (
         <footer>
             <div className="container">

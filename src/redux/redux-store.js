@@ -1,7 +1,4 @@
 import {combineReducers, createStore} from "redux";
-import profileReducer from './profile-reducer';
-import dialogsReducer from './dialogs-reducer';
-import sidebarReducer from './sidebar-reducer';
 import headerReducer from "./common/header-reducer";
 import footerReducer from "./common/footer-reducer";
 import currencyReducer from "./common/currency-reducer";
@@ -35,15 +32,12 @@ let reducers = combineReducers({
             featuredReducer,
             slideshowReducer
         }),
-        paymentReducer: combineReducers({})
+        // paymentReducer: combineReducers({})
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,
         productReducer
     }),
-    profileReducer,
-    dialogsReducer,
-    sidebarReducer
 });
 
 let store = createStore(reducers);

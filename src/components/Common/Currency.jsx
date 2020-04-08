@@ -1,5 +1,5 @@
 import React from 'react';
-import DialogItem from "../Dialogs/DialogItem/DialogItem";
+import {setCurrencyActionCreator} from "../../redux/common/currency-reducer";
 
 const Currency = (props) => {
     if (props.state.currencies.length > 1) {
@@ -27,13 +27,13 @@ const Currency = (props) => {
                                 if (currency.symbol_left) {
                                     return (
                                         <li>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code}>{currency.symbol_left} {currency.title}</button>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.dispatch(setCurrencyActionCreator(currency.code))}>{currency.symbol_left} {currency.title}</button>
                                         </li>
                                     );
                                 } else if (currency.symbol_right && currency.code === props.state.code) {
                                     return (
                                         <li>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code}>{currency.symbol_right} {currency.title}</button>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.dispatch(setCurrencyActionCreator(currency.code))}>{currency.symbol_right} {currency.title}</button>
                                         </li>
                                     );
                                 } else {

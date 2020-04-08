@@ -11,7 +11,7 @@ const Header = (props) => {
     return [
         <nav id={'top'}>
             <div className={'container'}>
-                <Currency state={props.state.currencyReducer}/>
+                <Currency state={props.state.currencyReducer} dispatch={props.dispatch}/>
                 <Language state={props.state.languageReducer}/>
                 <div id={'top-links'} className={'nav pull-right'}>
                     <ul className={'list-inline'}>
@@ -38,7 +38,7 @@ const Header = (props) => {
                         </div>
                     </div>
                     <div className={'col-sm-5'}>
-                        <Search state={props.state.searchReducer}/>
+                        <Search state={props.state.searchReducer} dispatch={props.dispatch}/>
                     </div>
                     <div className={'col-sm-3'}>
                         <Cart state={props.state.cartReducer}/>

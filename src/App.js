@@ -15,14 +15,9 @@ import Category from "./components/Product/Category";
 
 const App = (props) => {
     return [
-        <Header state={props.state.commonReducer}/>,
+        <Header state={props.state.commonReducer} dispatch={props.dispatch}/>,
         <Route exact path='/' render={() => <Home state={props.state}/>}/>,
         <Route path='/product/category' render={() => <Category state={props.state}/>}/>,
-        // <Navbar/>,
-        // <div className='app-wrapper-content'>
-        //     <Route path='/dialogs' render={() => <Dialogs store={props.store.dialogsPage}/>}/>
-        //     <Route path='/profile' render={() => <Profile store={props.store.profilePage} addPost={props.addPost}/>}/>
-        // </div>,
         <Footer state={props.state.commonReducer.footerReducer}/>
     ]
 };

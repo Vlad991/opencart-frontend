@@ -1,3 +1,5 @@
+const SET_CURRENCY = 'SET-CURRENCY';
+
 let initialState = {
     action: 'http://localhost:3000/index.php?route=common/currency/currency',
     text_currency: 'Currency',
@@ -23,7 +25,14 @@ let initialState = {
 };
 
 const currencyReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_CURRENCY:
+            state.code = action.currencyCode;
+            return state;
+        default:
+            return state;
+    }
 };
 
+export const setCurrencyActionCreator = (code) => ({type: SET_CURRENCY, currencyCode: code});
 export default currencyReducer;

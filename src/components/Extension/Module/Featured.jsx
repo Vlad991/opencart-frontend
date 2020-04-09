@@ -1,16 +1,17 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 const Featured = (props) => {
     return [
         <h3>{props.state.heading_title}</h3>,
-        < div className="row">
+        <div className="row">
             {props.state.products.map(product => {
                 return (
                     <div className="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div className="product-thumb transition">
-                            <div className="image"><a href={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></a></div>
+                            <div className="image"><NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></NavLink></div>
                             <div className="caption">
-                                <h4><a href={product.href}>{product.name}</a></h4>
+                                <h4><NavLink to={product.href}>{product.name}</NavLink></h4>
                                 <p>{product.description}</p>
                                 {product.rating ?
                                     <div className="rating">

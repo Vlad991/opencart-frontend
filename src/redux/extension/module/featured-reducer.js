@@ -6,7 +6,7 @@ let initialState = {
         {
             name: 'MacBook',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
-            href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+            href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
             price: '£368.73',
             special: '£300',
@@ -16,7 +16,7 @@ let initialState = {
         {
             name: 'MacBook',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
-            href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+            href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
             price: '£368.73',
             special: '£300',
@@ -26,7 +26,7 @@ let initialState = {
         {
             name: 'MacBook',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
-            href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+            href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
             price: '£368.73',
             special: '£300',
@@ -36,7 +36,7 @@ let initialState = {
         {
             name: 'MacBook',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
-            href: 'http://localhost:3000/index.php?route=product/product&product_id=43',
+            href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
             price: '£368.73',
             special: '£300',

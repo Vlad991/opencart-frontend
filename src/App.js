@@ -12,12 +12,14 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Common/Home";
 import Category from "./components/Product/Category";
+import Product from "./components/Product/Product";
 
 const App = (props) => {
     return [
         <Header state={props.state.commonReducer} dispatch={props.dispatch}/>,
         <Route exact path='/' render={() => <Home state={props.state}/>}/>,
         <Route path='/product/category' render={() => <Category state={props.state}/>}/>,
+        <Route path='/product/product' render={() => <Product state={props.state}/>}/>,
         <Footer state={props.state.commonReducer.footerReducer}/>
     ]
 };

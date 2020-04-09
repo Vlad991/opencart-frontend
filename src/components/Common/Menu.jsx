@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 const Menu = (props) => {
     if (props.state.categories) {
@@ -14,16 +15,16 @@ const Menu = (props) => {
                                 if (category.children) {
                                     return (
                                         <li className="dropdown">
-                                            <a href={category.href} className="dropdown-toggle" data-toggle="dropdown">{category.name}</a>
+                                            <NavLink to={category.href} className="dropdown-toggle" data-toggle="dropdown">{category.name}</NavLink>
                                             <div className="dropdown-menu">
                                                 <div className="dropdown-inner">
                                                     <CategoryChildren category={category}/>
                                                 </div>
-                                                <a href={category.href} className="see-all">{props.state.text_all} {category.name}</a></div>
+                                                <NavLink to={category.href} className="see-all">{props.state.text_all} {category.name}</NavLink></div>
                                         </li>
                                     )
                                 } else {
-                                    return <li><a href={category.href}>{category.name}</a></li>
+                                    return <li><NavLink to={category.href}>{category.name}</NavLink></li>
                                 }
                             })}
                         </ul>
@@ -49,7 +50,7 @@ const CategoryChildren = (props) => {
             return (
                 <ul className="list-unstyled">
                     {children.map(child => {
-                        return <li><a href={child.href}>{child.name}</a></li>
+                        return <li><NavLink to={child.href}>{child.name}</NavLink></li>
                     })}
                 </ul>
             )

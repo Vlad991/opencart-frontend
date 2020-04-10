@@ -57831,7 +57831,7 @@ function getVerifier(test$$1) {
     };
 }
 
-test('parsing week and weekday information', function (assert) {
+test('parsing week and weekday Information', function (assert) {
     var ver = getVerifier(assert);
     var currentWeekOfYear = moment().weeks();
     var expectedDate2012 = moment([2012, 0, 1])

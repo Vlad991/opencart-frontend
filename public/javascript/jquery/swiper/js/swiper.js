@@ -1526,7 +1526,7 @@
         // Animating Flag
         s.animating = false;
         
-        // Touches information
+        // Touches Information
         s.touches = {
             startX: 0,
             startY: 0,

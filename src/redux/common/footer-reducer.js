@@ -2,44 +2,45 @@ let initialState = {
     text_information: 'Information',
     informations: [
         {
-            href: '#',
+            href: '/information/information',
             title: 'About Us'
         },
         {
-            href: '#',
+            href: '/information/information',
             title: 'Delivery Information'
         },
         {
-            href: '#',
+            href: '/information/information',
             title: 'Privacy Policy'
         },
         {
-            href: '#',
+            href: '/information/information',
             title: 'Terms & Conditions'
         },
     ],
     text_service: 'Customer Service',
-    contact: '#',
+    contact: '/information/contact',
     text_contact: 'Contact Us',
-    return: '#',
+    return: '/information/information',
     text_return: 'Returns',
     sitemap: '#',
     text_sitemap: 'Site Map',
     text_extra: 'Extras',
-    manufacturer: '#',
+    manufacturer: '/information/information',
     text_manufacturer: 'Brands',
-    voucher: '#',
+    voucher: '/information/information',
     text_voucher: 'Gift Certificates',
-    affiliate: '#',
+    affiliate: '/information/information',
     text_affiliate: 'Affiliate',
-    special: '#',
+    special: '/information/information',
     text_special: 'Specials',
+    account: '/information/information',
     text_account: 'My Account',
-    order: '#',
+    order: '/information/information',
     text_order: 'Order History',
-    wishlist: '#',
+    wishlist: '/information/information',
     text_wishlist: 'Wish List',
-    newsletter: '#',
+    newsletter: '/information/information',
     text_newsletter: 'Newsletter',
     powered: ''
 };

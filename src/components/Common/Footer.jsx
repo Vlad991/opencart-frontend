@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 const Footer = (props) => {
     let stateFooter = props.state;
@@ -10,34 +11,34 @@ const Footer = (props) => {
                         <div className="col-sm-3">
                             <h5>{stateFooter.text_information}</h5>
                             <ul className="list-unstyled">
-                                {stateFooter.informations.map(information => <li><a href={ information.href }>{information.title}</a></li>)}
+                                {stateFooter.informations.map(information => <li><NavLink to={ information.href }>{information.title}</NavLink></li>)}
                             </ul>
                         </div>
                         : ''}
                     <div className="col-sm-3">
                         <h5>{stateFooter.text_service}</h5>
                         <ul className="list-unstyled">
-                            <li><a href={ stateFooter.contact }>{stateFooter.text_contact}</a></li>
-                            <li><a href={ stateFooter.return }>{stateFooter.text_return}</a></li>
-                            <li><a href={ stateFooter.sitemap }>{stateFooter.text_sitemap}</a></li>
+                            <li><NavLink to={ stateFooter.contact }>{stateFooter.text_contact}</NavLink></li>
+                            <li><NavLink to={ stateFooter.return }>{stateFooter.text_return}</NavLink></li>
+                            <li><NavLink to={ stateFooter.sitemap }>{stateFooter.text_sitemap}</NavLink></li>
                         </ul>
                     </div>
                     <div className="col-sm-3">
                         <h5>{stateFooter.text_extra}</h5>
                         <ul className="list-unstyled">
-                            <li><a href={ stateFooter.manufacturer }>{stateFooter.text_manufacturer}</a></li>
-                            <li><a href={ stateFooter.voucher }>{stateFooter.text_voucher}</a></li>
-                            <li><a href={ stateFooter.affiliate }>{stateFooter.text_affiliate}</a></li>
-                            <li><a href={ stateFooter.special }>{stateFooter.text_special}</a></li>
+                            <li><NavLink to={ stateFooter.manufacturer }>{stateFooter.text_manufacturer}</NavLink></li>
+                            <li><NavLink to={ stateFooter.voucher }>{stateFooter.text_voucher}</NavLink></li>
+                            <li><NavLink to={ stateFooter.affiliate }>{stateFooter.text_affiliate}</NavLink></li>
+                            <li><NavLink to={ stateFooter.special }>{stateFooter.text_special}</NavLink></li>
                         </ul>
                     </div>
                     <div className="col-sm-3">
                         <h5>{stateFooter.text_account}</h5>
                         <ul className="list-unstyled">
-                            <li><a href={ stateFooter.account }>{stateFooter.text_account}</a></li>
-                            <li><a href={ stateFooter.order }>{stateFooter.text_order}</a></li>
-                            <li><a href={ stateFooter.wishlist }>{stateFooter.text_wishlist}</a></li>
-                            <li><a href={ stateFooter.newsletter }>{stateFooter.text_newsletter}</a></li>
+                            <li><NavLink to={ stateFooter.account }>{stateFooter.text_account}</NavLink></li>
+                            <li><NavLink to={ stateFooter.order }>{stateFooter.text_order}</NavLink></li>
+                            <li><NavLink to={ stateFooter.wishlist }>{stateFooter.text_wishlist}</NavLink></li>
+                            <li><NavLink to={ stateFooter.newsletter }>{stateFooter.text_newsletter}</NavLink></li>
                         </ul>
                     </div>
                 </div>

@@ -13,6 +13,8 @@ import Footer from "./components/Common/Footer";
 import Home from "./components/Common/Home";
 import Category from "./components/Product/Category";
 import Product from "./components/Product/Product";
+import Information from "./components/Information/Information";
+import Contact from "./components/Information/Contact";
 
 const App = (props) => {
     return [
@@ -20,6 +22,8 @@ const App = (props) => {
         <Route exact path='/' render={() => <Home state={props.state}/>}/>,
         <Route path='/product/category' render={() => <Category state={props.state}/>}/>,
         <Route path='/product/product' render={() => <Product state={props.state}/>}/>,
+        <Route path='/information/information' render={() => <Information state={props.state}/>}/>,
+        <Route path='/information/contact' render={() => <Contact state={props.state}/>}/>,
         <Footer state={props.state.commonReducer.footerReducer}/>
     ]
 };

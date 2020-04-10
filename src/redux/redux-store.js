@@ -13,6 +13,8 @@ import featuredReducer from "./extension/module/featured-reducer";
 import slideshowReducer from "./extension/module/slideshow-reducer";
 import productCategoryReducer from "./product/category-reducer";
 import productReducer from "./product/product-reducer";
+import informationReducer from "./information/information-reducer";
+import contactReducer from "./information/contact-reducer";
 
 let reducers = combineReducers({
     commonReducer: combineReducers({
@@ -33,6 +35,10 @@ let reducers = combineReducers({
             slideshowReducer
         }),
         // paymentReducer: combineReducers({})
+    }),
+    informationReducer: combineReducers({
+        informationReducer,
+        contactReducer
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,

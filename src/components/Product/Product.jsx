@@ -3,6 +3,7 @@ import ColumnLeft from "../Common/ColumnLeft";
 import ContentTop from "../Common/ContentTop";
 import ContentBottom from "../Common/ContentBottom";
 import ColumnRight from "../Common/ColumnRight";
+import {NavLink} from "react-router-dom";
 
 const Product = (props) => {
     let stateProduct = props.state.productReducer.productReducer;
@@ -42,7 +43,7 @@ const Product = (props) => {
             <ul className="breadcrumb">
                 {stateProduct.breadcrumbs.map(breadcrumb => {
                     return (
-                        <li><a href={breadcrumb.href}>{breadcrumb.text}</a></li>
+                        <li><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
                     )
                 })}
             </ul>

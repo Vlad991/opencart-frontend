@@ -14,7 +14,7 @@ const Menu = (props) => {
                             {props.state.categories.map(category => {
                                 if (category.children) {
                                     return (
-                                        <li className="dropdown">
+                                        <li key={category.name} className="dropdown">
                                             <NavLink to={category.href} className="dropdown-toggle" data-toggle="dropdown">{category.name}</NavLink>
                                             <div className="dropdown-menu">
                                                 <div className="dropdown-inner">
@@ -24,7 +24,7 @@ const Menu = (props) => {
                                         </li>
                                     )
                                 } else {
-                                    return <li><NavLink to={category.href}>{category.name}</NavLink></li>
+                                    return <li key={category.name}><NavLink to={category.href}>{category.name}</NavLink></li>
                                 }
                             })}
                         </ul>
@@ -50,7 +50,7 @@ const CategoryChildren = (props) => {
             return (
                 <ul className="list-unstyled">
                     {children.map(child => {
-                        return <li><NavLink to={child.href}>{child.name}</NavLink></li>
+                        return <li key={child.name}><NavLink to={child.href}>{child.name}</NavLink></li>
                     })}
                 </ul>
             )

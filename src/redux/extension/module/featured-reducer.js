@@ -14,7 +14,7 @@ let initialState = {
             rating: 4
         },
         {
-            name: 'MacBook',
+            name: 'MacBook1',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
             href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
@@ -24,7 +24,7 @@ let initialState = {
             rating: 2
         },
         {
-            name: 'MacBook',
+            name: 'MacBook2',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
             href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',
@@ -34,7 +34,7 @@ let initialState = {
             rating: 4
         },
         {
-            name: 'MacBook',
+            name: 'MacBook3',
             description: 'Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.1..',
             href: '/product/product',
             thumb: '/image/catalog/demo/macbook_1.jpg',

@@ -1,3 +1,7 @@
+import {commonAPI} from "../../api/api";
+
+const SET_STATE = 'SET-STATE';
+
 let initialState = {
     contact: 'http://localhost:3000/index.php?route=information/contact',
     telephone: '123456789',
@@ -20,7 +24,20 @@ let initialState = {
 };
 
 const headerReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_STATE:
+            state = action.state;
+            return state;
+        default:
+            return state;
+    }
+};
+
+export const setStateActionCreator = (state) => ({type: SET_STATE, state});
+
+export const setHeaderState = () => async (dispatch) => {
+    let response = await commonAPI.getHeader();
+    dispatch(setStateActionCreator(response.data));
 };
 
 export default headerReducer;

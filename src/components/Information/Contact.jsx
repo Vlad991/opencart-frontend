@@ -19,7 +19,7 @@ const Contact = (props) => {
         <div id="information-contact" className="container">
             <ul className="breadcrumb">
                 {stateContact.breadcrumbs.map(breadcrumb => {
-                    return <li><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
+                    return <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
                 })}
             </ul>
             <div className="row">

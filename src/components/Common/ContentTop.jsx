@@ -6,13 +6,12 @@ import {Route} from "react-router-dom";
 
 const ContentTop = (props) => {
     return [
-        <Route exact path='/' render={() => [
+        <Route key={'/'} exact path='/' render={() => [
             <Slideshow state={props.state.slideshowReducer}/>,
             <Featured state={props.state.featuredReducer}/>,
             <Carousel state={props.state.carouselReducer}/>
         ]}/>,
-        <Route exact path='/product/category/' render={() => ''}/>,
-        //todo
+        <Route key={'/product/category'} exact path='/product/category/' render={() => ''}/>,
     ]
 };
 

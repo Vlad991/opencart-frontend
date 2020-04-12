@@ -62,17 +62,17 @@ const Product = (props) => {
                                             </a>
                                         </li> : ''}
                                     {stateProduct.images ? stateProduct.images.map(image => {
-                                        return <li className="image-additional"><a className="thumbnail" href={image.popup} title={stateProduct.heading_title}> <img src={image.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title} style={{height: 66 + 'px'}}/></a></li>
+                                        return <li key={image.thumb} className="image-additional"><a className="thumbnail" href={image.popup} title={stateProduct.heading_title}> <img src={image.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title} style={{height: 66 + 'px'}}/></a></li>
                                     }) : ''}
                                 </ul>
                                 : ''}
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab-description" data-toggle="tab">{stateProduct.tab_description}</a></li>
+                            <ul className="nav nav-tabs">
+                                <li className="active"><a href="#tab-description" data-toggle="tab">{stateProduct.tab_description}</a></li>
                                 {stateProduct.attribute_groups ? <li><a href="#tab-specification" data-toggle="tab">{stateProduct.tab_attribute}</a></li> : ''}
                                 {stateProduct.review_status ? <li><a href="#tab-review" data-toggle="tab">{stateProduct.tab_review}</a></li> : ''}
                             </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab-description">{stateProduct.description}</div>
+                            <div className="tab-content">
+                                <div className="tab-pane active" id="tab-description">{stateProduct.description}</div>
                                 {stateProduct.attribute_groups ?
                                     <div className="tab-pane" id="tab-specification">
                                         <table className="table table-bordered">
@@ -155,7 +155,7 @@ const Product = (props) => {
                             </ul>
                             {stateProduct.price ?
                                 <ul className="list-unstyled">
-                                    {!stateProduct.special ? <li><h2>{stateProduct.price}</h2></li> : [<li><span style="text-decoration: line-through;">{stateProduct.price}</span></li>, <li><h2>{stateProduct.special}</h2></li>]}
+                                    {!stateProduct.special ? <li><h2>{stateProduct.price}</h2></li> : [<li><span style={{textDecoration: 'line-through'}}>{stateProduct.price}</span></li>, <li><h2>{stateProduct.special}</h2></li>]}
                                     {stateProduct.tax ? <li>{stateProduct.text_tax} {stateProduct.tax}</li> : ''}
                                     {stateProduct.points ? <li>{stateProduct.text_points} {stateProduct.points}</li> : ''}
                                     {stateProduct.discounts ? [
@@ -222,14 +222,14 @@ const Product = (props) => {
                                         );
                                         if (option.type === 'text') return (
                                             <div className={'form-group' + option.required ? ' required' : ''}>
-                                                <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label> // todo
+                                                <label className="control-label" htmlFor={'input-option' + option.product_option_id}>{option.name}</label>
                                                 <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" className="form-control"/>
                                             </div>
                                         );
                                         if (option.type === 'textarea') return (
                                             <div className="form-group{% if option.required %} required {% endif %}">
                                                 <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label>
-                                                <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" className="form-control">{option.value}</textarea>// todo
+                                                <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" className="form-control">{option.value}</textarea>
                                             </div>
                                         );
                                         if (option.type === 'file') return (
@@ -304,14 +304,14 @@ const Product = (props) => {
                                                 return <span className="fa fa-stack"><i className="fa fa-star fa-stack-1x"></i><i className="fa fa-star-o fa-stack-1x"></i></span>
                                             }
                                         })}
-                                        <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.reviews}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.text_write}</a>
+                                        <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.reviews}</a> / <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.text_write}</a>
                                     </p>
                                     <hr/>
                                     {/*-- AddThis Button BEGIN --*/}
                                     <div className="addthis_toolbox addthis_default_style" data-url={stateProduct.share}>
                                         {/*{<a className="addthis_button_facebook_like" fb:like:layout="button_count"></a>}*/}
-                                        <a className="addthis_button_facebook_like"></a>
-                                        <a className="addthis_button_tweet"></a> <a className="addthis_button_pinterest_pinit"></a> <a className="addthis_counter addthis_pill_style"></a>
+                                        <a href="/" className="addthis_button_facebook_like"></a>
+                                        <a href="/" className="addthis_button_tweet"></a> <a href="/" className="addthis_button_pinterest_pinit"></a> <a href="/" className="addthis_counter addthis_pill_style"></a>
                                     </div>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
                                     {/*-- AddThis Button END --*/}
@@ -322,7 +322,7 @@ const Product = (props) => {
                         [
                             <h3>{stateProduct.text_related}</h3>,
                             <div className="row">
-                                {stateProduct.products.map(product => {
+                                {stateProduct.products.map((product, i) => {
                                     return [
                                         <div className={productClassVal}>
                                             <div className="product-thumb transition">
@@ -355,13 +355,12 @@ const Product = (props) => {
                                                 </div>
                                             </div>
                                         </div>,
-                                        ((stateProduct.column_left) && (stateProduct.column_right) && ((i + 1) % 2 == 0)) ?
+                                        ((stateProduct.column_left) && (stateProduct.column_right) && ((i + 1) % 2 === 0)) ?
                                             <div className="clearfix visible-md visible-sm"></div> :
-                                            ((stateProduct.column_left) || (stateProduct.column_right) && ((i + 1) % 3 == 0)) ?
-                                                <div className="clearfix visible-md"></div> : ((i + 1) % 4 == 0) ?
+                                            (((stateProduct.column_left) || (stateProduct.column_right)) && ((i + 1) % 3 === 0)) ?
+                                                <div className="clearfix visible-md"></div> : ((i + 1) % 4 === 0) ?
                                                 <div className="clearfix visible-md"></div> : ''
                                     ];
-                                    i++;
                                 })}
                             </div>
                         ]

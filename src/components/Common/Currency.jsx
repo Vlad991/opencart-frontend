@@ -2,6 +2,9 @@ import React from 'react';
 import {setCurrencyActionCreator} from "../../redux/common/currency-reducer";
 
 const Currency = (props) => {
+    let setCurrency = (code) => {
+        props.dispatch(setCurrencyActionCreator(code));
+    };
     if (props.state.currencies.length > 1) {
         return (
             <div className={'pull-left'}>
@@ -11,7 +14,7 @@ const Currency = (props) => {
                             {props.state.currencies.map(currency => {
                                 if (currency.symbol_left && currency.code === props.state.code) {
                                     return (
-                                        <strong>{currency.symbol_left}</strong>
+                                        <strong key={currency.code}>{currency.symbol_left}</strong>
                                     );
                                 } else if (currency.symbol_right && currency.code === props.state.code) {
                                     return (
@@ -26,14 +29,14 @@ const Currency = (props) => {
                             {props.state.currencies.map(currency => {
                                 if (currency.symbol_left) {
                                     return (
-                                        <li>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.dispatch(setCurrencyActionCreator(currency.code))}>{currency.symbol_left} {currency.title}</button>
+                                        <li key={currency.code}>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => setCurrency(currency.code)}>{currency.symbol_left} {currency.title}</button>
                                         </li>
                                     );
                                 } else if (currency.symbol_right && currency.code === props.state.code) {
                                     return (
-                                        <li>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.dispatch(setCurrencyActionCreator(currency.code))}>{currency.symbol_right} {currency.title}</button>
+                                        <li key={currency.code}>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => setCurrency(currency.code)}>{currency.symbol_right} {currency.title}</button>
                                         </li>
                                     );
                                 } else {

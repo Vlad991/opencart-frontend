@@ -11,7 +11,7 @@ const Footer = (props) => {
                         <div className="col-sm-3">
                             <h5>{stateFooter.text_information}</h5>
                             <ul className="list-unstyled">
-                                {stateFooter.informations.map(information => <li><NavLink to={ information.href }>{information.title}</NavLink></li>)}
+                                {stateFooter.informations.map(information => <li key={information.title}><NavLink to={ information.href }>{information.title}</NavLink></li>)}
                             </ul>
                         </div>
                         : ''}

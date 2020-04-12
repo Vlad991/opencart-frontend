@@ -7,7 +7,7 @@ const Slideshow = (props) => {
                 <div className="swiper-wrapper">
                     {props.state.banners.map(banner => {
                         return (
-                            <div className="swiper-slide text-center">
+                            <div key={banner.title} className="swiper-slide text-center">
                                 {banner.link ?
                                     <a href={banner.link}><img src={banner.image} alt={banner.title} className="img-responsive"/></a>
                                     :

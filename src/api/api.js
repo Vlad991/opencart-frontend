@@ -8,8 +8,14 @@ export const commonAPI = {
     getHeader() {
         return instance.get('index.php?route=common/header')
             .then(response => {
-                console.log(response.data);
                 return response.data;
             });
     },
+    getFooter() {
+        return instance.get('index.php?route=common/footer')
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            });
+    }
 };

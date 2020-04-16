@@ -1,3 +1,7 @@
+import {commonAPI} from "../../api/api";
+
+const SET_STATE = 'SET-STATE';
+
 let initialState = {
     text_information: 'Information',
     informations: [
@@ -46,7 +50,20 @@ let initialState = {
 };
 
 const footerReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_STATE:
+            state = action.state;
+            return state;
+        default:
+            return state;
+    }
+};
+
+export const setStateActionCreator = (state) => ({type: SET_STATE, state});
+
+export const setFooterState = () => async (dispatch) => {
+    let response = await commonAPI.getFooter();
+    dispatch(setStateActionCreator(response.data));
 };
 
 export default footerReducer;

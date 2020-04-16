@@ -8,13 +8,13 @@ import './stylesheet/vendor/jquery/swiper/css/swiper.min.css'
 import './stylesheet/vendor/jquery/swiper/css/opencart.css'
 
 import {BrowserRouter, Route} from "react-router-dom";
-import Footer from "./components/Common/Footer";
 import Home from "./components/Common/Home";
 import Category from "./components/Product/Category";
 import Product from "./components/Product/Product";
 import Information from "./components/Information/Information";
 import Contact from "./components/Information/Contact";
 import HeaderContainer from "./components/Common/HeaderContainer";
+import FooterContainer from "./components/Common/FooterContainer";
 
 const App = (props) => {
     return [
@@ -24,7 +24,7 @@ const App = (props) => {
         <Route path='/product/product' render={() => <Product state={props.state}/>}/>,
         <Route path='/information/information' render={() => <Information state={props.state}/>}/>,
         <Route path='/information/contact' render={() => <Contact state={props.state}/>}/>,
-        <Footer state={props.state.commonReducer.footerReducer}/>
+        <FooterContainer state={props.state.commonReducer.footerReducer} dispatch={props.dispatch}/>
     ]
 };
 

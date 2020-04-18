@@ -1,9 +1,29 @@
+import {commonAPI} from "../../api/api";
+
+const SET_HOME_STATE = 'SET-HOME-STATE';
+
 let initialState = {
-    content_top: true
+    column_left: null,
+    column_right: null,
+    content_bottom: null,
+    content_top: null,
 };
 
 const homeReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_HOME_STATE:
+            state = action.state;
+            return state;
+        default:
+            return state;
+    }
+};
+
+export const setStateActionCreator = (state) => ({type: SET_HOME_STATE, state});
+
+export const setHeaderState = () => async (dispatch) => {
+    let response = await commonAPI.getHome();
+    dispatch(setStateActionCreator(response.data));
 };
 
 export default homeReducer;

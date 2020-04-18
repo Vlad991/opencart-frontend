@@ -1,22 +1,30 @@
 import React from "react";
+import {informationAPI} from "../../api/api";
+
+const SET_INFORMATION_STATE = 'SET-INFORMATION-STATE';
 
 let initialState = {
     breadcrumbs: [
-        {
-            href: '/',
-            text: <i class="fa fa-home"></i>
-        },
-        {
-            href: '/information/information',
-            text: 'About us'
-        }
     ],
-    heading_title: 'About Us',
-    description: 'About Us'
+    heading_title: '',
+    description: ''
 };
 
 const informationReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_INFORMATION_STATE:
+            state = action.state;
+            return state;
+        default:
+            return state;
+    }
+};
+
+export const setStateActionCreator = (state) => ({type: SET_INFORMATION_STATE, state});
+
+export const setInformationState = () => async (dispatch) => {
+    let response = await informationAPI.getInformation(6);
+    dispatch(setStateActionCreator(response.data));
 };
 
 export default informationReducer;

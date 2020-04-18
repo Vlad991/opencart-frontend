@@ -5,7 +5,7 @@ import ContentBottom from "./ContentBottom";
 import ColumnRight from "./ColumnRight";
 
 const Home = (props) => {
-    let stateHome = props.state.commonReducer.homeReducer;
+    let stateHome = props.state;
     let classVal;
     if (stateHome.column_left && stateHome.column_right) {
         classVal = 'col-sm-6';
@@ -17,12 +17,12 @@ const Home = (props) => {
     return (
         <div id="common-home" className="container">
             <div className="row">
-                {stateHome.column_left ? <ColumnLeft state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateHome.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateHome.content_top ? <ContentTop state={props.state.extensionReducer.moduleReducer}/> : ''}
-                    {stateHome.content_bottom ? <ContentBottom state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateHome.content_top ? <ContentTop state={props.state.content_top} dispatch={props.dispatch}/> : ''}
+                    {stateHome.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
-                {stateHome.column_right ? <ColumnRight state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateHome.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
     )

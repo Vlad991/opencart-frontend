@@ -1,9 +1,10 @@
 import {commonAPI} from "../../api/api";
+import React from 'react';
 
-const SET_STATE = 'SET-STATE';
+const SET_FOOTER_STATE = 'SET-FOOTER-STATE';
 
 let initialState = {
-    text_information: 'Information',
+    text_information: 'Information1',
     informations: [
         {
             href: '/information/information',
@@ -46,12 +47,12 @@ let initialState = {
     text_wishlist: 'Wish List',
     newsletter: '/information/information',
     text_newsletter: 'Newsletter',
-    powered: ''
+    powered: 'Powered By <a href="http://www.opencart.com">OpenCart</a><br/> Your Store © 2020'
 };
 
 const footerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_STATE:
+        case SET_FOOTER_STATE:
             state = action.state;
             return state;
         default:
@@ -59,7 +60,7 @@ const footerReducer = (state = initialState, action) => {
     }
 };
 
-export const setStateActionCreator = (state) => ({type: SET_STATE, state});
+export const setStateActionCreator = (state) => ({type: SET_FOOTER_STATE, state});
 
 export const setFooterState = () => async (dispatch) => {
     let response = await commonAPI.getFooter();

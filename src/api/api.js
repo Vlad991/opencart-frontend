@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8888/',
+    baseURL: 'http://localhost:8888/OpenCartBackend',
 });
 
 export const commonAPI = {
@@ -15,6 +15,21 @@ export const commonAPI = {
         return instance.get('index.php?route=common/footer')
             .then(response => {
                 console.log(response.data);
+                return response.data;
+            });
+    },
+    getHome() {
+        return instance.get('index.php?route=common/home')
+            .then(response => {
+                return response.data;
+            });
+    }
+};
+
+export const informationAPI = {
+    getInformation(id) {
+        return instance.get('index.php?route=information/information&information_id=' + id)
+            .then(response => {
                 return response.data;
             });
     }

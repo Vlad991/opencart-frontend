@@ -7,10 +7,6 @@ import homeReducer from "./common/home-reducer";
 import languageReducer from "./common/language-reducer";
 import menuReducer from "./common/menu-reducer";
 import searchReducer from "./common/search-reducer";
-import carouselReducer from "./extension/module/carousel-reducer";
-import categoryReducer from "./extension/module/category-reducer";
-import featuredReducer from "./extension/module/featured-reducer";
-import slideshowReducer from "./extension/module/slideshow-reducer";
 import productCategoryReducer from "./product/category-reducer";
 import productReducer from "./product/product-reducer";
 import informationReducer from "./information/information-reducer";
@@ -26,15 +22,6 @@ let reducers = combineReducers({
         menuReducer,
         searchReducer,
         cartReducer
-    }),
-    extensionReducer: combineReducers({
-        moduleReducer: combineReducers({
-            carouselReducer,
-            categoryReducer,
-            featuredReducer,
-            slideshowReducer
-        }),
-        // paymentReducer: combineReducers({})
     }),
     informationReducer: combineReducers({
         informationReducer,

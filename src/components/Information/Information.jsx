@@ -4,9 +4,10 @@ import ColumnRight from "../Common/ColumnRight";
 import ContentTop from "../Common/ContentTop";
 import ContentBottom from "../Common/ContentBottom";
 import {NavLink} from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 const Information = (props) => {
-    let stateInformation = props.state.informationReducer.informationReducer;
+    let stateInformation = props.state;
     let classVal;
     if (stateInformation.column_left && stateInformation.column_right) {
         classVal = 'col-sm-6';
@@ -19,18 +20,18 @@ const Information = (props) => {
         <div id="information-information" className="container">
             <ul className="breadcrumb">
                 {stateInformation.breadcrumbs.map(breadcrumb => {
-                    return <li><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
+                    return <li><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
                 })}
             </ul>
             <div className="row">
-                {stateInformation.column_left ? <ColumnLeft state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateInformation.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateInformation.content_top ? <ContentTop state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateInformation.content_top ? <ContentTop state={props.state.content_top}/> : ''}
                     <h1>{stateInformation.heading_title}</h1>
-                    {stateInformation.description}
-                    {stateInformation.content_bottom ? <ContentBottom state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {ReactHtmlParser(stateInformation.description)}
+                    {stateInformation.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
-                {stateInformation.column_right ? <ColumnRight state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateInformation.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
     )

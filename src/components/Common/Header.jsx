@@ -1,17 +1,17 @@
 import React from 'react';
-import Currency from "./Currency";
 import Language from "./Language";
 import Search from "./Search";
 import Cart from "./Cart";
 import Menu from "./Menu";
 import {NavLink} from "react-router-dom";
+import CurrencyContainer from "./CurrencyContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;
     return [
         <nav id={'top'}>
             <div className={'container'}>
-                <Currency state={props.state.currencyReducer} dispatch={props.dispatch}/>
+                <CurrencyContainer/>
                 <Language state={props.state.languageReducer}/>
                 <div id={'top-links'} className={'nav pull-right'}>
                     <ul className={'list-inline'}>

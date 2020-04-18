@@ -1,27 +1,18 @@
+const SET_CURRENCY_STATE = 'SET-CURRENCY-STATE';
 const SET_CURRENCY = 'SET-CURRENCY';
 
 let initialState = {
-    action: 'http://localhost:3000/index.php?route=common/currency/currency',
-    text_currency: 'Currency',
-    redirect: 'http://localhost:3000/index.php?route=common/home',
+    action: '',
+    text_currency: '',
+    redirect: '',
     currencies: [
         {
-            code: 'EUR',
-            symbol_left: '€',
-            title: 'Euro'
-        },
-        {
-            code: 'GBR',
-            symbol_left: '£',
-            title: 'Pound Sterling'
-        },
-        {
-            code: 'USD',
-            symbol_left: '$',
-            title: 'US Dollar'
+            code: '',
+            symbol_left: '',
+            title: ''
         }
     ],
-    code: 'GBR'
+    code: ''
 };
 
 const currencyReducer = (state = initialState, action) => {
@@ -29,10 +20,13 @@ const currencyReducer = (state = initialState, action) => {
         case SET_CURRENCY:
             state.code = action.currencyCode;
             return state;
+        case SET_CURRENCY_STATE:
+            return {...action.state};
         default:
             return state;
     }
 };
 
 export const setCurrencyActionCreator = (code) => ({type: SET_CURRENCY, currencyCode: code});
+export const setStateActionCreator = (state) => ({type: SET_CURRENCY_STATE, state});
 export default currencyReducer;

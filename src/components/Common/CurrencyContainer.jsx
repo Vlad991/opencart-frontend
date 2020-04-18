@@ -1,15 +1,26 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Header from "./Header";
+import Currency from "./Currency";
+import {commonAPI} from "../../api/api";
+import {setStateActionCreator} from "../../redux/common/currency-reducer";
+
+class CurrencyContainer extends React.Component {
+    componentDidMount() {
+        commonAPI.getCurrency().then(data => {
+            this.props.setStateActionCreator(data);
+        });
+    }
+
+    render() {
+        return (
+            <Currency state={this.props.state}/>
+        );
+    };
+}
+
 
 let mapStateToProps = (state) => ({
-    stateHeader: state.headerReducer
+    state: state.commonReducer.currencyReducer
 });
 
-let mapDispatchToProps = (dispatch) => ({
-
-});
-
-const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
-
-export default HeaderContainer;
+export default connect(mapStateToProps, {setStateActionCreator})(CurrencyContainer);

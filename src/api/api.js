@@ -14,12 +14,17 @@ export const commonAPI = {
     getFooter() {
         return instance.get('index.php?route=common/footer')
             .then(response => {
-                console.log(response.data);
                 return response.data;
             });
     },
     getHome() {
         return instance.get('index.php?route=common/home')
+            .then(response => {
+                return response.data;
+            });
+    },
+    getCurrency() {
+        return instance.get('index.php?route=common/currency')
             .then(response => {
                 return response.data;
             });

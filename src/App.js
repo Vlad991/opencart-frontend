@@ -18,13 +18,13 @@ import InformationContainer from "./components/Information/InformationContainer"
 
 const App = (props) => {
     return [
-        <HeaderContainer state={props.state.commonReducer} dispatch={props.dispatch}/>,
+        <HeaderContainer/>,
         <Route exact path='/' render={() => <HomeContainer state={props.state} dispatch={props.dispatch}/>}/>,
         <Route path='/product/category' render={() => <Category state={props.state}/>}/>,
         <Route path='/product/product' render={() => <Product state={props.state}/>}/>,
-        <Route path='/information/information/:id' render={(props) => <InformationContainer id={props.match.params.id} state={props.state}/>}/>,
+        <Route path='/information/information/:id' render={(props) => <InformationContainer id={props.match.params.id}/>}/>,
         <Route path='/information/contact' render={() => <Contact state={props.state}/>}/>,
-        <FooterContainer state={props.state.commonReducer.footerReducer} dispatch={props.dispatch}/>
+        <FooterContainer/>
     ]
 };
 

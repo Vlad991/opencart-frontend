@@ -13,8 +13,9 @@ let initialState = {
 const informationReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_INFORMATION_STATE:
-            state = action.state;
-            return state;
+            let stateCopy = {...action.state};
+            stateCopy.breadcrumbs = [...stateCopy.breadcrumbs];
+            return stateCopy;
         default:
             return state;
     }

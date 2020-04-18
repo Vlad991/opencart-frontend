@@ -13,14 +13,14 @@ class InformationContainer extends React.Component {
 
     render() {
         return (
-            <Information state={this.props.state.informationReducer.informationReducer} dispatch={this.props.dispatch}/>
+            <Information state={this.props.state} dispatch={this.props.dispatch}/>
         );
     };
 }
 
 
 let mapStateToProps = (state) => ({
-    state: state
+    state: state.informationReducer.informationReducer
 });
 
 export default connect(mapStateToProps, {setStateActionCreator})(InformationContainer);

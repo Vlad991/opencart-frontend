@@ -13,14 +13,14 @@ class HeaderContainer extends React.Component {
 
     render() {
         return (
-            <Header state={this.props.state.commonReducer}/>
+            <Header state={this.props.state}/>
         );
     };
 }
 
 
 let mapStateToProps = (state) => ({
-    state: state
+    state: state.commonReducer
 });
 
 export default connect(mapStateToProps, {setStateActionCreator})(HeaderContainer);

@@ -3,31 +3,30 @@ import {commonAPI} from "../../api/api";
 const SET_HEADER_STATE = 'SET-HEADER-STATE';
 
 let initialState = {
-    contact: 'http://localhost:3000/index.php?route=information/contact',
-    telephone: '123456789',
-    account: 'http://localhost:3000/index.php?route=account/account',
-    text_account: 'My Account',
-    wishlist: 'http://localhost:3000/index.php?route=account/wishlist',
-    text_wishlist: 'Wish List (0)',
-    shopping_cart: 'http://localhost:3000/index.php?route=checkout/cart',
-    text_shopping_cart: 'Shopping Cart',
-    checkout: 'http://localhost:3000/index.php?route=checkout/checkout',
-    text_checkout: 'Checkout',
+    contact: '',
+    telephone: '',
+    account: '',
+    text_account: '',
+    wishlist: '',
+    text_wishlist: '',
+    shopping_cart: '',
+    text_shopping_cart: '',
+    checkout: '',
+    text_checkout: '',
     logged: false,
-    register: 'http://localhost:3000/index.php?route=account/register',
-    text_register: 'Register',
-    login: 'http://localhost:3000/index.php?route=account/login',
-    text_login: 'Login',
+    register: '',
+    text_register: '',
+    login: '',
+    text_login: '',
     logo: false,
     home: '/',
-    name: 'Your Store'
+    name: ''
 };
 
 const headerReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_HEADER_STATE:
-            state = action.state;
-            return state;
+            return {...action.state};
         default:
             return state;
     }

@@ -4,9 +4,10 @@ import ColumnRight from "../Common/ColumnRight";
 import ContentTop from "../Common/ContentTop";
 import ContentBottom from "../Common/ContentBottom";
 import {NavLink} from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 const Contact = (props) => {
-    let stateContact = props.state.informationReducer.contactReducer;
+    let stateContact = props.state;
     let classVal;
     if (stateContact.column_left && stateContact.column_right) {
         classVal = 'col-sm-6';
@@ -19,13 +20,13 @@ const Contact = (props) => {
         <div id="information-contact" className="container">
             <ul className="breadcrumb">
                 {stateContact.breadcrumbs.map(breadcrumb => {
-                    return <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
+                    return <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
                 })}
             </ul>
             <div className="row">
-                {stateContact.column_left ? <ColumnLeft state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateContact.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateContact.content_top ? <ContentTop state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateContact.content_top ? <ContentTop state={props.state.content_top}/> : ''}
                     <h1>{stateContact.heading_title}</h1>
                     <h3>{stateContact.text_location}</h3>
                     <div className="panel panel-default">
@@ -59,7 +60,7 @@ const Contact = (props) => {
                             </div>
                         </div>
                     </div>
-                    {stateContact.locations ? [
+                    {stateContact.locations && stateContact.locations.length > 0 ? [
                         <h3>{stateContact.text_store}</h3>,
                         <div className="panel-group" id="accordion">
                             {stateContact.locations.map(location => {
@@ -129,9 +130,9 @@ const Contact = (props) => {
                             </div>
                         </div>
                     </form>
-                    {stateContact.content_bottom ? <ContentBottom state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateContact.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
-                {stateContact.column_right ? <ColumnRight state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateContact.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
     )

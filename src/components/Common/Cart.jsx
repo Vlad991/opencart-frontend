@@ -1,13 +1,15 @@
 import React from 'react';
+import {Dropdown} from "react-bootstrap";
+import NavLink from "react-bootstrap/NavLink";
 
 const Cart = (props) => {
     return (
-        <div id="cart" className="btn-group btn-block">
-            <button type="button" data-toggle="dropdown" data-loading-text={props.state.text_loading} className="btn btn-inverse btn-block btn-lg dropdown-toggle"><i className="fa fa-shopping-cart"></i> <span id="cart-total">{props.state.text_items}</span></button>
-            <ul className="dropdown-menu pull-right">
+        <Dropdown as="div" id="cart" className="btn-group btn-block">
+            <Dropdown.Toggle variant="" type="button" data-toggle="dropdown" data-loading-text={props.state.text_loading} className="btn btn-inverse btn-block btn-lg"><i className="fa fa-shopping-cart"></i> <span id="cart-total">{props.state.text_items}</span></Dropdown.Toggle>
+            <Dropdown.Menu as="ul" className="pull-right">
                 <CartDropdown state={props.state}/>
-            </ul>
-        </div>
+            </Dropdown.Menu>
+        </Dropdown>
     );
 };
 
@@ -19,8 +21,8 @@ const CartDropdown = (props) => {
                     {props.state.products.map(product => {
                         return (
                             <tr>
-                                <td className="text-center">{product.thumb ? <a href={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-thumbnail"/></a> : ''}</td>
-                                <td className="text-left"><a href={product.href}>{product.name}</a>
+                                <td className="text-center">{product.thumb ? <NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-thumbnail"/></NavLink> : ''}</td>
+                                <td className="text-left"><NavLink to={product.href}>{product.name}</NavLink>
                                     {product.option ? product.option.map(option => {
                                         return (
                                             <br/>
@@ -65,7 +67,7 @@ const CartDropdown = (props) => {
                             )
                         })}
                     </table>
-                    <p className="text-right"><a href={ props.state.cart }><strong><i className="fa fa-shopping-cart"></i> {props.state.text_cart}</strong></a>&nbsp;&nbsp;&nbsp;<a href={ props.state.checkout }><strong><i className="fa fa-share"></i> {props.state.text_checkout}</strong></a></p>
+                    <p className="text-right"><NavLink to={ props.state.cart }><strong><i className="fa fa-shopping-cart"></i> {props.state.text_cart}</strong></NavLink>&nbsp;&nbsp;&nbsp;<NavLink to={ props.state.checkout }><strong><i className="fa fa-share"></i> {props.state.text_checkout}</strong></NavLink></p>
                 </div>
             </li>
         ];

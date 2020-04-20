@@ -19,9 +19,11 @@ const currencyReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENCY:
             state.code = action.currencyCode;
-            return state;
+            return {...state, code: action.currencyCode};
         case SET_CURRENCY_STATE:
-            return {...action.state};
+            let stateCopy = {...action.state};
+            stateCopy.currencies = [...action.state.currencies];
+            return stateCopy;
         default:
             return state;
     }

@@ -152,7 +152,7 @@ div.required .control-label:before {
 	line-height: 18px;
 	color: #FFF;
 }
-#cart.open > .btn {
+#cart.show > .btn {
 	background-image: none;
 	background-color: #FFFFFF;
 	border: 1px solid #E6E6E6;
@@ -160,7 +160,7 @@ div.required .control-label:before {
 	box-shadow: none;
 	text-shadow: none;
 }
-#cart.open > .btn:hover {
+#cart.show > .btn:hover {
 	color: #444;
 }
 #cart .dropdown-menu {
@@ -205,7 +205,7 @@ div.required .control-label:before {
 	min-height: 15px;
 	background-color: transparent;
 }
-#menu .nav > li > a:hover, #menu .nav > li.open > a {
+#menu .nav > li > a:hover, #menu .nav > li.show > a {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 #menu .dropdown-menu {

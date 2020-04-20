@@ -1,16 +1,14 @@
 import React from 'react';
-import {setCurrencyActionCreator} from "../../redux/common/currency-reducer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {ButtonGroup, Dropdown} from "react-bootstrap";
 
 const Currency = (props) => {
-    let setCurrency = (code) => {
-        props.dispatch(setCurrencyActionCreator(code));
-    };
     if (props.state.currencies.length > 1) {
         return (
             <div className={'pull-left'}>
                 <form action={props.state.action} method="post" encType="multipart/form-data" id="form-currency">
-                    <div className="btn-group">
-                        <button className="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                    <ButtonGroup as={Dropdown}>
+                        <Dropdown.Toggle variant="link" data-toggle="dropdown">
                             {props.state.currencies.map(currency => {
                                 if (currency.symbol_left && currency.code === props.state.code) {
                                     return (
@@ -24,27 +22,25 @@ const Currency = (props) => {
                                     return null;
                                 }
                             })} <span className="hidden-xs hidden-sm hidden-md">{props.state.text_currency}</span>&nbsp;<i className="fa fa-caret-down"></i>
-                        </button>
-                        <ul className="dropdown-menu">
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
                             {props.state.currencies.map(currency => {
                                 if (currency.symbol_left) {
                                     return (
                                         <li key={currency.code}>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => setCurrency(currency.code)}>{currency.symbol_left} {currency.title}</button>
-                                        </li>
-                                    );
-                                } else if (currency.symbol_right && currency.code === props.state.code) {
-                                    return (
-                                        <li key={currency.code}>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => setCurrency(currency.code)}>{currency.symbol_right} {currency.title}</button>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.setCurrency(currency.code)}>{currency.symbol_left} {currency.title}</button>
                                         </li>
                                     );
                                 } else {
-                                    return null;
+                                    return (
+                                        <li key={currency.code}>
+                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.setCurrency(currency.code)}>{currency.symbol_right} {currency.title}</button>
+                                        </li>
+                                    );
                                 }
                             })}
-                        </ul>
-                    </div>
+                        </Dropdown.Menu>
+                    </ButtonGroup>
                     <input type="hidden" name="code" value=""/>
                     <input type="hidden" name="redirect" value={props.state.redirect}/>
                 </form>

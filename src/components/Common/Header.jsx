@@ -1,30 +1,35 @@
 import React from 'react';
 import Language from "./Language";
-import Search from "./Search";
 import Cart from "./Cart";
 import Menu from "./Menu";
 import {NavLink} from "react-router-dom";
 import CurrencyContainer from "./CurrencyContainer";
+import {Dropdown} from "react-bootstrap";
+import SearchContainer from "./SearchContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;
     return [
-        <nav id={'top'}>
-            <div className={'container'}>
+        <nav id="top">
+            <div className="container">
                 <CurrencyContainer/>
                 <Language state={props.state.languageReducer}/>
-                <div id={'top-links'} className={'nav pull-right'}>
-                    <ul className={'list-inline'}>
-                        <li><a href={stateHeader.contact}><i className={'fa fa-phone'}></i></a> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
-                        <li className={'dropdown'}>
-                            <a href={stateHeader.account} title={stateHeader.text_account} className={'dropdown-toggle'} data-toggle="dropdown"><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_account}</span> <span className={'caret'}></span></a>
-                            <ul className={'dropdown-menu dropdown-menu-right'}>
+                <div id="top-links" className="nav pull-right">
+                    <ul className="list-inline">
+                        <li><NavLink to={stateHeader.contact}><i className={'fa fa-phone'}></i></NavLink> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
+                        <Dropdown alignRight as="li" ref={(el) => {
+                            if (el) {
+                                el.style.setProperty('display', 'inline-block', 'important')
+                            }
+                        }}>
+                            <Dropdown.Toggle as="span" href={stateHeader.account} title={stateHeader.text_account}><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_account}</span> <span className={'caret'}></span></Dropdown.Toggle>
+                            <Dropdown.Menu className={'dropdown-menu dropdown-menu-right'}>
                                 <Account state={stateHeader}/>
-                            </ul>
-                        </li>
-                        <li><a href={stateHeader.wishlist} id="wishlist-total" title={stateHeader.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_wishlist}</span></a></li>
-                        <li><a href={stateHeader.shopping_cart} title={stateHeader.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_shopping_cart}</span></a></li>
-                        <li><a href={stateHeader.checkout} title={stateHeader.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_checkout}</span></a></li>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <li><NavLink to={stateHeader.wishlist} id="wishlist-total" title={stateHeader.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_wishlist}</span></NavLink></li>
+                        <li><NavLink to={stateHeader.shopping_cart} title={stateHeader.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_shopping_cart}</span></NavLink></li>
+                        <li><NavLink to={stateHeader.checkout} title={stateHeader.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_checkout}</span></NavLink></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +43,7 @@ const Header = (props) => {
                         </div>
                     </div>
                     <div className={'col-sm-5'}>
-                        <Search state={props.state.searchReducer} dispatch={props.dispatch}/>
+                        <SearchContainer/>
                     </div>
                     <div className={'col-sm-3'}>
                         <Cart state={props.state.cartReducer}/>
@@ -53,16 +58,16 @@ const Header = (props) => {
 const Account = (props) => {
     if (props.state.logged) {
         return [
-            <li key={props.state.text_account}><a href={props.state.account}>{props.state.text_account}</a></li>,
-            <li key={props.state.text_order}><a href={props.state.order}>{props.state.text_order}</a></li>,
-            <li key={props.state.text_transaction}><a href={props.state.transaction}>{props.state.text_transaction}</a></li>,
-            <li key={props.state.text_download}><a href={props.state.download}>{props.state.text_download}</a></li>,
-            <li key={props.state.text_logout}><a href={props.state.logout}>{props.state.text_logout}</a></li>,
+            <li key={props.state.text_account}><NavLink to={props.state.account}>{props.state.text_account}</NavLink></li>,
+            <li key={props.state.text_order}><NavLink to={props.state.order}>{props.state.text_order}</NavLink></li>,
+            <li key={props.state.text_transaction}><NavLink to={props.state.transaction}>{props.state.text_transaction}</NavLink></li>,
+            <li key={props.state.text_download}><NavLink to={props.state.download}>{props.state.text_download}</NavLink></li>,
+            <li key={props.state.text_logout}><NavLink to={props.state.logout}>{props.state.text_logout}</NavLink></li>,
         ];
     } else {
         return [
-            <li key={props.state.text_register}><a href={props.state.register}>{props.state.text_register}</a></li>,
-            <li key={props.state.text_login}><a href={props.state.login}>{props.state.text_login}</a></li>
+            <li key={props.state.text_register}><NavLink to={props.state.register}>{props.state.text_register}</NavLink></li>,
+            <li key={props.state.text_login}><NavLink to={props.state.login}>{props.state.text_login}</NavLink></li>
         ];
     }
 };

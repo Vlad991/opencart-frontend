@@ -12,7 +12,7 @@ const Menu = (props) => {
                     <div className="collapse navbar-collapse navbar-ex1-collapse">
                         <ul className="nav navbar-nav">
                             {props.state.categories.map(category => {
-                                if (category.children) {
+                                if (category.children && category.children.length > 0) {
                                     return (
                                         <li key={category.name} className="dropdown">
                                             <NavLink to={category.href} className="dropdown-toggle" data-toggle="dropdown">{category.name}</NavLink>

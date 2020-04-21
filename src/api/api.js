@@ -45,7 +45,12 @@ export const commonAPI = {
     getSearch() {
         return instance.get('index.php?route=common/search')
             .then(response => {
-                console.log(response.data);
+                return response.data;
+            });
+    },
+    getMenu() {
+        return instance.get('index.php?route=common/menu')
+            .then(response => {
                 return response.data;
             });
     },
@@ -64,4 +69,14 @@ export const informationAPI = {
                 return response.data;
             });
     }
+};
+
+export const productAPI = {
+    getCategory(firstLevelId, secondLevelId) {
+        return instance.get('index.php?route=product/category&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : ''))
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            });
+    },
 };

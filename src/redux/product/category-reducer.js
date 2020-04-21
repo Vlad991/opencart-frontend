@@ -1,5 +1,7 @@
 import React from "react";
 
+const SET_CATEGORY_STATE = 'SET-CATEGORY-STATE';
+
 let initialState = {
     breadcrumbs: [
         {
@@ -15,7 +17,9 @@ let initialState = {
             text: 'PC'
         }
     ],
-    column_left: true,
+    column_left: {
+        modules: [{categories: []}]
+    },
     heading_title: 'Laptops & Notebooks',
     thumb: '/image/catalog/demo/hp_2.jpg',
     description: 'Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.',
@@ -83,7 +87,20 @@ let initialState = {
 };
 
 const categoryReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_CATEGORY_STATE:
+            return {
+                ...action.state,
+                breadcrumbs: [...action.state.breadcrumbs],
+                categories: [...action.state.categories],
+                sorts: [...action.state.sorts],
+                limits: [...action.state.limits],
+                products: [...action.state.products]
+            };
+        default:
+            return state;
+    }
 };
 
+export const setStateActionCreator = (state) => ({type: SET_CATEGORY_STATE, state});
 export default categoryReducer;

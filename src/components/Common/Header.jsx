@@ -1,11 +1,11 @@
 import React from 'react';
 import Language from "./Language";
 import Cart from "./Cart";
-import Menu from "./Menu";
 import {NavLink} from "react-router-dom";
 import CurrencyContainer from "./CurrencyContainer";
 import {Dropdown} from "react-bootstrap";
 import SearchContainer from "./SearchContainer";
+import MenuContainer from "./MenuContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;
@@ -51,7 +51,7 @@ const Header = (props) => {
                 </div>
             </div>
         </header>,
-        <Menu state={props.state.menuReducer}/>
+        <MenuContainer/>
     ]
 };
 

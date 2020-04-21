@@ -37,7 +37,7 @@ const Contact = (props) => {
                                     <address>
                                         {stateContact.address}
                                     </address>
-                                    {stateContact.geocode ? <a href="https://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" className="btn btn-info"><i className="fa fa-map-marker"></i> {stateContact.button_map}</a> : ''}
+                                    {stateContact.geocode ? <a href={'https://maps.google.com/maps?q=' + encodeURI(stateContact.geocode) + '&hl=' + stateContact.geocode_hl + '&t=m&z=15'} target="_blank" rel="noopener noreferrer" className="btn btn-info"><i className="fa fa-map-marker"></i> {stateContact.button_map}</a> : ''}
                                 </div>
                                 <div className="col-sm-3"><strong>{stateContact.text_telephone}</strong><br/>
                                     {stateContact.telephone}<br/>
@@ -78,7 +78,7 @@ const Contact = (props) => {
                                                         <address>
                                                             {location.addres}
                                                         </address>
-                                                        {location.geocode ? <a href="https://maps.google.com/maps?q={{ location.geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" className="btn btn-info"><i className="fa fa-map-marker"></i> {stateContact.button_map}</a> : ''}
+                                                        {location.geocode ? <a href="https://maps.google.com/maps?q={{ location.geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" rel="noopener noreferrer" className="btn btn-info"><i className="fa fa-map-marker"></i> {stateContact.button_map}</a> : ''}
                                                     </div>
                                                     <div className="col-sm-3">
                                                         <strong>{stateContact.text_telephone}</strong><br/>

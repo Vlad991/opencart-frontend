@@ -8,13 +8,13 @@ const ContentTop = (props) => {
     return props.state.modules.map(module => {
         switch (module.module_name) {
             case 'carousel':
-                return <Carousel state={module}/>;
+                return <Carousel key={module.module_name} state={module}/>;
             case 'category':
-                return <Category/>;
+                return <Category key={module.module_name}/>;
             case 'featured':
-                return <Featured state={module} dispatch={props.dispatch}/>;
+                return <Featured key={module.module_name} state={module} dispatch={props.dispatch}/>;
             case 'slideshow':
-                return <Slideshow state={module}/>;
+                return <Slideshow key={module.module_name} state={module}/>;
             default:
                 return null;
         }

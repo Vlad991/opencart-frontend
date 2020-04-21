@@ -46,9 +46,9 @@ const CategoryChildren = (props) => {
         childrenGroups[i] = category.children.slice((i * size), (i * size) + size);
     }
     return (
-        childrenGroups.map(children => {
+        childrenGroups.map((children, index) => {
             return (
-                <ul className="list-unstyled">
+                <ul key={index} className="list-unstyled">
                     {children.map(child => {
                         return <li key={child.name}><NavLink to={child.href}>{child.name}</NavLink></li>
                     })}

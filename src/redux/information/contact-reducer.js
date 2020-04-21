@@ -1,4 +1,3 @@
-import React from "react";
 import {informationAPI} from "../../api/api";
 
 const SET_CONTACT_STATE = 'SET-CONTACT-STATE';

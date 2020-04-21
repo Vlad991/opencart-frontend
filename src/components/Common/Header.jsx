@@ -9,50 +9,52 @@ import MenuContainer from "./MenuContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;
-    return [
-        <nav id="top">
-            <div className="container">
-                <CurrencyContainer/>
-                <Language state={props.state.languageReducer}/>
-                <div id="top-links" className="nav pull-right">
-                    <ul className="list-inline">
-                        <li><NavLink to={stateHeader.contact}><i className={'fa fa-phone'}></i></NavLink> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
-                        <Dropdown alignRight as="li" ref={(el) => {
-                            if (el) {
-                                el.style.setProperty('display', 'inline-block', 'important')
-                            }
-                        }}>
-                            <Dropdown.Toggle as="span" href={stateHeader.account} title={stateHeader.text_account}><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_account}</span> <span className={'caret'}></span></Dropdown.Toggle>
-                            <Dropdown.Menu className={'dropdown-menu dropdown-menu-right'}>
-                                <Account state={stateHeader}/>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <li><NavLink to={stateHeader.wishlist} id="wishlist-total" title={stateHeader.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_wishlist}</span></NavLink></li>
-                        <li><NavLink to={stateHeader.shopping_cart} title={stateHeader.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_shopping_cart}</span></NavLink></li>
-                        <li><NavLink to={stateHeader.checkout} title={stateHeader.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_checkout}</span></NavLink></li>
-                    </ul>
+    return (
+        <>
+            <nav id="top">
+                <div className="container">
+                    <CurrencyContainer/>
+                    <Language state={props.state.languageReducer}/>
+                    <div id="top-links" className="nav pull-right">
+                        <ul className="list-inline">
+                            <li><NavLink to={stateHeader.contact}><i className={'fa fa-phone'}></i></NavLink> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.telephone}</span></li>
+                            <Dropdown alignRight as="li" ref={(el) => {
+                                if (el) {
+                                    el.style.setProperty('display', 'inline-block', 'important')
+                                }
+                            }}>
+                                <Dropdown.Toggle as="span" href={stateHeader.account} title={stateHeader.text_account}><i className={'fa fa-user'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_account}</span> <span className={'caret'}></span></Dropdown.Toggle>
+                                <Dropdown.Menu className={'dropdown-menu dropdown-menu-right'}>
+                                    <Account state={stateHeader}/>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <li><NavLink to={stateHeader.wishlist} id="wishlist-total" title={stateHeader.text_wishlist}><i className={'fa  fa-heart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_wishlist}</span></NavLink></li>
+                            <li><NavLink to={stateHeader.shopping_cart} title={stateHeader.text_shopping_cart}><i className={'fa fa-shopping-cart'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_shopping_cart}</span></NavLink></li>
+                            <li><NavLink to={stateHeader.checkout} title={stateHeader.text_checkout}><i className={'fa fa-share'}></i> <span className={'hidden-xs hidden-sm hidden-md'}>{stateHeader.text_checkout}</span></NavLink></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>,
-        <header>
-            <div className={'container'}>
-                <div className={'row'}>
-                    <div className={'col-sm-4'}>
-                        <div id="logo">
-                            <Logo state={stateHeader}/>
+            </nav>
+            <header>
+                <div className={'container'}>
+                    <div className={'row'}>
+                        <div className={'col-sm-4'}>
+                            <div id="logo">
+                                <Logo state={stateHeader}/>
+                            </div>
+                        </div>
+                        <div className={'col-sm-5'}>
+                            <SearchContainer/>
+                        </div>
+                        <div className={'col-sm-3'}>
+                            <Cart state={props.state.cartReducer}/>
                         </div>
                     </div>
-                    <div className={'col-sm-5'}>
-                        <SearchContainer/>
-                    </div>
-                    <div className={'col-sm-3'}>
-                        <Cart state={props.state.cartReducer}/>
-                    </div>
                 </div>
-            </div>
-        </header>,
-        <MenuContainer/>
-    ]
+            </header>
+            <MenuContainer/>
+        </>
+    )
 };
 
 const Account = (props) => {

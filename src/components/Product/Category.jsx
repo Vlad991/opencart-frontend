@@ -21,7 +21,7 @@ const Category = (props) => {
             <ul className="breadcrumb">
                 {stateCategory.breadcrumbs.map(breadcrumb => {
                     return (
-                        <li><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
+                        <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
                     )
                 })}
             </ul>
@@ -38,16 +38,19 @@ const Category = (props) => {
                         < hr/>
                     ] : ''}
                     {stateCategory.categories ? [
-                        <h3>{stateCategory.text_refine}</h3>,
+                        <h3 key={stateCategory.text_refine}>{stateCategory.text_refine}</h3>,
                         (stateCategory.categories.length <= 5) ?
                             <div className="row">
                                 <div className="col-sm-3">
                                     <ul>
-                                        {stateCategory.categories.map(category => <li><a href={category.href}>{category.name}</a></li>)}
+                                        {stateCategory.categories.map(category => <li key={category.name}><a href={category.href}>{category.name}</a></li>)}
                                     </ul>
                                 </div>
                             </div> :
-                            [<div className="row"><Categories categories={stateCategory.categories}/></div>, <br/>]
+                            <>
+                                <div className="row"><Categories categories={stateCategory.categories}/></div>
+                                <br/>
+                            </>
                     ] : ''}
                     {stateCategory.products ? [
                         <div className="row">
@@ -63,12 +66,14 @@ const Category = (props) => {
                             <div className="col-md-4 col-xs-6">
                                 <div className="form-group input-group input-group-sm">
                                     <label className="input-group-addon" htmlFor="input-sort">{stateCategory.text_sort}</label>
-                                    <select id="input-sort" className="form-control" onChange="location = this.value;">
+                                    <select id="input-sort" className="form-control"
+                                        //onChange="location = this.value;"
+                                    >
                                         {stateCategory.sorts.map(sorts => {
                                             if (sorts.value === (stateCategory.sort + '-' + stateCategory.order)) {
-                                                return <option value={sorts.href} selected="selected">{sorts.text}</option>
+                                                return <option key={sorts.text} value={sorts.href} selected="selected">{sorts.text}</option>
                                             } else {
-                                                return <option value={sorts.href}>{sorts.text}</option>
+                                                return <option key={sorts.text} value={sorts.href}>{sorts.text}</option>
                                             }
                                         })}
                                     </select>
@@ -77,12 +82,14 @@ const Category = (props) => {
                             <div className="col-md-3 col-xs-6">
                                 <div className="form-group input-group input-group-sm">
                                     <label className="input-group-addon" htmlFor="input-limit">{stateCategory.text_limit}</label>
-                                    <select id="input-limit" className="form-control" onChange="location = this.value;">
+                                    <select id="input-limit" className="form-control" defaultValue="v" //todo
+                                        //onChange="location = this.value;"
+                                    >
                                         {stateCategory.limits.map(limits => {
                                             if (limits.value === stateCategory.limit) {
-                                                return <option value={limits.href} selected="selected">{limits.text}</option>
+                                                return <option key={limits.text} value={limits.href}>{limits.text}</option>
                                             } else {
-                                                return <option value={limits.href}>{limits.text}</option>
+                                                return <option key={limits.text} value={limits.href}>{limits.text}</option>
                                             }
                                         })}
                                     </select>
@@ -94,17 +101,19 @@ const Category = (props) => {
                                 return (
                                     <div className="product-layout product-list col-xs-12">
                                         <div className="product-thumb">
-                                            <div className="image"><a href={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive" style={{width: 200 + 'px'}}/></a></div>
+                                            <div className="image"><a href={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></a></div>
                                             <div>
                                                 <div className="caption">
                                                     <h4><a href={product.href}>{product.name}</a></h4>
                                                     <p>{product.description}</p>
                                                     {product.price ?
                                                         <p className="price">
-                                                            {!product.special ? product.price : [
-                                                                <span className="price-new">{product.special}</span>,
-                                                                <span className="price-old">{product.price}</span>
-                                                            ]}
+                                                            {!product.special ? product.price : (
+                                                                <>
+                                                                    <span className="price-new">{product.special}</span>
+                                                                    <span className="price-old">{product.price}</span>
+                                                                </>
+                                                            )}
                                                             {product.tax ? <span className="price-tax">{stateCategory.text_tax} {product.tax}</span> : ''}
                                                         </p>
                                                         : ''}
@@ -112,18 +121,24 @@ const Category = (props) => {
                                                         <div className="rating">
                                                             {[1, 2, 3, 4, 5].map(i => {
                                                                 if (product.rating < i) {
-                                                                    return <span className="fa fa-stack"><i className="fa fa-star-o fa-stack-2x"></i></span>
+                                                                    return <span key={i} className="fa fa-stack"><i className="fa fa-star-o fa-stack-2x"></i></span>
                                                                 } else {
-                                                                    return <span className="fa fa-stack"><i className="fa fa-star fa-stack-2x"></i><i className="fa fa-star-o fa-stack-2x"></i></span>
+                                                                    return <span key={i} className="fa fa-stack"><i className="fa fa-star fa-stack-2x"></i><i className="fa fa-star-o fa-stack-2x"></i></span>
                                                                 }
                                                             })}
                                                         </div>
                                                         : ''}
                                                 </div>
                                                 <div className="button-group">
-                                                    <button type="button" onClick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i className="fa fa-shopping-cart"></i> <span className="hidden-xs hidden-sm hidden-md">{stateCategory.button_cart}</span></button>
-                                                    <button type="button" data-toggle="tooltip" title={stateCategory.button_wishlist} onClick="wishlist.add('{{ product.product_id }}');"><i className="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title={stateCategory.button_compare} onClick="compare.add('{{ product.product_id }}');"><i className="fa fa-exchange"></i></button>
+                                                    <button type="button"
+                                                        //onClick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"
+                                                    ><i className="fa fa-shopping-cart"></i> <span className="hidden-xs hidden-sm hidden-md">{stateCategory.button_cart}</span></button>
+                                                    <button type="button" data-toggle="tooltip" title={stateCategory.button_wishlist}
+                                                        //onClick="wishlist.add('{{ product.product_id }}');"
+                                                    ><i className="fa fa-heart"></i></button>
+                                                    <button type="button" data-toggle="tooltip" title={stateCategory.button_compare}
+                                                        //onClick="compare.add('{{ product.product_id }}');"
+                                                    ><i className="fa fa-exchange"></i></button>
                                                 </div>
                                             </div>
                                         </div>

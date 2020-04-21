@@ -58,11 +58,11 @@ const Product = (props) => {
                                     {stateProduct.thumb ?
                                         <li>
                                             <a className="thumbnail" href={stateProduct.popup} title={stateProduct.heading_title}>
-                                                <img src={stateProduct.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title} style={{width: 228 + 'px', height: 228 + 'px'}}/>
+                                                <img src={stateProduct.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title}/>
                                             </a>
                                         </li> : ''}
                                     {stateProduct.images ? stateProduct.images.map(image => {
-                                        return <li key={image.thumb} className="image-additional"><a className="thumbnail" href={image.popup} title={stateProduct.heading_title}> <img src={image.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title} style={{height: 66 + 'px'}}/></a></li>
+                                        return <li key={image.thumb} className="image-additional"><a className="thumbnail" href={image.popup} title={stateProduct.heading_title}> <img src={image.thumb} title={stateProduct.heading_title} alt={stateProduct.heading_title}/></a></li>
                                     }) : ''}
                                 </ul>
                                 : ''}
@@ -272,6 +272,7 @@ const Product = (props) => {
                                                 </div>
                                             </div>
                                         );
+                                        return null;
                                     })
                                 ] : ''}
                                 {stateProduct.recurrings ? [
@@ -310,8 +311,8 @@ const Product = (props) => {
                                     {/*-- AddThis Button BEGIN --*/}
                                     <div className="addthis_toolbox addthis_default_style" data-url={stateProduct.share}>
                                         {/*{<a className="addthis_button_facebook_like" fb:like:layout="button_count"></a>}*/}
-                                        <a href="/" className="addthis_button_facebook_like"></a>
-                                        <a href="/" className="addthis_button_tweet"></a> <a href="/" className="addthis_button_pinterest_pinit"></a> <a href="/" className="addthis_counter addthis_pill_style"></a>
+                                        <a href="/" className="addthis_button_facebook_like"> </a>
+                                        <a href="/" className="addthis_button_tweet"> </a> <a href="/" className="addthis_button_pinterest_pinit"> </a> <a href="/" className="addthis_counter addthis_pill_style"> </a>
                                     </div>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
                                     {/*-- AddThis Button END --*/}

@@ -7,7 +7,7 @@ const Category = (props) => {
             {props.state.categories.map(category => {
                 if (category.category_id === props.state.category_id) {
                     return [
-                        <NavLink to={category.href} className="list-group-item active">{category.name}</NavLink>,
+                        <NavLink to={category.href} key={category.name} className="list-group-item active">{category.name}</NavLink>,
                         category.children ?
                             category.children.map(child => {
                                 if (child.category_id === props.state.child_id) {

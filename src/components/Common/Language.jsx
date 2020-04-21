@@ -10,7 +10,7 @@ const Language = (props) => {
                             {props.state.languages.map(language => {
                                 if (language.code === props.state.code) {
                                     return (
-                                        <img src={'catalog/language/' + language.code + '/' + language.code + '.png'} alt={language.name} title={language.name}/>
+                                        <img key={language.code} src={'catalog/language/' + language.code + '/' + language.code + '.png'} alt={language.name} title={language.name}/>
                                     );
                                 } else {
                                     return null;
@@ -20,7 +20,7 @@ const Language = (props) => {
                         <ul className="dropdown-menu">
                             {props.state.languages.map(language => {
                                 return (
-                                    <li>
+                                    <li key={language.code}>
                                         <button className="btn btn-link btn-block language-select" type="button" name={language.code}>
                                             <img src={'catalog/language/' + language.code + '/' + language.code + '.png'} alt={language.name} title={language.name}/> {language.name}
                                         </button>

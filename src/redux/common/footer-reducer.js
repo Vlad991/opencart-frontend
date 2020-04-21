@@ -1,5 +1,4 @@
 import {commonAPI} from "../../api/api";
-import React from 'react';
 
 const SET_FOOTER_STATE = 'SET-FOOTER-STATE';
 

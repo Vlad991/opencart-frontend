@@ -16,7 +16,7 @@ const Currency = (props) => {
                                     );
                                 } else if (currency.symbol_right && currency.code === props.state.code) {
                                     return (
-                                        <strong>{currency.symbol_right}</strong>
+                                        <strong key={currency.code}>{currency.symbol_right}</strong>
                                     );
                                 } else {
                                     return null;

@@ -20,7 +20,7 @@ const CartDropdown = (props) => {
                 <table className="table table-striped">
                     {props.state.products.map(product => {
                         return (
-                            <tr>
+                            <tr key={product.name}>
                                 <td className="text-center">{product.thumb ? <NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-thumbnail"/></NavLink> : ''}</td>
                                 <td className="text-left"><NavLink to={product.href}>{product.name}</NavLink>
                                     {product.option ? product.option.map(option => {
@@ -42,7 +42,7 @@ const CartDropdown = (props) => {
                     })}
                     {props.state.vouchers.map(voucher => {
                         return (
-                            <tr>
+                            <tr key={voucher.description}>
                                 <td className="text-center"></td>
                                 <td className="text-left">{voucher.description}</td>
                                 <td className="text-right">x&nbsp;1</td>
@@ -60,7 +60,7 @@ const CartDropdown = (props) => {
                     <table className="table table-bordered">
                         {props.state.totals.map(total => {
                             return (
-                                <tr>
+                                <tr key={total.title}>
                                     <td className="text-right"><strong>{total.title}</strong></td>
                                     <td className="text-right">{total.text}</td>
                                 </tr>

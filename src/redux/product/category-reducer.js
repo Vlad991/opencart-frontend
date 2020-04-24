@@ -1,5 +1,3 @@
-import React from "react";
-
 const SET_CATEGORY_STATE = 'SET-CATEGORY-STATE';
 
 let initialState = {

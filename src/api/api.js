@@ -5,6 +5,12 @@ const instance = axios.create({
 });
 
 export const commonAPI = {
+    getCart() {
+        return instance.get('index.php?route=common/cart')
+            .then(response => {
+                return response.data;
+            });
+    },
     getHeader() {
         return instance.get('index.php?route=common/header')
             .then(response => {
@@ -75,8 +81,13 @@ export const productAPI = {
     getCategory(firstLevelId, secondLevelId) {
         return instance.get('index.php?route=product/category&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : ''))
             .then(response => {
-                console.log(response.data);
                 return response.data;
             });
     },
+    getProduct(firstLevelId, secondLevelId, productId) {
+        return instance.get('index.php?route=product/product&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '')  + '&product_id=' + productId)
+            .then(response => {
+                return response.data;
+            });
+    }
 };

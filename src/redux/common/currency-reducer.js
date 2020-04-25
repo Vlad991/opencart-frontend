@@ -5,13 +5,7 @@ let initialState = {
     action: '',
     text_currency: '',
     redirect: '',
-    currencies: [
-        {
-            code: '',
-            symbol_left: '',
-            title: ''
-        }
-    ],
+    currencies: [],
     code: ''
 };
 

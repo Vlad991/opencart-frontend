@@ -1,11 +1,19 @@
+const SET_CART_STATE = 'SET-CART-STATE';
+
 let initialState = {
-    text_loading: 'Loading...',
-    text_items: '0 item(s) - £0.00',
-    text_empty: 'Your shopping cart is empty!'
+    text_loading: '',
+    text_items: '',
+    text_empty: ''
 };
 
 const cartReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case SET_CART_STATE:
+            return {...action.state};
+        default:
+            return state;
+    }
 };
 
+export const setStateActionCreator = (state) => ({type: SET_CART_STATE, state});
 export default cartReducer;

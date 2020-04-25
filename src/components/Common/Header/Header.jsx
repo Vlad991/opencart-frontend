@@ -1,11 +1,12 @@
 import React from 'react';
 import Language from "../Language";
-import Cart from "../Cart";
+import Cart from "../Cart/Cart";
 import {NavLink} from "react-router-dom";
 import CurrencyContainer from "../Currency/CurrencyContainer";
 import {Dropdown} from "react-bootstrap";
 import SearchContainer from "../Search/SearchContainer";
 import MenuContainer from "../Menu/MenuContainer";
+import CartContainer from "../Cart/CartContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;
@@ -47,7 +48,7 @@ const Header = (props) => {
                             <SearchContainer/>
                         </div>
                         <div className={'col-sm-3'}>
-                            <Cart state={props.state.cartReducer}/>
+                            <CartContainer state={props.state.cartReducer}/>
                         </div>
                     </div>
                 </div>

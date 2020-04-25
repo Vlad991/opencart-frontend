@@ -1,12 +1,13 @@
 import React from 'react';
-import ColumnLeft from "../Common/ColumnLeft";
-import ContentTop from "../Common/ContentTop";
-import ContentBottom from "../Common/ContentBottom";
-import ColumnRight from "../Common/ColumnRight";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ContentTop from "../../Common/ContentTop";
+import ContentBottom from "../../Common/ContentBottom";
+import ColumnRight from "../../Common/ColumnRight";
 import {NavLink} from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 const Product = (props) => {
-    let stateProduct = props.state.productReducer.productReducer;
+    let stateProduct = props.state;
     let classVal;
     if (stateProduct.column_left && stateProduct.column_right) {
         classVal = 'col-sm-6';
@@ -43,14 +44,14 @@ const Product = (props) => {
             <ul className="breadcrumb">
                 {stateProduct.breadcrumbs.map(breadcrumb => {
                     return (
-                        <li><NavLink to={breadcrumb.href}>{breadcrumb.text}</NavLink></li>
+                        <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
                     )
                 })}
             </ul>
             <div className="row">
-                {stateProduct.column_left ? <ColumnLeft state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateProduct.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateProduct.content_top ? <ContentTop state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateProduct.content_top ? <ContentTop state={props.state.content_top}/> : ''}
                     <div className="row">
                         <div className={productClassVal1}>
                             {stateProduct.thumb || stateProduct.images ?
@@ -72,7 +73,7 @@ const Product = (props) => {
                                 {stateProduct.review_status ? <li><a href="#tab-review" data-toggle="tab">{stateProduct.tab_review}</a></li> : ''}
                             </ul>
                             <div className="tab-content">
-                                <div className="tab-pane active" id="tab-description">{stateProduct.description}</div>
+                                <div className="tab-pane active" id="tab-description">{ReactHtmlParser(stateProduct.description)}</div>
                                 {stateProduct.attribute_groups ?
                                     <div className="tab-pane" id="tab-specification">
                                         <table className="table table-bordered">
@@ -146,7 +147,7 @@ const Product = (props) => {
                                 <button type="button" data-toggle="tooltip" className="btn btn-default" title={stateProduct.button_wishlist} onClick="wishlist.add('{{ product_id }}');"><i className="fa fa-heart"></i></button>
                                 <button type="button" data-toggle="tooltip" className="btn btn-default" title={stateProduct.button_compare} onClick="compare.add('{{ product_id }}');"><i className="fa fa-exchange"></i></button>
                             </div>
-                            <h1>{stateProduct.heading_title}</h1>
+                            <h1>{ReactHtmlParser(stateProduct.heading_title)}</h1>
                             <ul class="list-unstyled">
                                 {stateProduct.manufacturer ? <li>{stateProduct.text_manufacturer} <a href={stateProduct.manufacturers}>{stateProduct.manufacturer}</a></li> : ''}
                                 <li>{stateProduct.text_model} {stateProduct.model}</li>
@@ -172,7 +173,7 @@ const Product = (props) => {
                                     <h3>{stateProduct.text_option}</h3>,
                                     stateProduct.options.map(option => {
                                         if (option.type === 'select') return (
-                                            <div className={'form-group' + option.required ? 'required' : ''}>
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor={'input-option' + option.product_option_id}>{option.name}</label>
                                                 <select name={'option[' + option.product_option_id + ']'} id={'input-option' + option.product_option_id} className="form-control">
                                                     <option value="">{stateProduct.text_select}</option>
@@ -183,7 +184,7 @@ const Product = (props) => {
                                             </div>
                                         );
                                         if (option.type === 'radio') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label">{option.name}</label>
                                                 <div id="input-option{{ option.product_option_id }}">
                                                     {option.product_option_value.map(option_value => {
@@ -202,7 +203,7 @@ const Product = (props) => {
                                             </div>
                                         );
                                         if (option.type === 'checkbox') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label">{option.name}</label>
                                                 <div id="input-option{{ option.product_option_id }}">
                                                     {option.product_option_value.map(option_value => {
@@ -221,29 +222,29 @@ const Product = (props) => {
                                             </div>
                                         );
                                         if (option.type === 'text') return (
-                                            <div className={'form-group' + option.required ? ' required' : ''}>
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor={'input-option' + option.product_option_id}>{option.name}</label>
-                                                <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" className="form-control"/>
+                                                <input type="text" name="option[{{ option.product_option_id }}]" value={option.value} placeholder={option.name} id="input-option{{ option.product_option_id }}" className="form-control"/>
                                             </div>
                                         );
                                         if (option.type === 'textarea') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label>
-                                                <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder="{{ option.name }}" id="input-option{{ option.product_option_id }}" className="form-control">{option.value}</textarea>
+                                                <textarea name="option[{{ option.product_option_id }}]" rows="5" placeholder={option.name} id="input-option{{ option.product_option_id }}" className="form-control">{option.value}</textarea>
                                             </div>
                                         );
                                         if (option.type === 'file') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label">{option.name}</label>
                                                 <button type="button" id="button-upload{{ option.product_option_id }}" data-loading-text="{{ text_loading }}" className="btn btn-default btn-block"><i className="fa fa-upload"></i> {stateProduct.button_upload}</button>
                                                 <input type="hidden" name="option[{{ option.product_option_id }}]" value="" id="input-option{{ option.product_option_id }}"/>
                                             </div>
                                         );
                                         if (option.type === 'date') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label>
                                                 <div className="input-group date">
-                                                    <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" data-date-format="YYYY-MM-DD" id="input-option{{ option.product_option_id }}" className="form-control"/>
+                                                    <input type="text" name="option[{{ option.product_option_id }}]" value={option.value} data-date-format="YYYY-MM-DD" id="input-option{{ option.product_option_id }}" className="form-control"/>
                                                     <span className="input-group-btn">
                                                         <button className="btn btn-default" type="button"><i className="fa fa-calendar"></i></button>
                                                     </span>
@@ -251,10 +252,10 @@ const Product = (props) => {
                                             </div>
                                         );
                                         if (option.type === 'datetime') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label>
                                                 <div className="input-group datetime">
-                                                    <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" data-date-format="YYYY-MM-DD HH:mm" id="input-option{{ option.product_option_id }}" className="form-control"/>
+                                                    <input type="text" name="option[{{ option.product_option_id }}]" value={option.value} data-date-format="YYYY-MM-DD HH:mm" id="input-option{{ option.product_option_id }}" className="form-control"/>
                                                     <span className="input-group-btn">
                                                         <button type="button" className="btn btn-default"><i className="fa fa-calendar"></i></button>
                                                     </span>
@@ -262,10 +263,10 @@ const Product = (props) => {
                                             </div>
                                         );
                                         if (option.type === 'time') return (
-                                            <div className="form-group{% if option.required %} required {% endif %}">
+                                            <div className={'form-group' + (option.required ? ' required' : '')}>
                                                 <label className="control-label" htmlFor="input-option{{ option.product_option_id }}">{option.name}</label>
                                                 <div className="input-group time">
-                                                    <input type="text" name="option[{{ option.product_option_id }}]" value="{{ option.value }}" data-date-format="HH:mm" id="input-option{{ option.product_option_id }}" className="form-control"/>
+                                                    <input type="text" name="option[{{ option.product_option_id }}]" value={option.value} data-date-format="HH:mm" id="input-option{{ option.product_option_id }}" className="form-control"/>
                                                     <span className="input-group-btn">
                                                         <button type="button" className="btn btn-default"><i className="fa fa-calendar"></i></button>
                                                     </span>
@@ -275,7 +276,7 @@ const Product = (props) => {
                                         return null;
                                     })
                                 ] : ''}
-                                {stateProduct.recurrings ? [
+                                {(stateProduct.recurrings && stateProduct.recurrings.length > 0) ? [
                                     <hr/>,
                                     <h3>{stateProduct.text_payment_recurring}</h3>,
                                     <div className="form-group required">
@@ -378,9 +379,9 @@ const Product = (props) => {
                             })}
                         </p>
                         : ''}
-                    {stateProduct.content_bottom ? <ContentBottom state={props.state.extensionReducer.moduleReducer}/> : ''}
+                    {stateProduct.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
-                {stateProduct.column_right ? <ColumnRight state={props.state.extensionReducer.moduleReducer}/> : ''}
+                {stateProduct.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
     )

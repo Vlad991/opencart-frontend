@@ -1,10 +1,6 @@
 let initialState = {
-    language: 'EN',
-    languages: [
-        {
-            code: 'EN'
-        }
-    ]
+    language: '',
+    languages: []
 };
 
 const languageReducer = (state = initialState, action) => {

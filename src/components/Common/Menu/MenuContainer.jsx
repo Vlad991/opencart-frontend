@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Menu from "./Menu";
-import {commonAPI} from "../../api/api";
-import {setStateActionCreator} from "../../redux/common/menu-reducer";
+import {commonAPI} from "../../../api/api";
+import {setStateActionCreator} from "../../../redux/common/menu-reducer";
 
 class MenuContainer extends React.Component {
     componentDidMount() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import ColumnLeft from "./ColumnLeft";
-import ContentTop from "./ContentTop";
-import ContentBottom from "./ContentBottom";
-import ColumnRight from "./ColumnRight";
+import ColumnLeft from "../ColumnLeft";
+import ContentTop from "../ContentTop";
+import ContentBottom from "../ContentBottom";
+import ColumnRight from "../ColumnRight";
 
 const Home = (props) => {
     let stateHome = props.state;

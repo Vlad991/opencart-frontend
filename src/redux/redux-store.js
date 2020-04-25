@@ -11,8 +11,10 @@ import productCategoryReducer from "./product/category-reducer";
 import productReducer from "./product/product-reducer";
 import informationReducer from "./information/information-reducer";
 import contactReducer from "./information/contact-reducer";
+import opencartReducer from "./opencart-reducer";
 
 let reducers = combineReducers({
+    opencartReducer,
     commonReducer: combineReducers({
         headerReducer,
         currencyReducer,

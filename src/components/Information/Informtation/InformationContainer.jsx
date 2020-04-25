@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Information from "./Information";
-import {informationAPI} from "../../api/api";
-import {setStateActionCreator} from "../../redux/information/information-reducer";
+import {informationAPI} from "../../../api/api";
+import {setStateActionCreator} from "../../../redux/information/information-reducer";
 
 class InformationContainer extends React.Component {
     componentDidMount() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import ColumnLeft from "../Common/ColumnLeft";
-import ContentTop from "../Common/ContentTop";
-import ContentBottom from "../Common/ContentBottom";
-import ColumnRight from "../Common/ColumnRight";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ContentTop from "../../Common/ContentTop";
+import ContentBottom from "../../Common/ContentBottom";
+import ColumnRight from "../../Common/ColumnRight";
 import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 
@@ -29,12 +29,12 @@ const Category = (props) => {
                 {stateCategory.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
                     {stateCategory.content_top ? <ContentTop state={props.state.content_top}/> : ''}
-                    <h2>{stateCategory.heading_title}</h2>
+                    <h2>{stateCategory.heading_title.replace('amp;', '')}</h2>
                     {(stateCategory.thumb || stateCategory.description) ?
                         <>
                             <div className="row">
                                 {stateCategory.thumb ? <div className="col-sm-2"><img src={stateCategory.thumb} alt={stateCategory.heading_title} title={stateCategory.heading_title} className="img-thumbnail"/></div> : ''}
-                                {stateCategory.description ? <div className="col-sm-10">{stateCategory.description}</div> : ''}
+                                {stateCategory.description ? <div className="col-sm-10">{ReactHtmlParser(stateCategory.description)}</div> : ''}
                             </div>
                             < hr/>
                         </>
@@ -61,7 +61,7 @@ const Category = (props) => {
                             <div className="row">
                                 <div className="col-md-2 col-sm-6 hidden-xs">
                                     <div className="btn-group btn-group-sm">
-                                        <button type="button" id="list-view" className="btn btn-default" data-toggle="tooltip" title={stateCategory.button_list}><i className="fa fa-th-list"></i></button>
+                                        <button type="button" id="list-view" className="btn btn-default active" data-toggle="tooltip" title={stateCategory.button_list}><i className="fa fa-th-list"></i></button>
                                         <button type="button" id="grid-view" className="btn btn-default" data-toggle="tooltip" title={stateCategory.button_grid}><i className="fa fa-th"></i></button>
                                     </div>
                                 </div>

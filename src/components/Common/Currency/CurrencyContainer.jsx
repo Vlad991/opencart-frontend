@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Currency from "./Currency";
-import {commonAPI} from "../../api/api";
-import {setStateActionCreator, setCurrencyActionCreator} from "../../redux/common/currency-reducer";
+import {commonAPI} from "../../../api/api";
+import {setStateActionCreator, setCurrencyActionCreator} from "../../../redux/common/currency-reducer";
 
 class CurrencyContainer extends React.Component {
     componentDidMount() {

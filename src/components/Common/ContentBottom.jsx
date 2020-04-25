@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from "../Extension/Module/Carousel";
 import Category from "../Extension/Module/Category";
-import Featured from "../Extension/Module/Featured";
+import Featured from "../Extension/Module/Featured/Featured";
 import Slideshow from "../Extension/Module/Slideshow";
 
 const ContentBottom = (props) => {

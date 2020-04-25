@@ -1,8 +1,8 @@
 import React from 'react';
-import ColumnLeft from "../Common/ColumnLeft";
-import ColumnRight from "../Common/ColumnRight";
-import ContentTop from "../Common/ContentTop";
-import ContentBottom from "../Common/ContentBottom";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ColumnRight from "../../Common/ColumnRight";
+import ContentTop from "../../Common/ContentTop";
+import ContentBottom from "../../Common/ContentBottom";
 import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 

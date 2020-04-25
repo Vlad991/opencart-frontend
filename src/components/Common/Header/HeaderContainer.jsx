@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Header from "./Header";
-import {commonAPI} from "../../api/api";
-import {setStateActionCreator} from "../../redux/common/header-reducer";
+import {commonAPI} from "../../../api/api";
+import {setStateActionCreator} from "../../../redux/common/header-reducer";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
@@ -20,7 +20,8 @@ class HeaderContainer extends React.Component {
 
 
 let mapStateToProps = (state) => ({
-    state: state.commonReducer
+    state: state.commonReducer,
+    isFetching: state.opencartReducer.headerIsFetching
 });
 
 export default connect(mapStateToProps, {setStateActionCreator})(HeaderContainer);

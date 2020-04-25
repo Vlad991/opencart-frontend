@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Home from "./Home";
-import {commonAPI} from "../../api/api";
-import {setStateActionCreator} from "../../redux/common/home-reducer";
+import {commonAPI} from "../../../api/api";
+import {setStateActionCreator} from "../../../redux/common/home-reducer";
 
 class HomeContainer extends React.Component {
     componentDidMount() {

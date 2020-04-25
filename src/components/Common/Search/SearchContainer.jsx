@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Search from "./Search";
-import {commonAPI} from "../../api/api";
-import {setStateActionCreator, setSearchTextActionCreator} from "../../redux/common/search-reducer";
+import {commonAPI} from "../../../api/api";
+import {setStateActionCreator, setSearchTextActionCreator} from "../../../redux/common/search-reducer";
 
 class SearchContainer extends React.Component {
     componentDidMount() {

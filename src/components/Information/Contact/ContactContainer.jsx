@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Contact from "./Contact";
-import {informationAPI} from "../../api/api";
-import {setStateActionCreator} from "../../redux/information/contact-reducer";
+import {informationAPI} from "../../../api/api";
+import {setStateActionCreator} from "../../../redux/information/contact-reducer";
 
 class ContactContainer extends React.Component {
     componentDidMount() {

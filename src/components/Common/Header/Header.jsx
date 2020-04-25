@@ -1,11 +1,11 @@
 import React from 'react';
-import Language from "./Language";
-import Cart from "./Cart";
+import Language from "../Language";
+import Cart from "../Cart";
 import {NavLink} from "react-router-dom";
-import CurrencyContainer from "./CurrencyContainer";
+import CurrencyContainer from "../Currency/CurrencyContainer";
 import {Dropdown} from "react-bootstrap";
-import SearchContainer from "./SearchContainer";
-import MenuContainer from "./MenuContainer";
+import SearchContainer from "../Search/SearchContainer";
+import MenuContainer from "../Menu/MenuContainer";
 
 const Header = (props) => {
     let stateHeader = props.state.headerReducer;

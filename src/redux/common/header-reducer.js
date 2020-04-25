@@ -20,7 +20,7 @@ let initialState = {
     text_login: '',
     logo: false,
     home: '/',
-    name: ''
+    name: '',
 };
 
 const headerReducer = (state = initialState, action) => {

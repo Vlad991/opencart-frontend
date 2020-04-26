@@ -5,6 +5,8 @@ import ContentBottom from "../../Common/ContentBottom";
 import ColumnRight from "../../Common/ColumnRight";
 import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
+import {Nav} from "react-bootstrap";
+//import { LightBoxGallery, GalleryItem } from "react-magnific-popup";
 
 const Product = (props) => {
     let stateProduct = props.state;
@@ -67,15 +69,17 @@ const Product = (props) => {
                                     }) : ''}
                                 </ul>
                                 : ''}
-                            <ul className="nav nav-tabs">
-                                <li className="active"><a href="#tab-description" data-toggle="tab">{stateProduct.tab_description}</a></li>
-                                {stateProduct.attribute_groups ? <li><a href="#tab-specification" data-toggle="tab">{stateProduct.tab_attribute}</a></li> : ''}
-                                {stateProduct.review_status ? <li><a href="#tab-review" data-toggle="tab">{stateProduct.tab_review}</a></li> : ''}
-                            </ul>
+                            <Nav as="ul" variant="tabs" activeKey="/tab-description" onSelect={props.selectProductTab}>
+                                <Nav.Item as="li" className={'tab-pane' + (stateProduct.active_tab === '/tab-description' ? ' active' : '')}>
+                                    <Nav.Link href="/tab-description">{stateProduct.tab_description}</Nav.Link>
+                                </Nav.Item>
+                                {stateProduct.attribute_groups ? <Nav.Item as="li" className={'tab-pane' + (stateProduct.active_tab === '/tab-specification' ? ' active' : '')}><Nav.Link href="/tab-specification">{stateProduct.tab_attribute}</Nav.Link></Nav.Item> : ''}
+                                {stateProduct.review_status ? <Nav.Item as="li" className={'tab-pane' + (stateProduct.active_tab === '/tab-review' ? ' active' : '')}><Nav.Link href="/tab-review">{stateProduct.tab_review}</Nav.Link></Nav.Item> : ''}
+                            </Nav>
                             <div className="tab-content">
-                                <div className="tab-pane active" id="tab-description">{ReactHtmlParser(stateProduct.description)}</div>
+                                <div className={'tab-pane' + (stateProduct.active_tab === '/tab-description' ? ' active' : '')}>{ReactHtmlParser(stateProduct.description)}</div>
                                 {stateProduct.attribute_groups ?
-                                    <div className="tab-pane" id="tab-specification">
+                                    <div className={'tab-pane' + (stateProduct.active_tab === '/tab-specification' ? ' active' : '')}>
                                         <table className="table table-bordered">
                                             {stateProduct.attribute_groups.map(attribute_group => {
                                                 return [
@@ -99,7 +103,7 @@ const Product = (props) => {
                                         </table>
                                     </div> : ''}
                                 {stateProduct.review_status ?
-                                    <div className="tab-pane" id="tab-review">
+                                    <div className={'tab-pane' + (stateProduct.active_tab === '/tab-review' ? ' active' : '')}>
                                         <form className="form-horizontal" id="form-review">
                                             <div id="review"></div>
                                             <h2>{stateProduct.text_write}</h2>
@@ -107,7 +111,7 @@ const Product = (props) => {
                                                 [<div className="form-group required">
                                                     <div className="col-sm-12">
                                                         <label className="control-label" htmlFor="input-name">{stateProduct.entry_name}</label>
-                                                        <input type="text" name="name" value="{{ customer_name }}" id="input-name" className="form-control"/>
+                                                        <input type="text" name="name" value={ stateProduct.customer_name } id="input-name" className="form-control"/>
                                                     </div>
                                                 </div>,
                                                     <div className="form-group required">
@@ -305,8 +309,7 @@ const Product = (props) => {
                                             } else {
                                                 return <span className="fa fa-stack"><i className="fa fa-star fa-stack-1x"></i><i className="fa fa-star-o fa-stack-1x"></i></span>
                                             }
-                                        })}
-                                        <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.reviews}</a> / <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.text_write}</a>
+                                        })} <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.reviews}</a> / <a href="/" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{stateProduct.text_write}</a>
                                     </p>
                                     <hr/>
                                     {/*-- AddThis Button BEGIN --*/}

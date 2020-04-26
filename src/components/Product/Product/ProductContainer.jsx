@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Product from "./Product";
 import {productAPI} from "../../../api/api";
-import {setStateActionCreator} from "../../../redux/product/product-reducer";
+import {setStateActionCreator, setTabActionCreator} from "../../../redux/product/product-reducer";
 
 class ProductContainer extends React.Component {
     componentDidMount() {
@@ -11,9 +11,14 @@ class ProductContainer extends React.Component {
         });
     }
 
+    selectProductTab = (selectedKey, e) => {
+        e.preventDefault();
+        this.props.setTabActionCreator(selectedKey);
+    }
+
     render() {
         return (
-            <Product state={this.props.state} dispatch={this.props.dispatch}/>
+            <Product state={this.props.state} dispatch={this.props.dispatch} selectProductTab={this.selectProductTab}/>
         );
     };
 }
@@ -23,4 +28,4 @@ let mapStateToProps = (state) => ({
     state: state.productReducer.productReducer
 });
 
-export default connect(mapStateToProps, {setStateActionCreator})(ProductContainer);
+export default connect(mapStateToProps, {setStateActionCreator, setTabActionCreator})(ProductContainer);

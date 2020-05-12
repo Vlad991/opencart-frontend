@@ -1,8 +1,16 @@
 import * as axios from "axios";
 
 const instance = axios.create({
+    //withCredentials: true,
     baseURL: 'http://localhost:8888/OpenCartBackend',
+    headers: {}
 });
+
+export const accountAPI = {
+    getRegister() {
+        return instance.get('index.php?route=account/register');
+    }
+};
 
 export const commonAPI = {
     getCart() {
@@ -12,10 +20,7 @@ export const commonAPI = {
             });
     },
     getHeader() {
-        return instance.get('index.php?route=common/header')
-            .then(response => {
-                return response.data;
-            });
+        return instance.get('index.php?route=common/header');
     },
     getFooter() {
         return instance.get('index.php?route=common/footer')
@@ -30,12 +35,9 @@ export const commonAPI = {
             });
     },
     getCurrency() {
-        return instance.get('index.php?route=common/currency')
-            .then(response => {
-                return response.data;
-            });
+        return instance.get('index.php?route=common/currency');
     },
-    setCurrency(action = 'index.php?route=common/currency/currency', code) {
+    setCurrency(code) {
         let data = new FormData();
         data.append('code', code);
         let config = {
@@ -43,10 +45,7 @@ export const commonAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         };
-        return instance.post(action, data, config)
-            .then(response => {
-                return response.data;
-            });
+        return instance.post('index.php?route=common/currency/currency', data, config);
     },
     getSearch() {
         return instance.get('index.php?route=common/search')
@@ -85,7 +84,7 @@ export const productAPI = {
             });
     },
     getProduct(firstLevelId, secondLevelId, productId) {
-        return instance.get('index.php?route=product/product&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '')  + '&product_id=' + productId)
+        return instance.get('index.php?route=product/product&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '') + '&product_id=' + productId)
             .then(response => {
                 return response.data;
             });

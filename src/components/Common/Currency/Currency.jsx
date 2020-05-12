@@ -6,7 +6,7 @@ const Currency = (props) => {
     if (props.state.currencies.length > 1) {
         return (
             <div className={'pull-left'}>
-                <form action={props.state.action} method="post" encType="multipart/form-data" id="form-currency">
+                <form onSubmit={props.handleSubmit} id="form-currency">
                     <ButtonGroup as={Dropdown}>
                         <Dropdown.Toggle variant="link" data-toggle="dropdown">
                             {props.state.currencies.map(currency => {
@@ -28,21 +28,27 @@ const Currency = (props) => {
                                 if (currency.symbol_left) {
                                     return (
                                         <li key={currency.code}>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.setCurrency(currency.code)}>{currency.symbol_left} {currency.title}</button>
+                                            <button className="currency-select btn btn-link btn-block"
+                                                    type="button"
+                                                    name={currency.code}
+                                                    onClick={() => props.setCurrency(currency.code)}>{currency.symbol_left} {currency.title}</button>
                                         </li>
                                     );
                                 } else {
                                     return (
                                         <li key={currency.code}>
-                                            <button className="currency-select btn btn-link btn-block" type="button" name={currency.code} onClick={() => props.setCurrency(currency.code)}>{currency.symbol_right} {currency.title}</button>
+                                            <button className="currency-select btn btn-link btn-block"
+                                                    type="button"
+                                                    name={currency.code}
+                                                    onClick={() => props.setCurrency(currency.code)}>{currency.symbol_right} {currency.title}</button>
                                         </li>
                                     );
                                 }
                             })}
                         </Dropdown.Menu>
                     </ButtonGroup>
-                    <input type="hidden" name="code" value=""/>
-                    <input type="hidden" name="redirect" value={props.state.redirect}/>
+                    {/*<input type={"hidden"} name="code" value=""/>*/}
+                    {/*<input type="hidden" name="redirect" value={props.state.redirect}/>*/}
                 </form>
             </div>
         );

@@ -18,6 +18,7 @@ import {connect, Provider} from "react-redux";
 import store from "./redux/redux-store";
 import {setStateActionCreator} from "./redux/opencart-reducer";
 import ProductContainer from "./components/Product/Product/ProductContainer";
+import RegisterContainer from "./components/Account/RegisterContainer";
 
 class App extends Component {
     render() {
@@ -26,6 +27,7 @@ class App extends Component {
                 {/*{this.props.state.opencartReducer.isFetching ? <img src={preloader}/> : null}*/}
                 <HeaderContainer/>
                 <Route exact path='/' render={() => <HomeContainer/>}/>
+                <Route path='/account/register' render={() => <RegisterContainer />}/>
                 <Route exact path='/product/category/:first/:second' render={(props) => <CategoryContainer firstLevelId={props.match.params.first} secondLevelId={props.match.params.second}/>}/>
                 <Route exact path='/product/category/:first' render={(props) => <CategoryContainer firstLevelId={props.match.params.first}/>}/>
                 <Route exact path='/product/product/:first/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} productId={props.match.params.id}/>}/>

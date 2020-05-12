@@ -34,7 +34,7 @@ const headerReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_HEADER_STATE, state});
 
-export const setHeaderState = () => async (dispatch) => {
+export const setHeaderStateThunkCreator = () => async (dispatch) => {
     let response = await commonAPI.getHeader();
     dispatch(setStateActionCreator(response.data));
 };

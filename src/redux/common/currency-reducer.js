@@ -1,3 +1,5 @@
+import {commonAPI} from "../../api/api";
+
 const SET_CURRENCY_STATE = 'SET-CURRENCY-STATE';
 const SET_CURRENCY = 'SET-CURRENCY';
 
@@ -25,4 +27,16 @@ const currencyReducer = (state = initialState, action) => {
 
 export const setCurrencyActionCreator = (code) => ({type: SET_CURRENCY, currencyCode: code});
 export const setStateActionCreator = (state) => ({type: SET_CURRENCY_STATE, state});
+
+export const setCurrencyStateThunkCreator = () => async (dispatch) => {
+    let response = await commonAPI.getCurrency();
+    dispatch(setStateActionCreator(response.data));
+}
+
+export const setCurrencyThunkCreator = (code) => async (dispatch) => {
+    let response = await commonAPI.setCurrency(code);
+    console.log(response);
+    dispatch(setCurrencyActionCreator(response.data));
+}
+
 export default currencyReducer;

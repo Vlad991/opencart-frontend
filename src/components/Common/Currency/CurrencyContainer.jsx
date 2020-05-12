@@ -1,21 +1,15 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Currency from "./Currency";
-import {commonAPI} from "../../../api/api";
-import {setStateActionCreator, setCurrencyActionCreator} from "../../../redux/common/currency-reducer";
+import {setCurrencyStateThunkCreator, setCurrencyThunkCreator} from "../../../redux/common/currency-reducer";
 
 class CurrencyContainer extends React.Component {
     componentDidMount() {
-        commonAPI.getCurrency().then(data => {
-            this.props.setStateActionCreator(data);
-        });
+        this.props.setCurrencyStateThunkCreator();
     }
 
-    setCurrency(code) {
-        commonAPI.setCurrency(this.state.action, code).then(data => {
-            console.log(data);
-            setCurrencyActionCreator(data);
-        });
+    setCurrency = (code) => {
+        this.props.setCurrencyThunkCreator(code);
     }
 
     render() {
@@ -30,4 +24,4 @@ let mapStateToProps = (state) => ({
     state: state.commonReducer.currencyReducer
 });
 
-export default connect(mapStateToProps, {setStateActionCreator, setCurrencyActionCreator})(CurrencyContainer);
+export default connect(mapStateToProps, {setCurrencyStateThunkCreator, setCurrencyThunkCreator})(CurrencyContainer);

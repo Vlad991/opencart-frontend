@@ -46,7 +46,7 @@ const footerReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_FOOTER_STATE, state});
 
-export const setFooterState = () => async (dispatch) => {
+export const setFooterStateThunkCreator = () => async (dispatch) => {
     let response = await commonAPI.getFooter();
     dispatch(setStateActionCreator(response.data));
 };

@@ -40,8 +40,8 @@ class App extends Component {
                 <Route exact path='/product/category/:first' render={(props) => <CategoryContainer firstLevelId={props.match.params.first}/>}/>
                 <Route exact path='/product/product/:first/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} productId={props.match.params.id}/>}/>
                 <Route exact path='/product/product/:first/:second/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} secondLevelId={props.match.params.second} productId={props.match.params.id}/>}/>
-                <Route path='/information/information/:id' render={(props) => <InformationContainer id={props.match.params.id}/>}/>
-                <Route path='/information/contact' render={() => <ContactContainer state={this.props.state}/>}/>
+                <Route exact path='/information/information/:id' render={(props) => <InformationContainer id={props.match.params.id}/>}/>
+                <Route exact path='/information/contact' render={() => <ContactContainer state={this.props.state}/>}/>
                 <FooterContainer/>
             </>
         )

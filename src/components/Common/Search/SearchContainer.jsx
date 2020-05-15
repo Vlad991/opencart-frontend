@@ -1,14 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Search from "./Search";
-import {commonAPI} from "../../../api/api";
-import {setStateActionCreator, setSearchTextActionCreator} from "../../../redux/common/search-reducer";
+import {setSearchStateThunkCreator, setSearchTextActionCreator} from "../../../redux/common/search-reducer";
 
 class SearchContainer extends React.Component {
     componentDidMount() {
-        commonAPI.getSearch().then(data => {
-            this.props.setStateActionCreator(data);
-        });
+        this.props.setSearchStateThunkCreator();
     }
 
     render() {
@@ -23,4 +20,4 @@ let mapStateToProps = (state) => ({
     state: state.commonReducer.searchReducer
 });
 
-export default connect(mapStateToProps, {setStateActionCreator, setSearchTextActionCreator})(SearchContainer);
+export default connect(mapStateToProps, {setSearchStateThunkCreator, setSearchTextActionCreator})(SearchContainer);

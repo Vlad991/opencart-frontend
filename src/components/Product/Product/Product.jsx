@@ -11,9 +11,9 @@ import {Nav} from "react-bootstrap";
 const Product = (props) => {
     let stateProduct = props.state;
     let classVal;
-    if (stateProduct.column_left && stateProduct.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
-    } else if (stateProduct.column_left || stateProduct.column_right) {
+    } else if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-9';
     } else {
         classVal = 'col-sm-12';
@@ -21,22 +21,23 @@ const Product = (props) => {
 
     let i = 0;
     let productClassVal;
-    if (stateProduct.column_left && stateProduct.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         productClassVal = 'col-xs-8 col-sm-6';
-    } else if (stateProduct.column_left || stateProduct.column_right) {
+    } else if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         productClassVal = 'col-xs-6 col-md-4';
     } else {
         productClassVal = 'col-xs-6 col-sm-3';
     }
 
     let productClassVal1;
-    if (stateProduct.column_left || stateProduct.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         productClassVal1 = 'col-sm-6';
     } else {
         productClassVal1 = 'col-sm-8';
     }
+
     let productClassVal2;
-    if (stateProduct.column_left || stateProduct.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         productClassVal2 = 'col-sm-6';
     } else {
         productClassVal2 = 'col-sm-4';
@@ -111,7 +112,7 @@ const Product = (props) => {
                                                 [<div className="form-group required">
                                                     <div className="col-sm-12">
                                                         <label className="control-label" htmlFor="input-name">{stateProduct.entry_name}</label>
-                                                        <input type="text" name="name" value={ stateProduct.customer_name } id="input-name" className="form-control"/>
+                                                        <input type="text" name="name" value={stateProduct.customer_name} id="input-name" className="form-control"/>
                                                     </div>
                                                 </div>,
                                                     <div className="form-group required">

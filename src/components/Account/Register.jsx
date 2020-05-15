@@ -16,9 +16,9 @@ const Register = (props) => {
     }
 
     let classVal;
-    if (stateRegister.column_left && stateRegister.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
-    } else if (stateRegister.column_left || stateRegister.column_right) {
+    } else if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-9';
     } else {
         classVal = 'col-sm-12';

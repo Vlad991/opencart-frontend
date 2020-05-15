@@ -1,3 +1,5 @@
+import {commonAPI} from "../../api/api";
+
 const SET_CART_STATE = 'SET-CART-STATE';
 
 let initialState = {
@@ -19,4 +21,10 @@ const cartReducer = (state = initialState, action) => {
 };
 
 export const setStateActionCreator = (state) => ({type: SET_CART_STATE, state});
+
+export const setCartStateThunkCreator = () => async (dispatch) => {
+    let response = await commonAPI.getCart();
+    dispatch(setStateActionCreator(response.data));
+};
+
 export default cartReducer;

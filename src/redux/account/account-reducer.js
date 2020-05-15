@@ -37,7 +37,6 @@ export const setStateActionCreator = (state) => ({type: SET_ACCOUNT_STATE, state
 
 export const setAccountStateThunkCreator = () => async (dispatch) => {
     let response = await accountAPI.getAccount();
-    console.log(response);
     dispatch(setStateActionCreator(response.data));
 };
 

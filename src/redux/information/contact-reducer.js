@@ -32,7 +32,7 @@ const contactReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_CONTACT_STATE, state});
 
-export const setContactState = () => async (dispatch) => {
+export const setContactStateThunkCreator = () => async (dispatch) => {
     let response = await informationAPI.getContact();
     dispatch(setStateActionCreator(response.data));
 };

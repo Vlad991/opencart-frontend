@@ -1,3 +1,5 @@
+import {accountAPI, commonAPI} from "../../api/api";
+
 const SET_MENU_STATE = 'SET-MENU-STATE';
 
 let initialState = {
@@ -22,4 +24,10 @@ const menuReducer = (state = initialState, action) => {
 };
 
 export const setStateActionCreator = (state) => ({type: SET_MENU_STATE, state});
+
+export const setMenuStateThunkCreator = () => async (dispatch) => {
+    let response = await commonAPI.getMenu();
+    dispatch(setStateActionCreator(response.data));
+};
+
 export default menuReducer;

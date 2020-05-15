@@ -1,3 +1,5 @@
+import {productAPI} from "../../api/api";
+
 const SET_PRODUCT_STATE = 'SET-PRODUCT-STATE';
 const SET_PRODUCT_TAB = 'SET-PRODUCT-TAB';
 
@@ -55,4 +57,10 @@ const productReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_PRODUCT_STATE, state});
 export const setTabActionCreator = (tab) => ({type: SET_PRODUCT_TAB, tab});
+
+export const setProductStateThunkCreator = (firstLevelId, secondLevelId, productId) => async (dispatch) => {
+    let response = await productAPI.getProduct(firstLevelId, secondLevelId, productId);
+    dispatch(setStateActionCreator(response.data));
+};
+
 export default productReducer;

@@ -1,26 +1,23 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Home from "./Home";
-import {commonAPI} from "../../../api/api";
-import {setStateActionCreator} from "../../../redux/common/home-reducer";
+import {setHeaderStateThunkCreator} from "../../../redux/common/home-reducer";
 
 class HomeContainer extends React.Component {
     componentDidMount() {
-        commonAPI.getHome().then(data => {
-            this.props.setStateActionCreator(data);
-        });
+        this.props.setHeaderStateThunkCreator();
     }
 
     render() {
         return (
-            <Home state={this.props.state.commonReducer.homeReducer} dispatch={this.props.dispatch}/>
+            <Home state={this.props.state} />
         );
     };
 }
 
 
 let mapStateToProps = (state) => ({
-    state: state
+    state: state.commonReducer.homeReducer
 });
 
-export default connect(mapStateToProps, {setStateActionCreator})(HomeContainer);
+export default connect(mapStateToProps, {setHeaderStateThunkCreator})(HomeContainer);

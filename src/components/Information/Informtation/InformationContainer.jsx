@@ -1,19 +1,22 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Information from "./Information";
-import {informationAPI} from "../../../api/api";
-import {setStateActionCreator} from "../../../redux/information/information-reducer";
+import {setInformationStateThunkCreator} from "../../../redux/information/information-reducer";
 
 class InformationContainer extends React.Component {
     componentDidMount() {
-        informationAPI.getInformation(this.props.id).then(data => {
-            this.props.setStateActionCreator(data);
-        });
+        this.props.setInformationStateThunkCreator(this.props.id);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.id !== prevProps.id) {
+            this.props.setInformationStateThunkCreator(this.props.id);
+        }
     }
 
     render() {
         return (
-            <Information state={this.props.state} dispatch={this.props.dispatch}/>
+            <Information state={this.props.state}/>
         );
     };
 }
@@ -23,4 +26,4 @@ let mapStateToProps = (state) => ({
     state: state.informationReducer.informationReducer
 });
 
-export default connect(mapStateToProps, {setStateActionCreator})(InformationContainer);
+export default connect(mapStateToProps, {setInformationStateThunkCreator})(InformationContainer);

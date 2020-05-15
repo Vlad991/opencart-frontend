@@ -1,3 +1,5 @@
+import {productAPI} from "../../api/api";
+
 const SET_CATEGORY_STATE = 'SET-CATEGORY-STATE';
 
 let initialState = {
@@ -39,4 +41,10 @@ const categoryReducer = (state = initialState, action) => {
 };
 
 export const setStateActionCreator = (state) => ({type: SET_CATEGORY_STATE, state});
+
+export const setCategoryStateThunkCreator = (firstLevelId, secondLevelId) => async (dispatch) => {
+    let response = await productAPI.getCategory(firstLevelId, secondLevelId);
+    dispatch(setStateActionCreator(response.data));
+};
+
 export default categoryReducer;

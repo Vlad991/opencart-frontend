@@ -27,7 +27,7 @@ const homeReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_HOME_STATE, state});
 
-export const setHeaderState = () => async (dispatch) => {
+export const setHeaderStateThunkCreator = () => async (dispatch) => {
     let response = await commonAPI.getHome();
     dispatch(setStateActionCreator(response.data));
 };

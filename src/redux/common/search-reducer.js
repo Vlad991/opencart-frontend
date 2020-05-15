@@ -1,3 +1,5 @@
+import {commonAPI} from "../../api/api";
+
 const INPUT_SEARCH_TEXT = 'INPUT-SEARCH-TEXT';
 const SET_SEARCH_STATE = 'SET-SEARCH-STATE';
 
@@ -25,4 +27,10 @@ const searchReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_SEARCH_STATE, state});
 export const setSearchTextActionCreator = (search) => ({type: INPUT_SEARCH_TEXT, searchText: search});
+
+export const setSearchStateThunkCreator = () => async (dispatch) => {
+    let response = await commonAPI.getSearch();
+    dispatch(setStateActionCreator(response.data));
+};
+
 export default searchReducer;

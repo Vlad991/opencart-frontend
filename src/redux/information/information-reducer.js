@@ -11,8 +11,6 @@ let initialState = {
 const informationReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_INFORMATION_STATE:
-            let stateCopy = {...action.state};
-            stateCopy.breadcrumbs = [...stateCopy.breadcrumbs];
             return {
                 ...state,
                 ...action.state,
@@ -25,8 +23,8 @@ const informationReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_INFORMATION_STATE, state});
 
-export const setInformationStateThunkCreator = () => async (dispatch) => {
-    let response = await informationAPI.getInformation(6);
+export const setInformationStateThunkCreator = (id) => async (dispatch) => {
+    let response = await informationAPI.getInformation(id);
     dispatch(setStateActionCreator(response.data));
 };
 

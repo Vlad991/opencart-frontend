@@ -9,9 +9,9 @@ import ReactHtmlParser from "react-html-parser";
 const Information = (props) => {
     let stateInformation = props.state;
     let classVal;
-    if (stateInformation.column_left && stateInformation.column_right) {
+    if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
-    } else if (stateInformation.column_left || stateInformation.column_right) {
+    } else if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-9';
     } else {
         classVal = 'col-sm-12';

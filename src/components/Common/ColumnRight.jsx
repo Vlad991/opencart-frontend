@@ -1,19 +1,20 @@
 import React from 'react';
-import Category from "../Extension/Module/Category";
+import Account from "../Extension/Module/Account";
 
 const ColumnRight = (props) => {
-    return props.state.modules.map(module => {
-        switch (module.module_name) {
-            case 'category':
-                return (
-                    <aside id="column-left" className="col-sm-3 hidden-xs">
-                        <Category state={module}/>
-                    </aside>
-                );
-            default:
-                return null;
-        }
-    });
+    return (
+        <aside id="column-right" className="col-sm-3 hidden-xs">
+            {props.state.modules.map(module => {
+                switch (module.module_name) {
+                    case 'account':
+                        return (
+                            <Account state={module}/>
+                        );
+                        return null;
+                }
+            })}
+        </aside>
+    );
 };
 
 export default ColumnRight;

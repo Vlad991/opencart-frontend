@@ -14,6 +14,7 @@ import contactReducer from "./information/contact-reducer";
 import opencartReducer from "./opencart-reducer";
 import thunkMiddleware from "redux-thunk";
 import registerReducer from "./account/register-reducer";
+import { reducer as formReducer } from 'redux-form';
 
 let reducers = combineReducers({
     opencartReducer,
@@ -38,6 +39,7 @@ let reducers = combineReducers({
         categoryReducer: productCategoryReducer,
         productReducer
     }),
+    form: formReducer,
 });
 
 const composeEnhancers = compose;

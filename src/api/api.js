@@ -9,6 +9,17 @@ const instance = axios.create({
 export const accountAPI = {
     getRegister() {
         return instance.get('index.php?route=account/register');
+    },
+    doRegister(data) {
+        let formData = new FormData();
+        for (let name in data) {
+            formData.append(name, data[name]);
+        }
+        return instance.post('index.php?route=account/register', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
     }
 };
 
@@ -40,12 +51,11 @@ export const commonAPI = {
     setCurrency(code) {
         let data = new FormData();
         data.append('code', code);
-        let config = {
+        return instance.post('index.php?route=common/currency/currency', data, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        };
-        return instance.post('index.php?route=common/currency/currency', data, config);
+        });
     },
     getSearch() {
         return instance.get('index.php?route=common/search')

@@ -3,8 +3,12 @@ import {commonAPI} from "../../api/api";
 const SET_HOME_STATE = 'SET-HOME-STATE';
 
 let initialState = {
-    column_left: null,
-    column_right: null,
+    column_left: {
+        modules: []
+    },
+    column_right: {
+        modules: []
+    },
     content_bottom: null,
     content_top: null,
 };

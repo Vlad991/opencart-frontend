@@ -7,9 +7,9 @@ import ColumnRight from "../ColumnRight";
 const Home = (props) => {
     let stateHome = props.state;
     let classVal;
-    if (stateHome.column_left && stateHome.column_right) {
+    if ((stateHome.column_left && stateHome.column_left.modules.length > 0) && (stateHome.column_right && stateHome.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
-    } else if (stateHome.column_left || stateHome.column_right) {
+    } else if ((stateHome.column_left && stateHome.column_left.modules.length > 0) || (stateHome.column_right && stateHome.column_right.modules.length > 0)) {
         classVal = 'col-sm-9';
     } else {
         classVal = 'col-sm-12';

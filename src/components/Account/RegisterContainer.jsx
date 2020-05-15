@@ -14,7 +14,7 @@ class RegisterContainer extends React.Component {
 
     render() {
         return (
-            <Register state={this.props.state} doRegister={this.doRegister} onFieldChange={this.onFieldChange} />
+            <Register state={this.props.state} doRegister={this.doRegister}/>
         );
     };
 }

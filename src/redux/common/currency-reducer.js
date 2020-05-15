@@ -14,12 +14,16 @@ let initialState = {
 const currencyReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CURRENCY:
-            state.code = action.currencyCode;
-            return {...state, code: action.currencyCode};
+            return {
+                ...state,
+                code: action.currencyCode
+            };
         case SET_CURRENCY_STATE:
-            let stateCopy = {...action.state};
-            stateCopy.currencies = [...action.state.currencies];
-            return stateCopy;
+            return {
+                ...state,
+                ...action.state,
+                currencies: [...action.state.currencies]
+            };
         default:
             return state;
     }
@@ -35,7 +39,6 @@ export const setCurrencyStateThunkCreator = () => async (dispatch) => {
 
 export const setCurrencyThunkCreator = (code) => async (dispatch) => {
     let response = await commonAPI.setCurrency(code);
-    console.log(response);
     dispatch(setCurrencyActionCreator(response.data));
 }
 

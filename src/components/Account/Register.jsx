@@ -1,16 +1,20 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import ColumnLeft from "../Common/ColumnLeft";
 import ContentTop from "../Common/ContentTop";
 import ContentBottom from "../Common/ContentBottom";
 import ColumnRight from "../Common/ColumnRight";
-import handleSubmit from "redux-form/lib/handleSubmit";
 import {Field, reduxForm} from "redux-form";
 
 const Register = (props) => {
     let stateRegister = props.state;
+
+    if (stateRegister.doSuccessRedirect) {
+        return <Redirect to="/account/success"/>
+    }
+
     let classVal;
     if (stateRegister.column_left && stateRegister.column_right) {
         classVal = 'col-sm-6';
@@ -22,11 +26,7 @@ const Register = (props) => {
     return (
         <div id="account-register" className="container">
             <ul className="breadcrumb">
-                {stateRegister.breadcrumbs.map(breadcrumb => {
-                    return (
-                        <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
-                    )
-                })}
+                {stateRegister.breadcrumbs.map(breadcrumb => <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>)}
             </ul>
             {stateRegister.error_warning ?
                 <div className="alert alert-danger alert-dismissible"><i className="fa fa-exclamation-circle"></i> {stateRegister.error_warning}</div> : ''}
@@ -36,7 +36,7 @@ const Register = (props) => {
                     {stateRegister.content_top ? <ContentTop state={stateRegister.content_top}/> : ''}
                     <h1>{stateRegister.heading_title}</h1>
                     <p>{ReactHtmlParser(stateRegister.text_account_already)}</p>
-                    <RegisterReduxForm onSubmit={props.doRegister} onFieldChange={props.onFieldChange} state={props.state}/>
+                    <RegisterReduxForm onSubmit={props.doRegister} state={props.state}/>
                     {stateRegister.content_bottom ? <ContentBottom state={stateRegister.content_bottom}/> : ''}
                 </div>
                 {stateRegister.column_right ? <ColumnRight state={stateRegister.column_right}/> : ''}

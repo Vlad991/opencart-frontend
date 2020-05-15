@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    //withCredentials: true,
+    withCredentials: true,
     baseURL: 'http://localhost:8888/OpenCartBackend',
     headers: {}
 });
@@ -20,6 +20,29 @@ export const accountAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         });
+    },
+    getSuccess() {
+        return instance.get('index.php?route=account/success');
+    },
+    getLogin() {
+        return instance.get('index.php?route=account/login');
+    },
+    doLogin(data) {
+        let formData = new FormData();
+        for (let name in data) {
+            formData.append(name, data[name]);
+        }
+        return instance.post('index.php?route=account/login', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
+    getAccount() {
+        return instance.get('index.php?route=account/account');
+    },
+    getLogout() {
+        return instance.get('index.php?route=account/logout');
     }
 };
 

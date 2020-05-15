@@ -19,6 +19,10 @@ import store from "./redux/redux-store";
 import {setStateActionCreator} from "./redux/opencart-reducer";
 import ProductContainer from "./components/Product/Product/ProductContainer";
 import RegisterContainer from "./components/Account/RegisterContainer";
+import SuccessContainer from "./components/Account/SuccessContainer";
+import LoginContainer from "./components/Account/LoginContainer";
+import LogoutContainer from "./components/Account/LogoutContainer";
+import AccountContainer from "./components/Account/AccountContainer";
 
 class App extends Component {
     render() {
@@ -28,6 +32,10 @@ class App extends Component {
                 <HeaderContainer/>
                 <Route exact path='/' render={() => <HomeContainer/>}/>
                 <Route path='/account/register' render={() => <RegisterContainer />}/>
+                <Route path='/account/success' render={() => <SuccessContainer />}/>
+                <Route path='/account/login' render={() => <LoginContainer />}/>
+                <Route path='/account/logout' render={() => <LogoutContainer />}/>
+                <Route path='/account/account' render={() => <AccountContainer />}/>
                 <Route exact path='/product/category/:first/:second' render={(props) => <CategoryContainer firstLevelId={props.match.params.first} secondLevelId={props.match.params.second}/>}/>
                 <Route exact path='/product/category/:first' render={(props) => <CategoryContainer firstLevelId={props.match.params.first}/>}/>
                 <Route exact path='/product/product/:first/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} productId={props.match.params.id}/>}/>

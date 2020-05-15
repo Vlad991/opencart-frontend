@@ -14,12 +14,20 @@ import contactReducer from "./information/contact-reducer";
 import opencartReducer from "./opencart-reducer";
 import thunkMiddleware from "redux-thunk";
 import registerReducer from "./account/register-reducer";
+import successReducer from "./account/success-reducer";
 import { reducer as formReducer } from 'redux-form';
+import loginReducer from "./account/login-reducer";
+import logoutReducer from "./account/logout-reducer";
+import accountReducer from "./account/account-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
     accountReducer: combineReducers({
-        registerReducer
+        registerReducer,
+        successReducer,
+        loginReducer,
+        logoutReducer,
+        accountReducer
     }),
     commonReducer: combineReducers({
         headerReducer,

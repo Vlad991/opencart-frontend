@@ -26,7 +26,10 @@ let initialState = {
 const headerReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_HEADER_STATE:
-            return {...action.state};
+            return {
+                ...state,
+                ...action.state
+            };
         default:
             return state;
     }

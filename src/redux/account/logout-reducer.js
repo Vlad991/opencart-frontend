@@ -23,7 +23,6 @@ export const setStateActionCreator = (state) => ({type: SET_LOGOUT_STATE, state}
 
 export const setLogoutStateThunkCreator = () => async (dispatch) => {
     let response = await accountAPI.getLogout();
-    console.log(response);
     dispatch(setStateActionCreator(response.data));
 };
 

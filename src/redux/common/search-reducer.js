@@ -9,9 +9,15 @@ let initialState = {
 const searchReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_SEARCH_STATE:
-            return {...action.state};
+            return {
+                ...state,
+                ...action.state
+            };
         case INPUT_SEARCH_TEXT:
-            return {...state, search: action.searchText};
+            return {
+                ...state,
+                search: action.searchText
+            };
         default:
             return state;
     }

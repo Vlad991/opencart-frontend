@@ -10,19 +10,21 @@ let initialState = {
     address: '',
     text_telephone: '',
     telephone: '',
-    text_contact: 'Contact Form',
-    entry_name: 'Your Name',
-    entry_email: 'E-Mail Address',
-    entry_enquiry: 'Enquiry',
-    button_submit: 'Submit'
+    text_contact: '',
+    entry_name: '',
+    entry_email: '',
+    entry_enquiry: '',
+    button_submit: ''
 };
 
 const contactReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CONTACT_STATE:
-            let stateCopy = {...action.state};
-            stateCopy.breadcrumbs = [...stateCopy.breadcrumbs];
-            return stateCopy;
+            return {
+                ...state,
+                ...action.state,
+                breadcrumbs: [...action.state.breadcrumbs]
+            };
         default:
             return state;
     }

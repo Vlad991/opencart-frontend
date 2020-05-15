@@ -1,9 +1,7 @@
 const SET_CART_STATE = 'SET-CART-STATE';
 
 let initialState = {
-    text_loading: '',
-    text_items: '',
-    text_empty: ''
+    products: []
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -19,4 +17,5 @@ const cartReducer = (state = initialState, action) => {
 };
 
 export const setStateActionCreator = (state) => ({type: SET_CART_STATE, state});
+
 export default cartReducer;

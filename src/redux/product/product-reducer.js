@@ -44,7 +44,10 @@ const productReducer = (state = initialState, action) => {
                 products: [...action.state.products]
             };
         case SET_PRODUCT_TAB:
-            return {...state, active_tab: action.tab};
+            return {
+                ...state,
+                active_tab: action.tab
+            };
         default:
             return state;
     }

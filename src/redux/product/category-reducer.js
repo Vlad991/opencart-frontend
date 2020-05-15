@@ -25,6 +25,7 @@ const categoryReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_CATEGORY_STATE:
             return {
+                ...state,
                 ...action.state,
                 breadcrumbs: [...action.state.breadcrumbs],
                 categories: [...action.state.categories],

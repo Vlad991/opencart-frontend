@@ -11,7 +11,11 @@ const menuReducer = (state = initialState, action) => {
         case SET_MENU_STATE:
             let categories = action.state.categories;
             categories.forEach(c => c.name = c.name.replace('amp;', ''));
-            return {...action.state, categories: [...categories]};
+            return {
+                ...state,
+                ...action.state,
+                categories: [...categories]
+            };
         default:
             return state;
     }

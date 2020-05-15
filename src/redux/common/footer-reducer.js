@@ -35,8 +35,10 @@ let initialState = {
 const footerReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FOOTER_STATE:
-            state = action.state;
-            return state;
+            return {
+                ...state,
+                ...action.state
+            };
         default:
             return state;
     }

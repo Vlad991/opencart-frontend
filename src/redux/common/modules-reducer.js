@@ -7,8 +7,10 @@ let initialState = [
 const modulesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_MODULES_STATE:
-            state = action.state;
-            return state;
+            return {
+                ...state,
+                ...action.state
+            };
         default:
             return state;
     }

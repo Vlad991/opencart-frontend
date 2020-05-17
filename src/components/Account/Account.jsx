@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {NavLink, Redirect} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import ColumnLeft from "../Common/ColumnLeft";

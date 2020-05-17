@@ -19,6 +19,8 @@ import { reducer as formReducer } from 'redux-form';
 import loginReducer from "./account/login-reducer";
 import logoutReducer from "./account/logout-reducer";
 import accountReducer from "./account/account-reducer";
+import wishListReducer from "./account/wishlist-reducer";
+import checkoutCartReducer from "./checkout/cart-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -27,7 +29,11 @@ let reducers = combineReducers({
         successReducer,
         loginReducer,
         logoutReducer,
-        accountReducer
+        accountReducer,
+        wishListReducer
+    }),
+    checkoutReducer: combineReducers({
+        cartReducer: checkoutCartReducer
     }),
     commonReducer: combineReducers({
         headerReducer,

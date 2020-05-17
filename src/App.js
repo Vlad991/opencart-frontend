@@ -23,6 +23,8 @@ import SuccessContainer from "./components/Account/SuccessContainer";
 import LoginContainer from "./components/Account/LoginContainer";
 import LogoutContainer from "./components/Account/LogoutContainer";
 import AccountContainer from "./components/Account/AccountContainer";
+import WishListContainer from "./components/Account/WishListContainer";
+import CartContainer from "./components/Checkout/CartContainer";
 
 class App extends Component {
     render() {
@@ -31,17 +33,19 @@ class App extends Component {
                 {/*{this.props.state.opencartReducer.isFetching ? <img src={preloader}/> : null}*/}
                 <HeaderContainer/>
                 <Route exact path='/' render={() => <HomeContainer/>}/>
-                <Route path='/account/register' render={() => <RegisterContainer />}/>
-                <Route path='/account/success' render={() => <SuccessContainer />}/>
-                <Route path='/account/login' render={() => <LoginContainer />}/>
-                <Route path='/account/logout' render={() => <LogoutContainer />}/>
-                <Route path='/account/account' render={() => <AccountContainer />}/>
-                <Route exact path='/product/category/:first/:second' render={(props) => <CategoryContainer firstLevelId={props.match.params.first} secondLevelId={props.match.params.second}/>}/>
-                <Route exact path='/product/category/:first' render={(props) => <CategoryContainer firstLevelId={props.match.params.first}/>}/>
-                <Route exact path='/product/product/:first/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} productId={props.match.params.id}/>}/>
-                <Route exact path='/product/product/:first/:second/:id' render={(props) => <ProductContainer firstLevelId={props.match.params.first} secondLevelId={props.match.params.second} productId={props.match.params.id}/>}/>
-                <Route exact path='/information/information/:id' render={(props) => <InformationContainer id={props.match.params.id}/>}/>
-                <Route exact path='/information/contact' render={() => <ContactContainer state={this.props.state}/>}/>
+                <Route path='/account/register' render={() => <RegisterContainer/>}/>
+                <Route path='/account/success' render={() => <SuccessContainer/>}/>
+                <Route path='/account/login' render={() => <LoginContainer/>}/>
+                <Route path='/account/logout' render={() => <LogoutContainer/>}/>
+                <Route path='/account/account' render={() => <AccountContainer/>}/>
+                <Route path='/account/wishlist' render={() => <WishListContainer/>}/>
+                <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
+                <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
+                <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
+                <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
+                <Route exact path='/product/category/:first' render={() => <CategoryContainer/>}/>
+                <Route exact path='/product/product/:first/:id' render={() => <ProductContainer/>}/>
+                <Route exact path='/product/product/:first/:second/:id' render={() => <ProductContainer/>}/>
                 <FooterContainer/>
             </>
         )

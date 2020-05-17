@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {ButtonGroup, Dropdown} from "react-bootstrap";
 
 const Currency = (props) => {

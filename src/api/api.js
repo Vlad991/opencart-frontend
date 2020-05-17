@@ -43,7 +43,16 @@ export const accountAPI = {
     },
     getLogout() {
         return instance.get('index.php?route=account/logout');
+    },
+    getWishList() {
+        return instance.get('index.php?route=account/wishlist');
     }
+};
+
+export const checkoutAPI = {
+    getCart() {
+        return instance.get('index.php?route=checkout/cart');
+    },
 };
 
 export const commonAPI = {

@@ -2,15 +2,17 @@ import React from 'react';
 import {connect} from "react-redux";
 import Category from "./Category";
 import {setCategoryStateThunkCreator} from "../../../redux/product/category-reducer";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom";
 
 class CategoryContainer extends React.Component {
     componentDidMount() {
-        this.props.setCategoryStateThunkCreator();
+        this.props.setCategoryStateThunkCreator(this.props.match.params.first, this.props.match.params.second);
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.firstLevelId !== prevProps.firstLevelId || this.props.secondLevelId !== prevProps.secondLevelId) {
-            this.props.setCategoryStateThunkCreator(this.props.firstLevelId, this.props.secondLevelId);
+        if (this.props.match.params.first !== prevProps.match.params.first || this.props.match.params.second !== prevProps.match.params.second) {
+            this.props.setCategoryStateThunkCreator(this.props.match.params.first, this.props.match.params.second);
         }
     };
 
@@ -26,4 +28,6 @@ let mapStateToProps = (state) => ({
     state: state.productReducer.categoryReducer
 });
 
-export default connect(mapStateToProps, {setCategoryStateThunkCreator})(CategoryContainer);
+export default compose(
+    connect(mapStateToProps, {setCategoryStateThunkCreator}),
+    withRouter)(CategoryContainer);

@@ -46,7 +46,7 @@ const Category = (props) => {
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <ul>
-                                            {stateCategory.categories.map(category => <li key={category.name}><a href={category.href}>{category.name}</a></li>)}
+                                            {stateCategory.categories.map(category => <li key={category.name}><NavLink to={category.href}>{category.name}</NavLink></li>)}
                                         </ul>
                                     </div>
                                 </div> :
@@ -106,10 +106,10 @@ const Category = (props) => {
                                     return (
                                         <div key={product.name} className="product-layout product-list col-xs-12">
                                             <div className="product-thumb">
-                                                <div className="image"><a href={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></a></div>
+                                                <div className="image"><NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></NavLink></div>
                                                 <div>
                                                     <div className="caption">
-                                                        <h4><a href={product.href}>{product.name}</a></h4>
+                                                        <h4><NavLink to={product.href}>{product.name}</NavLink></h4>
                                                         <p>{product.description}</p>
                                                         {product.price ?
                                                             <p className="price">
@@ -160,7 +160,7 @@ const Category = (props) => {
                     {(!stateCategory.categories && !stateCategory.products) ? [
                         <p>{stateCategory.text_empty}</p>,
                         <div className="buttons">
-                            <div className="pull-right"><a href={stateCategory.continue} className="btn btn-primary"> {stateCategory.button_continue}</a></div>
+                            <div className="pull-right"><NavLink to={stateCategory.continue} className="btn btn-primary"> {stateCategory.button_continue}</NavLink></div>
                         </div>
                     ] : ''}
                     {stateCategory.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}

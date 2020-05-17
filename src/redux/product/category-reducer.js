@@ -13,14 +13,14 @@ let initialState = {
     text_refine: '',
     categories: [],
     text_sort: '',
-    sorts: [{href: '#', text: 'Default'}, {href: '#', text: 'Name (A-Z)'}, {href: '#', text: 'Name (Z-A)'},],
+    sorts: [{href: '#', text: ''}],
     text_limit: '',
-    limits: [{href: '#', text: '5'}, {href: '#', text: '10'}, {href: '#', text: '25'}],
+    limits: [{href: '#', text: ''}],
     text_compare: '',
     products: [],
-    text_empty: 'There are no products to list in this category.',
-    button_continue: 'Continue',
-    button_cart: 'Add to Cart'
+    text_empty: '',
+    button_continue: '',
+    button_cart: ''
 };
 
 const categoryReducer = (state = initialState, action) => {

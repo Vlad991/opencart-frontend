@@ -103,5 +103,8 @@ export const productAPI = {
     },
     getProduct(firstLevelId, secondLevelId, productId) {
         return instance.get('index.php?route=product/product&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '') + '&product_id=' + productId);
+    },
+    getSearch(search, categoryId, subCategory, description) {
+        return instance.get('index.php?route=product/search' + (search ? '&search=' + search : '') + (categoryId ? '&category_id=' + categoryId : '') + (subCategory ? '&sub_category=' + subCategory : '') + (description ? '&description=' + description : ''));
     }
 };

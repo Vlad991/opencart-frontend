@@ -13,7 +13,8 @@ const searchReducer = (state = initialState, action) => {
         case SET_SEARCH_STATE:
             return {
                 ...state,
-                ...action.state
+                ...action.state,
+                search: state.search
             };
         case INPUT_SEARCH_TEXT:
             return {

@@ -5,6 +5,10 @@ import ColumnLeft from "../Common/ColumnLeft";
 import ContentTop from "../Common/ContentTop";
 import ContentBottom from "../Common/ContentBottom";
 import ColumnRight from "../Common/ColumnRight";
+import Coupon from "../Extension/Total/Coupon";
+import Reward from "../Extension/Total/Reward";
+import Shipping from "../Extension/Total/Shipping";
+import Voucher from "../Extension/Total/Voucher";
 
 const Cart = (props) => {
     let stateCart = props.state;
@@ -42,7 +46,11 @@ const Cart = (props) => {
                     {stateCart.content_top ? <ContentTop state={stateCart.content_top}/> : ''}
                     <h1>
                         {stateCart.heading_title}
-                        {stateCart.weight ? ReactHtmlParser(<>&nbsp;({stateCart.weight})</>) : ''}
+                        {stateCart.weight ?
+                            <>
+                                &nbsp;
+                                ({stateCart.weight})
+                            </> : ''}
                     </h1>
                     <form action={stateCart.action} method="post" encType="multipart/form-data">
                         <div className="table-responsive">
@@ -115,7 +123,18 @@ const Cart = (props) => {
                             <p>{stateCart.text_next_choice}</p>
                             <div className="panel-group" id="accordion">
                                 {stateCart.modules.map(module => {
-                                    return module;
+                                    switch (module.module_name) {
+                                        case 'coupon':
+                                            return <Coupon state={module}/>
+                                        case 'reward':
+                                            return <Reward state={module}/>
+                                        case 'shipping':
+                                            return <Shipping state={module}/>
+                                        case 'voucher':
+                                            return <Voucher state={module}/>
+                                        default:
+                                            return null;
+                                    }
                                 })}
                             </div>
                         </> : ''}

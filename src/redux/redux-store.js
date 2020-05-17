@@ -9,6 +9,7 @@ import menuReducer from "./common/menu-reducer";
 import searchReducer from "./common/search-reducer";
 import productCategoryReducer from "./product/category-reducer";
 import productReducer from "./product/product-reducer";
+import productSearchReducer from "./product/search-reducer";
 import informationReducer from "./information/information-reducer";
 import contactReducer from "./information/contact-reducer";
 import opencartReducer from "./opencart-reducer";
@@ -51,7 +52,8 @@ let reducers = combineReducers({
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,
-        productReducer
+        productReducer,
+        searchReducer: productSearchReducer
     }),
     form: formReducer,
 });

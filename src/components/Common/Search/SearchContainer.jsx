@@ -6,11 +6,19 @@ import {setSearchStateThunkCreator, setSearchTextActionCreator} from "../../../r
 class SearchContainer extends React.Component {
     componentDidMount() {
         this.props.setSearchStateThunkCreator();
-    }
+    };
+
+    onChange = (e) => {
+        this.props.setSearchTextActionCreator(e.target.value);
+    };
+
+    onSubmit = () => {
+        console.log(this.props.state.search);
+    };
 
     render() {
         return (
-            <Search setSearchText={this.props.setSearchTextActionCreator} state={this.props.state}/>
+            <Search setSearchText={this.props.setSearchTextActionCreator} state={this.props.state} onChange={this.onChange} onSubmit={this.onSubmit}/>
         );
     };
 }

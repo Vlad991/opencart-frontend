@@ -25,6 +25,7 @@ import LogoutContainer from "./components/Account/LogoutContainer";
 import AccountContainer from "./components/Account/AccountContainer";
 import WishListContainer from "./components/Account/WishListContainer";
 import CartContainer from "./components/Checkout/CartContainer";
+import SearchContainer from "./components/Product/Search/SearchContainer";
 
 class App extends Component {
     render() {
@@ -46,6 +47,11 @@ class App extends Component {
                 <Route exact path='/product/category/:first' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/product/:first/:id' render={() => <ProductContainer/>}/>
                 <Route exact path='/product/product/:first/:second/:id' render={() => <ProductContainer/>}/>
+                <Route path='/product/search' render={() => <SearchContainer/>}/>
+                <Route path='/product/search/:search' render={() => <SearchContainer/>}/>
+                <Route path='/product/search/:search/:categoryId' render={() => <SearchContainer/>}/>
+                <Route path='/product/search/:search/:categoryId/:subCategory' render={() => <SearchContainer/>}/>
+                <Route path='/product/search/:search/:categoryId/:subCategory/:description' render={() => <SearchContainer/>}/>
                 <FooterContainer/>
             </>
         )

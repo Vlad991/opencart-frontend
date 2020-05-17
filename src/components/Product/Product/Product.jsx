@@ -45,11 +45,7 @@ const Product = (props) => {
     return (
         <div id="product-product" className="container">
             <ul className="breadcrumb">
-                {stateProduct.breadcrumbs.map(breadcrumb => {
-                    return (
-                        <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>
-                    )
-                })}
+                {stateProduct.breadcrumbs.map(breadcrumb => <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>)}
             </ul>
             <div className="row">
                 {stateProduct.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}

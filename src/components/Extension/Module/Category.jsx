@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 const Category = (props) => {
     return (
@@ -7,7 +8,7 @@ const Category = (props) => {
             {props.state.categories.map(category => {
                 if (category.category_id === props.state.category_id) {
                     return [
-                        <NavLink to={category.href} key={category.name} className="list-group-item active">{category.name.replace('amp;', '')}</NavLink>,
+                        <NavLink to={category.href} key={category.name} className="list-group-item active">{ReactHtmlParser(category.name)}</NavLink>,
                         category.children ?
                             category.children.map(child => {
                                 if (child.category_id === props.state.child_id) {
@@ -18,7 +19,7 @@ const Category = (props) => {
                             }) : ''
                     ]
                 } else {
-                    return <NavLink to={category.href} key={category.name} className="list-group-item">{category.name.replace('amp;', '')}</NavLink>
+                    return <NavLink to={category.href} key={category.name} className="list-group-item">{ReactHtmlParser(category.name)}</NavLink>
                 }
             })}
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import ReactHtmlParser from "react-html-parser";
 
 const Menu = (props) => {
     if (props.state.categories) {
@@ -15,12 +16,12 @@ const Menu = (props) => {
                                 if (category.children && category.children.length > 0) {
                                     return (
                                         <li key={category.name} className="dropdown">
-                                            <NavLink to={category.href} className="dropdown-toggle" data-toggle="dropdown">{category.name}</NavLink>
+                                            <NavLink to={category.href} className="dropdown-toggle" data-toggle="dropdown">{ReactHtmlParser(category.name)}</NavLink>
                                             <div className="dropdown-menu">
                                                 <div className="dropdown-inner">
                                                     <CategoryChildren category={category}/>
                                                 </div>
-                                                <NavLink to={category.href} className="see-all">{props.state.text_all} {category.name}</NavLink></div>
+                                                <NavLink to={category.href} className="see-all">{ReactHtmlParser(props.state.text_all)} {ReactHtmlParser(category.name)}</NavLink></div>
                                         </li>
                                     )
                                 } else {

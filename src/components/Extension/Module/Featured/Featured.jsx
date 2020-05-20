@@ -3,18 +3,6 @@ import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 
 const Featured = (props) => {
-    let cart = {
-        add() {
-        }
-    };
-    let wishlist = {
-        add() {
-        }
-    };
-    let compare = {
-        add() {
-        }
-    };
     return [
         <h3 key={props.state.heading_title}>{props.state.heading_title}</h3>,
         <div key={'row'} className="row">
@@ -43,8 +31,8 @@ const Featured = (props) => {
                             </div>
                             <div className="button-group">
                                 <button type="button" onClick={() => props.cartAdd(product.product_id)}><i className="fa fa-shopping-cart"></i> <span className="hidden-xs hidden-sm hidden-md">{props.state.button_cart}</span></button>
-                                <button type="button" data-toggle="tooltip" title={props.state.button_wishlist} onClick={wishlist.add(product.product_id)}><i className="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title={props.state.button_compare} onClick={compare.add(product.product_id)}><i className="fa fa-exchange"></i></button>
+                                <button type="button" data-toggle="tooltip" title={props.state.button_wishlist} onClick={() => props.wishlistAdd(product.product_id)}><i className="fa fa-heart"></i></button>
+                                <button type="button" data-toggle="tooltip" title={props.state.button_compare} onClick={() => props.compareAdd(product.product_id)}><i className="fa fa-exchange"></i></button>
                             </div>
                         </div>
                     </div>

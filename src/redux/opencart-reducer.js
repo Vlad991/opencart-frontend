@@ -1,4 +1,4 @@
-import {cartAPI} from "../api/api";
+import {cartAPI, compareAPI, wishlistAPI} from "../api/api";
 import {addSuccessMessageActionCreator} from "./common/home-reducer";
 
 const SET_OPENCART_STATE = 'SET-OPENCART-STATE';
@@ -43,6 +43,16 @@ export const cartAddThunkCreator = (product_id, quantity) => async (dispatch) =>
     dispatch(addSuccessMessageActionCreator(addResponse.data.success));
     let infoResponse = await cartAPI.info();
     dispatch(setGlobalCartProductsActionCreator(infoResponse.data.products));
+};
+
+export const wishlistAddThunkCreator = (product_id) => async (dispatch) => {
+    let addResponse = await wishlistAPI.add(product_id);
+    dispatch(addSuccessMessageActionCreator(addResponse.data.success));
+};
+
+export const compareAddThunkCreator = (product_id) => async (dispatch) => {
+    let addResponse = await compareAPI.add(product_id);
+    dispatch(addSuccessMessageActionCreator(addResponse.data.success));
 };
 
 export default opencartReducer;

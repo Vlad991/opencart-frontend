@@ -27,7 +27,7 @@ const Information = (props) => {
                 {stateInformation.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
                     {stateInformation.content_top ? <ContentTop state={props.state.content_top}/> : ''}
-                    <h1>{stateInformation.heading_title}</h1>
+                    <h1>{ReactHtmlParser(stateInformation.heading_title)}</h1>
                     {ReactHtmlParser(stateInformation.description)}
                     {stateInformation.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>

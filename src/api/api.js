@@ -124,4 +124,20 @@ export const cartAPI = {
         formData.append('key', key);
         return instance.post('index.php?route=checkout/cart/remove', formData);
     },
+};
+
+export const wishlistAPI = {
+    add(product_id) {
+        let formData = new FormData();
+        formData.append('product_id', product_id);
+        return instance.post('index.php?route=account/wishlist/add', formData);
+    },
+}
+
+export const compareAPI = {
+    add(product_id) {
+        let formData = new FormData();
+        formData.append('product_id', product_id);
+        return instance.post('index.php?route=product/compare/add', formData);
+    },
 }

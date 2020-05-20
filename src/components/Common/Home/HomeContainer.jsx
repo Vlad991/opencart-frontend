@@ -16,6 +16,12 @@ class HomeContainer extends React.Component {
                 behavior: "smooth"
             });
         }
+        if (prevProps.state.successMessage !== this.props.state.successMessage) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     };
 
     render() {

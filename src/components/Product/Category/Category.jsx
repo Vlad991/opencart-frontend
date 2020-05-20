@@ -29,7 +29,7 @@ const Category = (props) => {
                 {stateCategory.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
                     {stateCategory.content_top ? <ContentTop state={props.state.content_top}/> : ''}
-                    <h2>{stateCategory.heading_title.replace('amp;', '')}</h2>
+                    <h2>{ReactHtmlParser(stateCategory.heading_title)}</h2>
                     {(stateCategory.thumb || stateCategory.description) ?
                         <>
                             <div className="row">

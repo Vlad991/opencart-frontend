@@ -16,7 +16,7 @@ const Footer = (props) => {
                                     if (information.id === 5) {
                                         return <li key={information.title}><NavLink to={information.href}>{ReactHtmlParser(information.title)}</NavLink></li>
                                     } else {
-                                        return <li key={information.title}><NavLink to={information.href}>{information.title}</NavLink></li>
+                                        return <li key={information.title}><NavLink to={information.href}>{ReactHtmlParser(information.title)}</NavLink></li>
                                     }
                                 })}
                             </ul>

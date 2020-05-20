@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import Swiper from 'react-id-swiper';
+import {NavLink} from "react-router-dom";
 
 const Slideshow = (props) => {
     const swiperParams = {
-        // pagination: {
-        //     el: '.slideshow' + props.state.module,
-        //     type: 'bullets',
-        //     clickable: true
-        // },
+        pagination: {
+            el: '.slideshow' + props.state.module + '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+        },
         direction: 'horizontal',
         slidesPerView: 1,
-        pagination: '.slideshow' + props.state.module,
         paginationClickable: true,
         spaceBetween: 30,
         speed: 500,
@@ -40,14 +40,13 @@ const Slideshow = (props) => {
                         return (
                             <div key={banner.title} className="swiper-slide text-center">
                                 {banner.link ?
-                                    <a href={banner.link}><img src={banner.image} alt={banner.title} className="img-responsive"/></a>
+                                    <NavLink to={banner.link}><img src={banner.image} alt={banner.title} className="img-responsive"/></NavLink>
                                     :
                                     <img src={banner.image} alt={banner.title} className="img-responsive"/>}
                             </div>
                         )
                     })}
                 </Swiper>
-                <div className={'swiper-pagination slideshow' + props.state.module}></div>
                 <div className="swiper-pager">
                     <div className="swiper-button-next" onClick={goNext}></div>
                     <div className="swiper-button-prev" onClick={goPrev}></div>

@@ -58,8 +58,8 @@ const productReducer = (state = initialState, action) => {
 export const setStateActionCreator = (state) => ({type: SET_PRODUCT_STATE, state});
 export const setTabActionCreator = (tab) => ({type: SET_PRODUCT_TAB, tab});
 
-export const setProductStateThunkCreator = (firstLevelId, secondLevelId, productId) => async (dispatch) => {
-    let response = await productAPI.getProduct(firstLevelId, secondLevelId, productId);
+export const setProductStateThunkCreator = (productId) => async (dispatch) => {
+    let response = await productAPI.getProduct(productId);
     dispatch(setStateActionCreator(response.data));
 };
 

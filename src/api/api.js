@@ -101,10 +101,21 @@ export const productAPI = {
     getCategory(firstLevelId, secondLevelId) {
         return instance.get('index.php?route=product/category&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : ''));
     },
-    getProduct(firstLevelId, secondLevelId, productId) {
-        return instance.get('index.php?route=product/product&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '') + '&product_id=' + productId);
+    getProduct(productId) {
+        return instance.get('index.php?route=product/product' + '&product_id=' + productId);
     },
     getSearch(search, categoryId, subCategory, description) {
         return instance.get('index.php?route=product/search' + (search ? '&search=' + search : '') + (categoryId ? '&category_id=' + categoryId : '') + (subCategory ? '&sub_category=' + subCategory : '') + (description ? '&description=' + description : ''));
     }
 };
+
+export const cartAPI = {
+    info() {
+        return instance.get('index.php?route=common/cart/info');
+    },
+    remove(key) {
+        let formData = new FormData();
+        formData.append('key', key);
+        return instance.post('index.php?route=checkout/cart/remove', formData);
+    },
+}

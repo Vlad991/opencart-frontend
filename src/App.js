@@ -45,13 +45,12 @@ class App extends Component {
                 <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
                 <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/category/:first' render={() => <CategoryContainer/>}/>
-                <Route exact path='/product/product/:first/:id' render={() => <ProductContainer/>}/>
-                <Route exact path='/product/product/:first/:second/:id' render={() => <ProductContainer/>}/>
-                <Route path='/product/search' render={() => <SearchContainer/>}/>
-                <Route path='/product/search/:search' render={() => <SearchContainer/>}/>
-                <Route path='/product/search/:search/:categoryId' render={() => <SearchContainer/>}/>
-                <Route path='/product/search/:search/:categoryId/:subCategory' render={() => <SearchContainer/>}/>
-                <Route path='/product/search/:search/:categoryId/:subCategory/:description' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/product/:id' render={() => <ProductContainer/>}/>
+                <Route exact path='/product/search' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/search/:search' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/search/:search/:categoryId' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/search/:search/:categoryId/:subCategory' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/search/:search/:categoryId/:subCategory/:description' render={() => <SearchContainer/>}/>
                 <FooterContainer/>
             </>
         )

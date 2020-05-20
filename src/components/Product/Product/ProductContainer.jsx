@@ -7,12 +7,12 @@ import {withRouter} from "react-router-dom";
 
 class ProductContainer extends React.Component {
     componentDidMount() {
-        this.props.setProductStateThunkCreator(this.props.match.params.first, this.props.match.params.second, this.props.match.params.id);
+        this.props.setProductStateThunkCreator(this.props.match.params.id);
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
-            this.props.setProductStateThunkCreator(this.props.match.params.first, this.props.match.params.second, this.props.match.params.id);
+            this.props.setProductStateThunkCreator(this.props.match.params.id);
         }
     };
 

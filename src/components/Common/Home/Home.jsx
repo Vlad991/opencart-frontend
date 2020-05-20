@@ -3,6 +3,8 @@ import ColumnLeft from "../ColumnLeft";
 import ContentTop from "../ContentTop";
 import ContentBottom from "../ContentBottom";
 import ColumnRight from "../ColumnRight";
+import {Alert} from "react-bootstrap";
+import ReactHtmlParser from "react-html-parser";
 
 const Home = (props) => {
     let stateHome = props.state;
@@ -16,6 +18,10 @@ const Home = (props) => {
     }
     return (
         <div id="common-home" className="container">
+            {stateHome.successMessage ?
+                <Alert variant={"success"} className="alert-dismissable in">
+                    <i className="fa fa-check-circle"></i> {ReactHtmlParser(stateHome.successMessage)} <button type="button" className="close" data-dismiss="alert">&times;</button>
+                </Alert> : ''}
             <div className="row">
                 {stateHome.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>

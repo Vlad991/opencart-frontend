@@ -113,6 +113,12 @@ export const cartAPI = {
     info() {
         return instance.get('index.php?route=common/cart/info');
     },
+    add(product_id, quantity) {
+        let formData = new FormData();
+        formData.append('product_id', product_id);
+        formData.append('quantity', typeof(quantity) != 'undefined' ? quantity : 1);
+        return instance.post('index.php?route=checkout/cart/add', formData);
+    },
     remove(key) {
         let formData = new FormData();
         formData.append('key', key);

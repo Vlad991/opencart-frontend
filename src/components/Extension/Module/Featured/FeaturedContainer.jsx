@@ -1,22 +1,24 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Featured from "./Featured";
+import {cartAddThunkCreator} from "../../../../redux/opencart-reducer";
 
 class FeaturedContainer extends React.Component {
     componentDidMount() {
-    }
+    };
+
+    cartAdd = (product_id) => {
+        this.props.cartAddThunkCreator(product_id);
+    };
 
     render() {
-        debugger;
         return (
-            <Featured state={this.props.state}/>
+            <Featured state={this.props.state} cartAdd={this.cartAdd}/>
         );
     };
 }
 
 
-let mapStateToProps = (state) => ({
-    state: state
-});
+let mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, {})(FeaturedContainer);
+export default connect(mapStateToProps, {cartAddThunkCreator})(FeaturedContainer);

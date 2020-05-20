@@ -1,5 +1,5 @@
 import {commonAPI} from "../../api/api";
-import {setGlobalCurrency} from "../opencart-reducer";
+import {setGlobalCurrencyActionCreator} from "../opencart-reducer";
 
 const SET_CURRENCY_STATE = 'SET-CURRENCY-STATE';
 const SET_CURRENCY = 'SET-CURRENCY';
@@ -35,13 +35,13 @@ export const setStateActionCreator = (state) => ({type: SET_CURRENCY_STATE, stat
 
 export const setCurrencyStateThunkCreator = () => async (dispatch) => {
     let response = await commonAPI.getCurrency();
-    dispatch(setGlobalCurrency(response.data.code));
+    dispatch(setGlobalCurrencyActionCreator(response.data.code));
     dispatch(setStateActionCreator(response.data));
 }
 
 export const setCurrencyThunkCreator = (code) => async (dispatch) => {
     let response = await commonAPI.setCurrency(code);
-    dispatch(setGlobalCurrency(response.data));
+    dispatch(setGlobalCurrencyActionCreator(response.data));
     dispatch(setCurrencyActionCreator(response.data));
 }
 

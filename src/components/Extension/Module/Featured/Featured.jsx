@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 const Featured = (props) => {
     let cart = {
@@ -23,7 +24,7 @@ const Featured = (props) => {
                         <div className="product-thumb transition">
                             <div className="image"><NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></NavLink></div>
                             <div className="caption">
-                                <h4><NavLink to={product.href}>{product.name}</NavLink></h4>
+                                <h4><NavLink to={product.href}>{ReactHtmlParser(product.name)}</NavLink></h4>
                                 <p>{product.description}</p>
                                 {product.rating ?
                                     <div className="rating">
@@ -41,7 +42,7 @@ const Featured = (props) => {
                                     : ''}
                             </div>
                             <div className="button-group">
-                                <button type="button" onClick={cart.add(product.product_id)}><i className="fa fa-shopping-cart"></i> <span className="hidden-xs hidden-sm hidden-md">{props.state.button_cart}</span></button>
+                                <button type="button" onClick={() => props.cartAdd(product.product_id)}><i className="fa fa-shopping-cart"></i> <span className="hidden-xs hidden-sm hidden-md">{props.state.button_cart}</span></button>
                                 <button type="button" data-toggle="tooltip" title={props.state.button_wishlist} onClick={wishlist.add(product.product_id)}><i className="fa fa-heart"></i></button>
                                 <button type="button" data-toggle="tooltip" title={props.state.button_compare} onClick={compare.add(product.product_id)}><i className="fa fa-exchange"></i></button>
                             </div>

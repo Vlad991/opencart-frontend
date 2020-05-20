@@ -9,7 +9,7 @@ class CartContainer extends React.Component {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.globalCurrency !== this.props.globalCurrency) {
+        if ((prevProps.globalCurrency !== this.props.globalCurrency) || (prevProps.globalCartProducts !== this.props.globalCartProducts)) {
             this.props.setCartStateThunkCreator();
         }
     };
@@ -32,7 +32,8 @@ class CartContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     state: state.commonReducer.cartReducer,
-    globalCurrency: state.opencartReducer.globalCurrency
+    globalCurrency: state.opencartReducer.globalCurrency,
+    globalCartProducts: state.opencartReducer.globalCartProducts
 });
 
 export default connect(mapStateToProps, {setCartStateThunkCreator, cartRemoveThunkCreator})(CartContainer);

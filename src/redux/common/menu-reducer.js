@@ -1,4 +1,4 @@
-import {accountAPI, commonAPI} from "../../api/api";
+import {commonAPI} from "../../api/api";
 
 const SET_MENU_STATE = 'SET-MENU-STATE';
 

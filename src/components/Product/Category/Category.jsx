@@ -9,12 +9,22 @@ import ReactHtmlParser from "react-html-parser";
 const Category = (props) => {
     let stateCategory = props.state;
     let classVal;
+    let productListClass = 'product-layout product-list col-xs-12';
     if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
+        if (stateCategory.display === 'grid') {
+            productListClass = 'product-layout product-grid col-lg-6 col-md-6 col-sm-12 col-xs-12';
+        }
     } else if ((props.state.column_left && props.state.column_left.modules.length > 0) || (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-9';
+        if (stateCategory.display === 'grid') {
+            productListClass = 'product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12';
+        }
     } else {
         classVal = 'col-sm-12';
+        if (stateCategory.display === 'grid') {
+            productListClass = 'product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12';
+        }
     }
     return (
         <div id="product-category" className="container">
@@ -61,8 +71,8 @@ const Category = (props) => {
                             <div className="row">
                                 <div className="col-md-2 col-sm-6 hidden-xs">
                                     <div className="btn-group btn-group-sm">
-                                        <button type="button" id="list-view" className="btn btn-default active" data-toggle="tooltip" title={stateCategory.button_list}><i className="fa fa-th-list"></i></button>
-                                        <button type="button" id="grid-view" className="btn btn-default" data-toggle="tooltip" title={stateCategory.button_grid}><i className="fa fa-th"></i></button>
+                                        <button type="button" id="list-view" className={"btn btn-default" + (stateCategory.display === 'list' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_list} onClick={() => {props.setDisplay('list')}}><i className="fa fa-th-list"></i></button>
+                                        <button type="button" id="grid-view" className={"btn btn-default" + (stateCategory.display === 'grid' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_grid} onClick={() => {props.setDisplay('grid')}}><i className="fa fa-th"></i></button>
                                     </div>
                                 </div>
                                 <div className="col-md-3 col-sm-6">
@@ -104,13 +114,13 @@ const Category = (props) => {
                             <div className="row">
                                 {stateCategory.products.map(product => {
                                     return (
-                                        <div key={product.name} className="product-layout product-list col-xs-12">
+                                        <div key={product.name} className={productListClass}>
                                             <div className="product-thumb">
                                                 <div className="image"><NavLink to={product.href}><img src={product.thumb} alt={product.name} title={product.name} className="img-responsive"/></NavLink></div>
                                                 <div>
                                                     <div className="caption">
-                                                        <h4><NavLink to={product.href}>{product.name}</NavLink></h4>
-                                                        <p>{product.description}</p>
+                                                        <h4><NavLink to={product.href}>{ReactHtmlParser(product.name)}</NavLink></h4>
+                                                        <p>{ReactHtmlParser(product.description)}</p>
                                                         {product.price ?
                                                             <p className="price">
                                                                 {!product.special ? product.price : (

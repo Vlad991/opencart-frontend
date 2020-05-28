@@ -1,6 +1,7 @@
 import {productAPI} from "../../api/api";
 
 const SET_CATEGORY_STATE = 'SET-CATEGORY-STATE';
+const SET_CATEGORY_DISPLAY = 'SET-CATEGORY-DISPLAY';
 
 let initialState = {
     breadcrumbs: [],
@@ -20,7 +21,8 @@ let initialState = {
     products: [],
     text_empty: '',
     button_continue: '',
-    button_cart: ''
+    button_cart: '',
+    display: 'list'
 };
 
 const categoryReducer = (state = initialState, action) => {
@@ -35,16 +37,31 @@ const categoryReducer = (state = initialState, action) => {
                 limits: [...action.state.limits],
                 products: [...action.state.products]
             };
+        case SET_CATEGORY_DISPLAY:
+            return {
+                ...state,
+                display: action.display,
+            };
         default:
             return state;
     }
 };
 
 export const setStateActionCreator = (state) => ({type: SET_CATEGORY_STATE, state});
+export const setDisplayActionCreator = (display) => ({type: SET_CATEGORY_DISPLAY, display});
 
 export const setCategoryStateThunkCreator = (firstLevelId, secondLevelId) => async (dispatch) => {
     let response = await productAPI.getCategory(firstLevelId, secondLevelId);
     dispatch(setStateActionCreator(response.data));
+    let display = localStorage.getItem('display');
+    if (display) {
+        dispatch(setDisplayActionCreator(display));
+    }
+};
+
+export const setCategoryDisplayThunkCreator = (display) => async (dispatch) => {
+    localStorage.setItem('display', display);
+    dispatch(setDisplayActionCreator(display));
 };
 
 export default categoryReducer;

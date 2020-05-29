@@ -23,6 +23,7 @@ import accountReducer from "./account/account-reducer";
 import wishListReducer from "./account/wishlist-reducer";
 import checkoutCartReducer from "./checkout/cart-reducer";
 import compareReducer from "./product/compare-reducer";
+import contactSuccessReducer from "./information/contact-success-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -49,7 +50,8 @@ let reducers = combineReducers({
     }),
     informationReducer: combineReducers({
         informationReducer,
-        contactReducer
+        contactReducer,
+        contactSuccessReducer
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,

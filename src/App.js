@@ -18,15 +18,16 @@ import {connect, Provider} from "react-redux";
 import store from "./redux/redux-store";
 import {setStateActionCreator} from "./redux/opencart-reducer";
 import ProductContainer from "./components/Product/Product/ProductContainer";
-import RegisterContainer from "./components/Account/RegisterContainer";
+import RegisterContainer from "./components/Account/Register/RegisterContainer";
 import SuccessContainer from "./components/Account/SuccessContainer";
-import LoginContainer from "./components/Account/LoginContainer";
+import LoginContainer from "./components/Account/Login/LoginContainer";
 import LogoutContainer from "./components/Account/LogoutContainer";
-import AccountContainer from "./components/Account/AccountContainer";
-import WishListContainer from "./components/Account/WishListContainer";
+import AccountContainer from "./components/Account/Account/AccountContainer";
+import WishListContainer from "./components/Account/WishList/WishListContainer";
 import CartContainer from "./components/Checkout/CartContainer";
 import SearchContainer from "./components/Product/Search/SearchContainer";
 import CompareContainer from "./components/Product/Compare/CompareContainer";
+import ContactSuccessContainer from "./components/Information/Contact/ContactSuccessContainer";
 
 class App extends Component {
     render() {
@@ -43,6 +44,7 @@ class App extends Component {
                 <Route path='/account/wishlist' render={() => <WishListContainer/>}/>
                 <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
+                <Route exact path='/information/contact/success' render={() => <ContactSuccessContainer/>}/>
                 <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
                 <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/compare' render={() => <CompareContainer/>}/>

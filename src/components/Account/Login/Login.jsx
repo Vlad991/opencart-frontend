@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
-import ColumnLeft from "../Common/ColumnLeft";
-import ContentTop from "../Common/ContentTop";
-import ContentBottom from "../Common/ContentBottom";
-import ColumnRight from "../Common/ColumnRight";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ContentTop from "../../Common/ContentTop";
+import ContentBottom from "../../Common/ContentBottom";
+import ColumnRight from "../../Common/ColumnRight";
 import {Field, reduxForm} from "redux-form";
 
 const Login = (props) => {

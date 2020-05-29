@@ -94,6 +94,20 @@ export const informationAPI = {
     },
     getContact() {
         return instance.get('index.php?route=information/contact');
+    },
+    doContact(data) {
+        let formData = new FormData();
+        for (let name in data) {
+            formData.append(name, data[name]);
+        }
+        return instance.post('index.php?route=information/contact', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
+    getSuccess() {
+        return instance.get('index.php?route=information/contact/success');
     }
 };
 

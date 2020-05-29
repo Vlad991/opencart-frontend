@@ -41,7 +41,7 @@ export const doLoginThunkCreator = (data) => async (dispatch) => {
     if (response.request.responseURL === 'http://localhost:8888/OpenCartBackend/index.php?route=account/login') {
         dispatch(doLoginActionCreator(response.data));
     } else {
-        //dispatch(doSuccessRedirect(true));
+        //dispatch(doRegisterSuccessRedirect(true));
     }
 };
 

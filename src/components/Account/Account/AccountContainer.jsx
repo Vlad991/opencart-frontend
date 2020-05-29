@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Account from "./Account";
-import {setAccountStateThunkCreator} from "../../redux/account/account-reducer";
+import {setAccountStateThunkCreator} from "../../../redux/account/account-reducer";
 
 class AccountContainer extends React.Component {
     componentDidMount() {

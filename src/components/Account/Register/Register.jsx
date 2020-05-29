@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavLink, Redirect} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
-import ColumnLeft from "../Common/ColumnLeft";
-import ContentTop from "../Common/ContentTop";
-import ContentBottom from "../Common/ContentBottom";
-import ColumnRight from "../Common/ColumnRight";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ContentTop from "../../Common/ContentTop";
+import ContentBottom from "../../Common/ContentBottom";
+import ColumnRight from "../../Common/ColumnRight";
 import {Field, reduxForm} from "redux-form";
 
 const Register = (props) => {
@@ -41,12 +41,12 @@ const Register = (props) => {
                 {stateRegister.column_right ? <ColumnRight state={stateRegister.column_right}/> : ''}
             </div>
         </div>
-    )
+    );
 };
 
 const RegisterForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit} action={props.state.action} method="post" encType="multipart/form-data" className="form-horizontal">
+        <form onSubmit={props.handleSubmit} className="form-horizontal">
             <fieldset id="account">
                 <legend>{props.state.text_your_details}</legend>
                 <div className="form-group required" style={{display: props.state.customer_groups.length > 1 ? 'block' : 'none'}}>
@@ -325,7 +325,7 @@ const RegisterForm = (props) => {
                     </div>
                 </div>}
         </form>
-    )
+    );
 };
 
 const RegisterReduxForm = reduxForm({form: 'do-register'})(RegisterForm);

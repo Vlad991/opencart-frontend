@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
-import ColumnLeft from "../Common/ColumnLeft";
-import ColumnRight from "../Common/ColumnRight";
-import ContentBottom from "../Common/ContentBottom";
-import ContentTop from "../Common/ContentTop";
+import ColumnLeft from "../../Common/ColumnLeft";
+import ColumnRight from "../../Common/ColumnRight";
+import ContentBottom from "../../Common/ContentBottom";
+import ContentTop from "../../Common/ContentTop";
 
 const WishList = (props) => {
     let stateWishList = props.state;

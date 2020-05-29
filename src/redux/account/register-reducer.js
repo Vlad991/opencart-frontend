@@ -2,7 +2,7 @@ import {accountAPI} from "../../api/api";
 
 const SET_REGISTER_STATE = 'SET-REGISTER-STATE';
 const DO_REGISTER = 'DO-REGISTER';
-const DO_SUCCESS_REDIRECT = 'DO-SUCCESS-REDIRECT';
+const DO_REGISTER_SUCCESS_REDIRECT = 'DO-REGISTER-SUCCESS-REDIRECT';
 
 let initialState = {
     breadcrumbs: [],
@@ -41,7 +41,7 @@ const registerReducer = (state = initialState, action) => {
                 error_custom_field: [...action.data.error_custom_field],
                 register_custom_field: [...action.data.register_custom_field]
             };
-        case DO_SUCCESS_REDIRECT:
+        case DO_REGISTER_SUCCESS_REDIRECT:
             return {
                 ...state,
                 doSuccessRedirect: action.doRedirect
@@ -53,7 +53,7 @@ const registerReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_REGISTER_STATE, state});
 export const doRegisterActionCreator = (data) => ({type: DO_REGISTER, data});
-export const doSuccessRedirect = (doRedirect) => ({type: DO_SUCCESS_REDIRECT, doRedirect});
+export const doRegisterSuccessRedirect = (doRedirect) => ({type: DO_REGISTER_SUCCESS_REDIRECT, doRedirect});
 
 export const setRegisterStateThunkCreator = () => async (dispatch) => {
     let response = await accountAPI.getRegister();
@@ -65,7 +65,7 @@ export const doRegisterThunkCreator = (data) => async (dispatch) => {
     if (response.request.responseURL === 'http://localhost:8888/OpenCartBackend/index.php?route=account/register') {
         dispatch(doRegisterActionCreator(response.data));
     } else {
-        dispatch(doSuccessRedirect(true));
+        dispatch(doRegisterSuccessRedirect(true));
     }
 };
 

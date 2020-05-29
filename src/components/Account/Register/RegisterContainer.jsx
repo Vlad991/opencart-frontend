@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Register from "./Register";
-import {doRegisterThunkCreator, setRegisterStateThunkCreator} from "../../redux/account/register-reducer";
+import {doRegisterThunkCreator, setRegisterStateThunkCreator} from "../../../redux/account/register-reducer";
 
 class RegisterContainer extends React.Component {
     componentDidMount() {

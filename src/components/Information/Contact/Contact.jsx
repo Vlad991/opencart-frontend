@@ -3,11 +3,17 @@ import ColumnLeft from "../../Common/ColumnLeft";
 import ColumnRight from "../../Common/ColumnRight";
 import ContentTop from "../../Common/ContentTop";
 import ContentBottom from "../../Common/ContentBottom";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
+import {Field, reduxForm} from "redux-form";
 
 const Contact = (props) => {
     let stateContact = props.state;
+
+    if (stateContact.doSuccessRedirect) {
+        return <Redirect to="/information/contact/success"/>
+    }
+
     let classVal;
     if ((props.state.column_left && props.state.column_left.modules.length > 0) && (props.state.column_right && props.state.column_right.modules.length > 0)) {
         classVal = 'col-sm-6';
@@ -98,38 +104,7 @@ const Contact = (props) => {
                             })}
                         </div>
                     ] : ''}
-                    <form action={stateContact.action} method="post" encType="multipart/form-data" className="form-horizontal">
-                        <fieldset>
-                            <legend>{stateContact.text_contact}</legend>
-                            <div className="form-group required">
-                                <label className="col-sm-2 control-label" htmlFor="input-name">{stateContact.entry_name}</label>
-                                <div className="col-sm-10">
-                                    <input type="text" name="name" value={stateContact.name} id="input-name" className="form-control"/>
-                                    {stateContact.error_name ? <div className="text-danger">{stateContact.error_name}</div> : ''}
-                                </div>
-                            </div>
-                            <div className="form-group required">
-                                <label className="col-sm-2 control-label" htmlFor="input-email">{stateContact.entry_email}</label>
-                                <div className="col-sm-10">
-                                    <input type="text" name="email" value={stateContact.email} id="input-email" className="form-control"/>
-                                    {stateContact.error_email ? <div className="text-danger">{stateContact.error_email}</div> : ''}
-                                </div>
-                            </div>
-                            <div className="form-group required">
-                                <label className="col-sm-2 control-label" htmlFor="input-enquiry">{stateContact.entry_enquiry}</label>
-                                <div className="col-sm-10">
-                                    <textarea name="enquiry" rows="10" id="input-enquiry" className="form-control">{stateContact.enquiry}</textarea>
-                                    {stateContact.error_enquiry ? <div className="text-danger">{stateContact.error_enquiry}</div> : ''}
-                                </div>
-                            </div>
-                            {stateContact.captcha}
-                        </fieldset>
-                        <div className="buttons">
-                            <div className="pull-right">
-                                <input className="btn btn-primary" type="submit" value={stateContact.button_submit}/>
-                            </div>
-                        </div>
-                    </form>
+                    <ContactReduxForm onSubmit={props.doContact} state={props.state}/>
                     {stateContact.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
                 {stateContact.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
@@ -137,5 +112,44 @@ const Contact = (props) => {
         </div>
     )
 };
+
+const ContactForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className="form-horizontal">
+            <fieldset>
+                <legend>{props.state.text_contact}</legend>
+                <div className={"form-group required " + (props.state.error_name ? "has-error" : '')}>
+                    <label className="col-sm-2 control-label" htmlFor="input-name">{props.state.entry_name}</label>
+                    <div className="col-sm-10">
+                        <Field component="input" type="text" name="name" value={props.state.name} id="input-name" className="form-control"/>
+                        {props.state.error_name ? <div className="text-danger">{props.state.error_name}</div> : ''}
+                    </div>
+                </div>
+                <div className={"form-group required " + (props.state.error_email ? "has-error" : '')}>
+                    <label className="col-sm-2 control-label" htmlFor="input-email">{props.state.entry_email}</label>
+                    <div className="col-sm-10">
+                        <Field component="input" type="text" name="email" value={props.state.email} id="input-email" className="form-control"/>
+                        {props.state.error_email ? <div className="text-danger">{props.state.error_email}</div> : ''}
+                    </div>
+                </div>
+                <div className={"form-group required " + (props.state.error_enquiry ? "has-error" : '')}>
+                    <label className="col-sm-2 control-label" htmlFor="input-enquiry">{props.state.entry_enquiry}</label>
+                    <div className="col-sm-10">
+                        <Field component="textarea" name="enquiry" rows="10" id="input-enquiry" className="form-control">{props.state.enquiry}</Field>
+                        {props.state.error_enquiry ? <div className="text-danger">{props.state.error_enquiry}</div> : ''}
+                    </div>
+                </div>
+                {props.state.captcha}
+            </fieldset>
+            <div className="buttons">
+                <div className="pull-right">
+                    <input className="btn btn-primary" type="submit" value={props.state.button_submit}/>
+                </div>
+            </div>
+        </form>
+    );
+};
+
+const ContactReduxForm = reduxForm({form: 'do-contact'})(ContactForm);
 
 export default Contact;

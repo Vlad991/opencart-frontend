@@ -26,6 +26,7 @@ const Category = (props) => {
             productListClass = 'product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12';
         }
     }
+    let inputSort = React.createRef();
     return (
         <div id="product-category" className="container">
             <ul className="breadcrumb">
@@ -71,8 +72,12 @@ const Category = (props) => {
                             <div className="row">
                                 <div className="col-md-2 col-sm-6 hidden-xs">
                                     <div className="btn-group btn-group-sm">
-                                        <button type="button" id="list-view" className={"btn btn-default" + (stateCategory.display === 'list' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_list} onClick={() => {props.setDisplay('list')}}><i className="fa fa-th-list"></i></button>
-                                        <button type="button" id="grid-view" className={"btn btn-default" + (stateCategory.display === 'grid' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_grid} onClick={() => {props.setDisplay('grid')}}><i className="fa fa-th"></i></button>
+                                        <button type="button" id="list-view" className={"btn btn-default" + (stateCategory.display === 'list' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_list} onClick={() => {
+                                            props.setDisplay('list')
+                                        }}><i className="fa fa-th-list"></i></button>
+                                        <button type="button" id="grid-view" className={"btn btn-default" + (stateCategory.display === 'grid' ? " active" : "")} data-toggle="tooltip" title={stateCategory.button_grid} onClick={() => {
+                                            props.setDisplay('grid')
+                                        }}><i className="fa fa-th"></i></button>
                                     </div>
                                 </div>
                                 <div className="col-md-3 col-sm-6">
@@ -81,14 +86,15 @@ const Category = (props) => {
                                 <div className="col-md-4 col-xs-6">
                                     <div className="form-group input-group input-group-sm">
                                         <label className="input-group-addon" htmlFor="input-sort">{stateCategory.text_sort}</label>
-                                        <select id="input-sort" className="form-control" value={stateCategory.sorts[0].href} onChange={() => {
-                                        }//location = this.value
-                                        }>
+                                        <select id="input-sort" ref={inputSort} className="form-control" onChange={() => {
+                                            let sortAndOrder = inputSort.current.value.split('-');
+                                            props.doSort(sortAndOrder[0], sortAndOrder[1])
+                                        }}>
                                             {stateCategory.sorts.map(sorts => {
                                                 if (sorts.value === (stateCategory.sort + '-' + stateCategory.order)) {
-                                                    return <option key={sorts.text} value={sorts.href}>{sorts.text}</option>
+                                                    return <option key={sorts.text} value={sorts.value} selected>{ReactHtmlParser(sorts.text)}</option>
                                                 } else {
-                                                    return <option key={sorts.text} value={sorts.href}>{sorts.text}</option>
+                                                    return <option key={sorts.text} value={sorts.value}>{ReactHtmlParser(sorts.text)}</option>
                                                 }
                                             })}
                                         </select>
@@ -97,14 +103,14 @@ const Category = (props) => {
                                 <div className="col-md-3 col-xs-6">
                                     <div className="form-group input-group input-group-sm">
                                         <label className="input-group-addon" htmlFor="input-limit">{stateCategory.text_limit}</label>
-                                        <select id="input-limit" className="form-control" defaultValue="v" //todo
-                                            //onChange="location = this.value;"
-                                        >
+                                        <select id="input-limit" className="form-control" onChange={() => {
+                                            props.doLimit(inputSort.current.value)
+                                        }}>
                                             {stateCategory.limits.map(limits => {
                                                 if (limits.value === stateCategory.limit) {
-                                                    return <option key={limits.text} value={limits.href}>{limits.text}</option>
+                                                    return <option key={limits.text} value={limits.value} selected>{limits.text}</option>
                                                 } else {
-                                                    return <option key={limits.text} value={limits.href}>{limits.text}</option>
+                                                    return <option key={limits.text} value={limits.value}>{limits.text}</option>
                                                 }
                                             })}
                                         </select>
@@ -162,7 +168,7 @@ const Category = (props) => {
                                 })}
                             </div>
                             <div className="row">
-                                <div className="col-sm-6 text-left">{stateCategory.pagination}</div>
+                                <div className="col-sm-6 text-left">{ReactHtmlParser(stateCategory.pagination)}</div>
                                 <div className="col-sm-6 text-right">{stateCategory.results}</div>
                             </div>
                         </>

@@ -50,8 +50,8 @@ const categoryReducer = (state = initialState, action) => {
 export const setStateActionCreator = (state) => ({type: SET_CATEGORY_STATE, state});
 export const setDisplayActionCreator = (display) => ({type: SET_CATEGORY_DISPLAY, display});
 
-export const setCategoryStateThunkCreator = (firstLevelId, secondLevelId) => async (dispatch) => {
-    let response = await productAPI.getCategory(firstLevelId, secondLevelId);
+export const setCategoryStateThunkCreator = (firstLevelId, secondLevelId, sort, order, limit) => async (dispatch) => {
+    let response = await productAPI.getCategory(firstLevelId, secondLevelId, sort, order, limit);
     dispatch(setStateActionCreator(response.data));
     let display = localStorage.getItem('display');
     if (display) {

@@ -98,8 +98,8 @@ export const informationAPI = {
 };
 
 export const productAPI = {
-    getCategory(firstLevelId, secondLevelId) {
-        return instance.get('index.php?route=product/category&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : ''));
+    getCategory(firstLevelId, secondLevelId, sort, order, limit) {
+        return instance.get('index.php?route=product/category&path=' + firstLevelId + (secondLevelId ? "_" + secondLevelId : '') + (sort ? '&sort=' + sort : '') + (order ? '&order=' + order : '') + (limit ? '&limit=' + limit : ''));
     },
     getProduct(productId) {
         return instance.get('index.php?route=product/product' + '&product_id=' + productId);
@@ -119,7 +119,7 @@ export const cartAPI = {
     add(product_id, quantity) {
         let formData = new FormData();
         formData.append('product_id', product_id);
-        formData.append('quantity', typeof(quantity) != 'undefined' ? quantity : 1);
+        formData.append('quantity', typeof (quantity) != 'undefined' ? quantity : 1);
         return instance.post('index.php?route=checkout/cart/add', formData);
     },
     remove(key) {

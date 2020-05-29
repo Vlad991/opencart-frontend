@@ -26,6 +26,7 @@ import AccountContainer from "./components/Account/AccountContainer";
 import WishListContainer from "./components/Account/WishListContainer";
 import CartContainer from "./components/Checkout/CartContainer";
 import SearchContainer from "./components/Product/Search/SearchContainer";
+import CompareContainer from "./components/Product/Compare/CompareContainer";
 
 class App extends Component {
     render() {
@@ -44,6 +45,7 @@ class App extends Component {
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
                 <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
                 <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
+                <Route exact path='/product/compare' render={() => <CompareContainer/>}/>
                 <Route exact path='/product/category/:first' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/product/:id' render={() => <ProductContainer/>}/>
                 <Route exact path='/product/search' render={() => <SearchContainer/>}/>

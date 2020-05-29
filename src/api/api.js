@@ -106,6 +106,9 @@ export const productAPI = {
     },
     getSearch(search, categoryId, subCategory, description) {
         return instance.get('index.php?route=product/search' + (search ? '&search=' + search : '') + (categoryId ? '&category_id=' + categoryId : '') + (subCategory ? '&sub_category=' + subCategory : '') + (description ? '&description=' + description : ''));
+    },
+    getCompare() {
+        return instance.get('index.php?route=product/compare');
     }
 };
 

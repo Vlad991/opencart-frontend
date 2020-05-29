@@ -22,6 +22,7 @@ import logoutReducer from "./account/logout-reducer";
 import accountReducer from "./account/account-reducer";
 import wishListReducer from "./account/wishlist-reducer";
 import checkoutCartReducer from "./checkout/cart-reducer";
+import compareReducer from "./product/compare-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -52,6 +53,7 @@ let reducers = combineReducers({
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,
+        compareReducer,
         productReducer,
         searchReducer: productSearchReducer
     }),

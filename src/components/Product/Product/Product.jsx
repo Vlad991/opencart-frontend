@@ -48,9 +48,9 @@ const Product = (props) => {
                 {stateProduct.breadcrumbs.map(breadcrumb => <li key={breadcrumb.text}><NavLink to={breadcrumb.href}>{ReactHtmlParser(breadcrumb.text)}</NavLink></li>)}
             </ul>
             <div className="row">
-                {stateProduct.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
+                {props.state.column_left ? <ColumnLeft state={props.state.column_left}/> : ''}
                 <div id="content" className={classVal}>
-                    {stateProduct.content_top ? <ContentTop state={props.state.content_top}/> : ''}
+                    {props.state.content_top ? <ContentTop state={props.state.content_top}/> : ''}
                     <div className="row">
                         <div className={productClassVal1}>
                             {stateProduct.thumb || stateProduct.images ?
@@ -379,9 +379,9 @@ const Product = (props) => {
                             })}
                         </p>
                         : ''}
-                    {stateProduct.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
+                    {props.state.content_bottom ? <ContentBottom state={props.state.content_bottom}/> : ''}
                 </div>
-                {stateProduct.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
+                {props.state.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
     )

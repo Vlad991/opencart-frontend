@@ -131,6 +131,9 @@ export const informationAPI = {
     },
     getSuccess() {
         return instance.get('index.php?route=information/contact/success');
+    },
+    getSitemap() {
+        return instance.get('index.php?route=information/sitemap');
     }
 };
 

@@ -1540,7 +1540,7 @@
         // Animating Flag
         s.animating = false;
         
-        // Touches Information
+        // Touches Sitemap
         s.touches = {
             startX: 0,
             startY: 0,

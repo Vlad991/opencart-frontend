@@ -28,6 +28,7 @@ import returnReducer from "./account/return-reducer";
 import returnInfoReducer from "./account/return-info-reducer";
 import returnAddReducer from "./account/return-add-reducer";
 import returnSuccessReducer from "./account/return-success-reducer";
+import sitemapReducer from "./information/sitemap-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -59,7 +60,8 @@ let reducers = combineReducers({
     informationReducer: combineReducers({
         informationReducer,
         contactReducer,
-        contactSuccessReducer
+        contactSuccessReducer,
+        sitemapReducer
     }),
     productReducer: combineReducers({
         categoryReducer: productCategoryReducer,

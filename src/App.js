@@ -32,6 +32,7 @@ import ReturnContainer from "./components/Account/Return/ReturnContainer";
 import ReturnInfoContainer from "./components/Account/ReturnInfo/ReturnInfoContainer";
 import ReturnAddContainer from "./components/Account/ReturnAdd/ReturnAddContainer";
 import ReturnSuccessContainer from "./components/Account/ReturnSuccessContainer";
+import SitemapContainer from "./components/Information/Sitemap/SitemapContainer";
 
 class App extends Component {
     render() {
@@ -53,6 +54,7 @@ class App extends Component {
                 <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
                 <Route exact path='/information/contact/success' render={() => <ContactSuccessContainer/>}/>
+                <Route exact path='/information/sitemap' render={() => <SitemapContainer/>}/>
                 <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
                 <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/compare' render={() => <CompareContainer/>}/>

@@ -60,7 +60,7 @@ let store = {
                 },
                 {
                     href: '#',
-                    title: 'Delivery Information'
+                    title: 'Delivery Sitemap'
                 },
                 {
                     href: '#',

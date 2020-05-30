@@ -89,7 +89,7 @@ const Search = (props) => {
                                         <label className="input-group-addon" htmlFor="input-sort">{stateSearch.text_sort}</label>
                                         <select id="input-sort" className="form-control" onChange="location = this.value;">
                                             {stateSearch.sorts.map(sorts => {
-                                                if (sorts.value == `${stateSearch.sort}-${stateSearch.order}`) {
+                                                if (sorts.value === `${stateSearch.sort}-${stateSearch.order}`) {
                                                     return <option value={sorts.href} selected="selected">{sorts.text}</option>
                                                 } else {
                                                     return <option value={sorts.href}>{sorts.text}</option>
@@ -103,7 +103,7 @@ const Search = (props) => {
                                         <label className="input-group-addon" htmlFor="input-limit">{stateSearch.text_limit}</label>
                                         <select id="input-limit" className="form-control" onChange="location = this.value;">
                                             {stateSearch.limits.map(limits => {
-                                                if (limits.value == stateSearch.limit) {
+                                                if (limits.value === stateSearch.limit) {
                                                     return <option value={limits.href} selected="selected">{limits.text}</option>
                                                 } else {
                                                     return <option value={limits.href}>{limits.text}</option>

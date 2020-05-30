@@ -53,7 +53,7 @@ const RegisterForm = (props) => {
                     <label className="col-sm-2 control-label">{props.state.entry_customer_group}</label>
                     <div className="col-sm-10">
                         {props.state.customer_groups.map(customer_group => {
-                            if (customer_group.customer_group_id == props.state.customer_group_id)
+                            if (customer_group.customer_group_id === props.state.customer_group_id)
                                 return (
                                     <div className="radio">
                                         <label>
@@ -103,7 +103,7 @@ const RegisterForm = (props) => {
                     </div>
                 </div>
                 {props.state.custom_fields.map(custom_field => {
-                    if (custom_field.type == 'select') {
+                    if (custom_field.type === 'select') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor="input-custom-field{{ custom_field.custom_field_id }}">{custom_field.name}</label>
@@ -111,7 +111,7 @@ const RegisterForm = (props) => {
                                     <select name={"custom_field[" + custom_field.location + "][" + custom_field.custom_field_id + "]"} id={"input-custom-field" + custom_field.custom_field_id} className="form-control">
                                         <option value="">{props.state.text_select}</option>
                                         {custom_field.custom_field_value.map(custom_field_value => {
-                                            if (props.state.register_custom_field[custom_field.location][custom_field.custom_field_id] && (custom_field_value.custom_field_value_id == props.state.register_custom_field[custom_field.custom_field_id]))
+                                            if (props.state.register_custom_field[custom_field.location][custom_field.custom_field_id] && (custom_field_value.custom_field_value_id === props.state.register_custom_field[custom_field.custom_field_id]))
                                                 return (
                                                     <option value={custom_field_value.custom_field_value_id} selected="selected">{custom_field_value.name}</option>
                                                 )
@@ -126,7 +126,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'radio') {
+                    if (custom_field.type === 'radio') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label">{custom_field.name}</label>
@@ -135,7 +135,7 @@ const RegisterForm = (props) => {
                                         {custom_field.custom_field_value.map(custom_field_value => {
                                             return (
                                                 <div className="radio">
-                                                    {props.state.register_custom_field[custom_field.custom_field_id] && (custom_field_value.custom_field_value_id == props.state.register_custom_field[custom_field.custom_field_id]) ?
+                                                    {props.state.register_custom_field[custom_field.custom_field_id] && (custom_field_value.custom_field_value_id === props.state.register_custom_field[custom_field.custom_field_id]) ?
                                                         <label>
                                                             <Field component="input" type="radio" name={"custom_field" + "[" + custom_field.location + "][" + custom_field.custom_field_id + "]"} value={custom_field_value.custom_field_value_id} checked="checked"/>
                                                             {custom_field_value.name}
@@ -153,7 +153,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'checkbox') {
+                    if (custom_field.type === 'checkbox') {
                         return (
                             <div id="custom-field{{ custom_field.custom_field_id }}" className="form-group custom-field" data-sort="{{ custom_field.sort_order }}">
                                 <label className="col-sm-2 control-label">{custom_field.name}</label>
@@ -180,7 +180,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'text') {
+                    if (custom_field.type === 'text') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor={"input-custom-field" + custom_field.custom_field_id}>{custom_field.name}</label>
@@ -191,7 +191,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'textarea') {
+                    if (custom_field.type === 'textarea') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor={"input-custom-field" + custom_field.custom_field_id}>{custom_field.name}</label>
@@ -204,7 +204,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'file') {
+                    if (custom_field.type === 'file') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label">{custom_field.name}</label>
@@ -216,7 +216,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'date') {
+                    if (custom_field.type === 'date') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor={"input-custom-field" + custom_field.custom_field_id}>{custom_field.name}</label>
@@ -232,7 +232,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'time') {
+                    if (custom_field.type === 'time') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor={"input-custom-field" + custom_field.custom_field_id}>{custom_field.name}</label>
@@ -248,7 +248,7 @@ const RegisterForm = (props) => {
                             </div>
                         )
                     }
-                    if (custom_field.type == 'datetime') {
+                    if (custom_field.type === 'datetime') {
                         return (
                             <div id={"custom-field" + custom_field.custom_field_id} className="form-group custom-field" data-sort={custom_field.sort_order}>
                                 <label className="col-sm-2 control-label" htmlFor={"input-custom-field" + custom_field.custom_field_id}>{custom_field.name}</label>

@@ -43,7 +43,7 @@ const Special = (props) => {
                                         <label className="input-group-addon" htmlFor="input-sort">{stateSpecial.text_sort}</label>
                                         <select id="input-sort" className="form-control" onChange="location = this.value;">
                                             {stateSpecial.sorts.map(sorts => {
-                                                if (sorts.value == `${stateSpecial.sort}-${stateSpecial.order}`) {
+                                                if (sorts.value === `${stateSpecial.sort}-${stateSpecial.order}`) {
                                                     return <option value={sorts.href} selected="selected">{sorts.text}</option>
                                                 } else {
                                                     return <option value={sorts.href}>{sorts.text}</option>
@@ -57,7 +57,7 @@ const Special = (props) => {
                                         <label className="input-group-addon" htmlFor="input-limit">{stateSpecial.text_limit}</label>
                                         <select id="input-limit" className="form-control" onChange="location = this.value;">
                                             {stateSpecial.limits.map(limits => {
-                                                if (limits.value == stateSpecial.limit) {
+                                                if (limits.value === stateSpecial.limit) {
                                                     return <option value={limits.href} selected="selected">{limits.text}</option>
                                                 } else {
                                                     return <option value={limits.href}>{limits.text}</option>

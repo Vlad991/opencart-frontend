@@ -24,6 +24,9 @@ import wishListReducer from "./account/wishlist-reducer";
 import checkoutCartReducer from "./checkout/cart-reducer";
 import compareReducer from "./product/compare-reducer";
 import contactSuccessReducer from "./information/contact-success-reducer";
+import returnReducer from "./account/return-reducer";
+import returnInfoReducer from "./account/return-info-reducer";
+import returnAddReducer from "./account/return-add-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -33,7 +36,10 @@ let reducers = combineReducers({
         loginReducer,
         logoutReducer,
         accountReducer,
-        wishListReducer
+        wishListReducer,
+        returnReducer,
+        returnInfoReducer,
+        returnAddReducer
     }),
     checkoutReducer: combineReducers({
         cartReducer: checkoutCartReducer

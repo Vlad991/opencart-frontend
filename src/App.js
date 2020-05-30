@@ -28,6 +28,9 @@ import CartContainer from "./components/Checkout/CartContainer";
 import SearchContainer from "./components/Product/Search/SearchContainer";
 import CompareContainer from "./components/Product/Compare/CompareContainer";
 import ContactSuccessContainer from "./components/Information/Contact/ContactSuccessContainer";
+import ReturnContainer from "./components/Account/Return/ReturnContainer";
+import ReturnInfoContainer from "./components/Account/ReturnInfo/ReturnInfoContainer";
+import ReturnAddContainer from "./components/Account/ReturnAdd/ReturnAddContainer";
 
 class App extends Component {
     render() {
@@ -42,6 +45,9 @@ class App extends Component {
                 <Route path='/account/logout' render={() => <LogoutContainer/>}/>
                 <Route path='/account/account' render={() => <AccountContainer/>}/>
                 <Route path='/account/wishlist' render={() => <WishListContainer/>}/>
+                <Route exact path='/account/return' render={() => <ReturnContainer/>}/>
+                <Route exact path='/account/return/add' render={() => <ReturnAddContainer/>}/>
+                <Route exact path='/account/return/info/:id' render={() => <ReturnInfoContainer/>}/>
                 <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
                 <Route exact path='/information/contact/success' render={() => <ContactSuccessContainer/>}/>

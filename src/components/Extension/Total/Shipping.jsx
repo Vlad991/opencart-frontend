@@ -16,7 +16,7 @@ const Shipping = (props) => {
                                 <select name="country_id" id="input-country" className="form-control">
                                     <option value="">{props.state.text_select}</option>
                                     {props.state.countries.map(country => {
-                                        if (country.country_id == props.state.country_id) {
+                                        if (country.country_id === props.state.country_id) {
                                             return <option value={country.country_id} selected="selected">{country.name}</option>
                                         } else {
                                             return <option value={country.country_id}>{country.name}</option>

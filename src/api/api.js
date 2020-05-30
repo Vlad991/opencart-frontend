@@ -46,7 +46,27 @@ export const accountAPI = {
     },
     getWishList() {
         return instance.get('index.php?route=account/wishlist');
-    }
+    },
+    getReturn() {
+        return instance.get('index.php?route=account/return');
+    },
+    getReturnInfo(id) {
+        return instance.get('index.php?route=account/return/info&return_id=' + id);
+    },
+    getReturnAdd() {
+        return instance.get('index.php?route=account/return/add');
+    },
+    addReturn(data) {
+        let formData = new FormData();
+        for (let name in data) {
+            formData.append(name, data[name]);
+        }
+        return instance.post('index.php?route=account/return/add', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
 };
 
 export const checkoutAPI = {

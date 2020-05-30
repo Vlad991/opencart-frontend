@@ -31,6 +31,7 @@ import ContactSuccessContainer from "./components/Information/Contact/ContactSuc
 import ReturnContainer from "./components/Account/Return/ReturnContainer";
 import ReturnInfoContainer from "./components/Account/ReturnInfo/ReturnInfoContainer";
 import ReturnAddContainer from "./components/Account/ReturnAdd/ReturnAddContainer";
+import ReturnSuccessContainer from "./components/Account/ReturnSuccessContainer";
 
 class App extends Component {
     render() {
@@ -47,6 +48,7 @@ class App extends Component {
                 <Route path='/account/wishlist' render={() => <WishListContainer/>}/>
                 <Route exact path='/account/return' render={() => <ReturnContainer/>}/>
                 <Route exact path='/account/return/add' render={() => <ReturnAddContainer/>}/>
+                <Route exact path='/account/return/success' render={() => <ReturnSuccessContainer/>}/>
                 <Route exact path='/account/return/info/:id' render={() => <ReturnInfoContainer/>}/>
                 <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>

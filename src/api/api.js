@@ -67,6 +67,9 @@ export const accountAPI = {
             }
         });
     },
+    getReturnSuccess() {
+        return instance.get('index.php?route=account/return/success');
+    }
 };
 
 export const checkoutAPI = {

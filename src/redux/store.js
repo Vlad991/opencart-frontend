@@ -503,7 +503,7 @@ let store = {
             sorts: [{href: '#', text: 'Default'}, {href: '#', text: 'Name (A-Z)'}, {href: '#', text: 'Name (Z-A)'},],
             text_limit: 'Show',
             limits: [{href: '#', text: '5'}, {href: '#', text: '10'}, {href: '#', text: '25'}],
-            text_compare: 'Product Compare(0)',
+            text_compare: 'Product ManufacturerInfo(0)',
             products: [
                 {
                     name: 'MacBook',

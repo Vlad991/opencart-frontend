@@ -149,6 +149,12 @@ export const productAPI = {
     },
     getCompare() {
         return instance.get('index.php?route=product/compare');
+    },
+    getManufacturer() {
+        return instance.get('index.php?route=product/manufacturer');
+    },
+    getManufacturerInfo(id) {
+        return instance.get('index.php?route=product/manufacturer/info' + (id ? '&manufacturer_id=' + id : ''));
     }
 };
 

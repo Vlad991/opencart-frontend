@@ -27,7 +27,6 @@ export const setStateActionCreator = (state) => ({type: SET_COMPARE_STATE, state
 
 export const setCompareStateThunkCreator = () => async (dispatch) => {
     let response = await productAPI.getCompare();
-    console.log(response.data);
     dispatch(setStateActionCreator(response.data));
 };
 

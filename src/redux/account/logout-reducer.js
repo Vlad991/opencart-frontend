@@ -4,6 +4,7 @@ const SET_LOGOUT_STATE = 'SET-LOGOUT-STATE';
 
 let initialState = {
     breadcrumbs: [],
+    continue: ''
 };
 
 const logoutReducer = (state = initialState, action) => {

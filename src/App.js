@@ -33,6 +33,8 @@ import ReturnInfoContainer from "./components/Account/ReturnInfo/ReturnInfoConta
 import ReturnAddContainer from "./components/Account/ReturnAdd/ReturnAddContainer";
 import ReturnSuccessContainer from "./components/Account/ReturnSuccessContainer";
 import SitemapContainer from "./components/Information/Sitemap/SitemapContainer";
+import ManufacturerInfoContainer from "./components/Product/ManufacturerInfo/ManufacturerInfoContainer";
+import ManufacturerContainer from "./components/Product/Manufacturer/ManufacturerContainer";
 
 class App extends Component {
     render() {
@@ -40,7 +42,11 @@ class App extends Component {
             <>
                 {/*{this.props.state.opencartReducer.isFetching ? <img src={preloader}/> : null}*/}
                 <HeaderContainer/>
+
+                {/*Home*/}
                 <Route exact path='/' render={() => <HomeContainer/>}/>
+
+                {/*Account*/}
                 <Route path='/account/register' render={() => <RegisterContainer/>}/>
                 <Route path='/account/success' render={() => <SuccessContainer/>}/>
                 <Route path='/account/login' render={() => <LoginContainer/>}/>
@@ -51,11 +57,17 @@ class App extends Component {
                 <Route exact path='/account/return/add' render={() => <ReturnAddContainer/>}/>
                 <Route exact path='/account/return/success' render={() => <ReturnSuccessContainer/>}/>
                 <Route exact path='/account/return/info/:id' render={() => <ReturnInfoContainer/>}/>
+
+                {/*Information*/}
                 <Route exact path='/information/information/:id' render={() => <InformationContainer/>}/>
                 <Route exact path='/information/contact' render={() => <ContactContainer/>}/>
                 <Route exact path='/information/contact/success' render={() => <ContactSuccessContainer/>}/>
                 <Route exact path='/information/sitemap' render={() => <SitemapContainer/>}/>
+
+                {/*Checkout*/}
                 <Route exact path='/checkout/cart' render={() => <CartContainer/>}/>
+
+                {/*Product*/}
                 <Route exact path='/product/category/:first/:second' render={() => <CategoryContainer/>}/>
                 <Route exact path='/product/compare' render={() => <CompareContainer/>}/>
                 <Route exact path='/product/category/:first' render={() => <CategoryContainer/>}/>
@@ -65,6 +77,9 @@ class App extends Component {
                 <Route exact path='/product/search/:search/:categoryId' render={() => <SearchContainer/>}/>
                 <Route exact path='/product/search/:search/:categoryId/:subCategory' render={() => <SearchContainer/>}/>
                 <Route exact path='/product/search/:search/:categoryId/:subCategory/:description' render={() => <SearchContainer/>}/>
+                <Route exact path='/product/manufacturer' render={() => <ManufacturerContainer/>}/>
+                <Route exact path='/product/manufacturer/info/:id' render={() => <ManufacturerInfoContainer/>}/>
+
                 <FooterContainer/>
             </>
         )

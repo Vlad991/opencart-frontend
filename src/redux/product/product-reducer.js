@@ -1,7 +1,9 @@
 import {productAPI} from "../../api/api";
+import {doRegisterActionCreator, doRegisterSuccessRedirect} from "../account/register-reducer";
 
 const SET_PRODUCT_STATE = 'SET-PRODUCT-STATE';
 const SET_PRODUCT_TAB = 'SET-PRODUCT-TAB';
+const WRITE_REVIEW = 'WRITE-REVIEW';
 
 let initialState = {
     breadcrumbs: [],
@@ -50,6 +52,13 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 active_tab: action.tab
             };
+        case WRITE_REVIEW:
+            return {
+                ...state,
+                ...action.state,
+                error: action.state.error,
+                success: action.state.success
+            };
         default:
             return state;
     }
@@ -57,10 +66,16 @@ const productReducer = (state = initialState, action) => {
 
 export const setStateActionCreator = (state) => ({type: SET_PRODUCT_STATE, state});
 export const setTabActionCreator = (tab) => ({type: SET_PRODUCT_TAB, tab});
+export const writeReviewActionCreator = (state) => ({type: WRITE_REVIEW, state});
 
 export const setProductStateThunkCreator = (productId) => async (dispatch) => {
     let response = await productAPI.getProduct(productId);
     dispatch(setStateActionCreator(response.data));
+};
+
+export const writeReviewThunkCreator = (productId, data) => async (dispatch) => {
+    let response = await productAPI.writeReview(productId, data);
+    dispatch(writeReviewActionCreator(response.data));
 };
 
 export default productReducer;

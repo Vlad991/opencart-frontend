@@ -34,12 +34,12 @@ const registerReducer = (state = initialState, action) => {
         case DO_REGISTER:
             return {
                 ...state,
-                ...action.data,
-                breadcrumbs: [...action.data.breadcrumbs],
-                customer_groups: [...action.data.customer_groups],
-                custom_fields: [...action.data.custom_fields],
-                error_custom_field: [...action.data.error_custom_field],
-                register_custom_field: [...action.data.register_custom_field]
+                ...action.state,
+                breadcrumbs: [...action.state.breadcrumbs],
+                customer_groups: [...action.state.customer_groups],
+                custom_fields: [...action.state.custom_fields],
+                error_custom_field: [...action.state.error_custom_field],
+                register_custom_field: [...action.state.register_custom_field]
             };
         case DO_REGISTER_SUCCESS_REDIRECT:
             return {
@@ -52,7 +52,7 @@ const registerReducer = (state = initialState, action) => {
 };
 
 export const setStateActionCreator = (state) => ({type: SET_REGISTER_STATE, state});
-export const doRegisterActionCreator = (data) => ({type: DO_REGISTER, data});
+export const doRegisterActionCreator = (state) => ({type: DO_REGISTER, state});
 export const doRegisterSuccessRedirect = (doRedirect) => ({type: DO_REGISTER_SUCCESS_REDIRECT, doRedirect});
 
 export const setRegisterStateThunkCreator = () => async (dispatch) => {

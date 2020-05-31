@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Product from "./Product";
-import {setProductStateThunkCreator, setTabActionCreator} from "../../../redux/product/product-reducer";
+import {setProductStateThunkCreator, setTabActionCreator, writeReviewThunkCreator} from "../../../redux/product/product-reducer";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 
@@ -21,9 +21,13 @@ class ProductContainer extends React.Component {
         this.props.setTabActionCreator(selectedKey);
     };
 
+    writeReview = (values) => {
+        this.props.writeReviewThunkCreator(this.props.match.params.id, values);
+    }
+
     render() {
         return (
-            <Product state={this.props.state} selectProductTab={this.selectProductTab}/>
+            <Product state={this.props.state} selectProductTab={this.selectProductTab} writeReview={this.writeReview}/>
         );
     };
 }
@@ -34,5 +38,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {setProductStateThunkCreator, setTabActionCreator}),
+    connect(mapStateToProps, {setProductStateThunkCreator, setTabActionCreator, writeReviewThunkCreator}),
     withRouter)(ProductContainer);

@@ -144,6 +144,16 @@ export const productAPI = {
     getProduct(productId) {
         return instance.get('index.php?route=product/product' + '&product_id=' + productId);
     },
+    getProductReview(productId) {
+        return instance.get('index.php?route=product/product/review' + (productId ? '&product_id=' + productId : ''));
+    },
+    writeReview(productId, data) {
+        let formData = new FormData();
+        for (let name in data) {
+            formData.append(name, data[name]);
+        }
+        return instance.post('index.php?route=product/product/write&product_id=' + productId, formData);
+    },
     getSearch(search, categoryId, subCategory, description) {
         return instance.get('index.php?route=product/search' + (search ? '&search=' + search : '') + (categoryId ? '&category_id=' + categoryId : '') + (subCategory ? '&sub_category=' + subCategory : '') + (description ? '&description=' + description : ''));
     },

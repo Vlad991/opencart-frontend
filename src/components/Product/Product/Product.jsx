@@ -6,6 +6,8 @@ import ColumnRight from "../../Common/ColumnRight";
 import {NavLink} from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import {Nav} from "react-bootstrap";
+import ReviewContainer from "../Review/ReviewContainer";
+import {Field, reduxForm} from "redux-form";
 //import { LightBoxGallery, GalleryItem } from "react-magnific-popup";
 
 const Product = (props) => {
@@ -101,45 +103,7 @@ const Product = (props) => {
                                     </div> : ''}
                                 {stateProduct.review_status ?
                                     <div className={'tab-pane' + (stateProduct.active_tab === '/tab-review' ? ' active' : '')}>
-                                        <form className="form-horizontal" id="form-review">
-                                            <div id="review"></div>
-                                            <h2>{stateProduct.text_write}</h2>
-                                            {stateProduct.review_guest ?
-                                                [<div className="form-group required">
-                                                    <div className="col-sm-12">
-                                                        <label className="control-label" htmlFor="input-name">{stateProduct.entry_name}</label>
-                                                        <input type="text" name="name" value={stateProduct.customer_name} id="input-name" className="form-control"/>
-                                                    </div>
-                                                </div>,
-                                                    <div className="form-group required">
-                                                        <div className="col-sm-12">
-                                                            <label className="control-label" htmlFor="input-review">{stateProduct.entry_review}</label>
-                                                            <textarea name="text" rows="5" id="input-review" className="form-control"></textarea>
-                                                            <div className="help-block">{stateProduct.text_note}</div>
-                                                        </div>
-                                                    </div>,
-                                                    <div className="form-group required">
-                                                        <div className="col-sm-12">
-                                                            <label className="control-label">{stateProduct.entry_rating}</label>
-                                                            &nbsp;&nbsp;&nbsp; {stateProduct.entry_bad}&nbsp;
-                                                            <input type="radio" name="rating" value="1"/>
-                                                            &nbsp;
-                                                            <input type="radio" name="rating" value="2"/>
-                                                            &nbsp;
-                                                            <input type="radio" name="rating" value="3"/>
-                                                            &nbsp;
-                                                            <input type="radio" name="rating" value="4"/>
-                                                            &nbsp;
-                                                            <input type="radio" name="rating" value="5"/>
-                                                            &nbsp;{stateProduct.entry_good}</div>
-                                                    </div>,
-                                                    stateProduct.captcha,
-                                                    <div className="buttons clearfix">
-                                                        <div className="pull-right">
-                                                            <button type="button" id="button-review" data-loading-text="{{ text_loading }}" className="btn btn-primary">{stateProduct.button_continue}</button>
-                                                        </div>
-                                                    </div>] : stateProduct.text_login}
-                                        </form>
+                                        <WriteReviewReduxForm state={props.state} onSubmit={props.writeReview} />
                                     </div> : ''}
                             </div>
                         </div>
@@ -384,7 +348,59 @@ const Product = (props) => {
                 {props.state.column_right ? <ColumnRight state={props.state.column_right}/> : ''}
             </div>
         </div>
-    )
+    );
 };
+
+const WriteReviewForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit} className="form-horizontal" id="form-review">
+            <div id="review">
+                <ReviewContainer productId={props.state.product_id}/>
+            </div>
+            {props.state.error ?
+                <div className="alert alert-danger alert-dismissible"><i className="fa fa-exclamation-circle"></i> {props.state.error}</div>: ''}
+            {props.state.success ?
+                <div className="alert alert-success alert-dismissible"><i className="fa fa-check-circle"></i> {props.state.success}</div>: ''}
+            <h2>{props.state.text_write}</h2>
+            {props.state.review_guest ?
+                <>
+                    <div className="form-group required">
+                        <div className="col-sm-12">
+                            <label className="control-label" htmlFor="input-name">{props.state.entry_name}</label>
+                            <Field component="input" type="text" name="name" value={props.state.customer_name} id="input-name" className="form-control"/>
+                        </div>
+                    </div>
+                    <div className="form-group required">
+                        <div className="col-sm-12">
+                            <label className="control-label" htmlFor="input-review">{props.state.entry_review}</label>
+                            <Field component="textarea" name="text" rows="5" id="input-review" className="form-control"></Field>
+                            <div className="help-block">{ReactHtmlParser(props.state.text_note)}</div>
+                        </div>
+                    </div>
+                    <div className="form-group required">
+                        <div className="col-sm-12">
+                            <label className="control-label">{props.state.entry_rating}</label>
+                            &nbsp;&nbsp;&nbsp; {props.state.entry_bad}&nbsp;&nbsp;
+                            <Field component="input" type="radio" name="rating" value="1"/>&nbsp;&nbsp;&nbsp;
+                            <Field component="input" type="radio" name="rating" value="2"/>&nbsp;&nbsp;&nbsp;
+                            <Field component="input" type="radio" name="rating" value="3"/>&nbsp;&nbsp;&nbsp;
+                            <Field component="input" type="radio" name="rating" value="4"/>&nbsp;&nbsp;&nbsp;
+                            <Field component="input" type="radio" name="rating" value="5"/>&nbsp;&nbsp;
+                            {props.state.entry_good}
+                        </div>
+                    </div>
+                    {props.state.captcha}
+                    <div className="buttons clearfix">
+                        <div className="pull-right">
+                            <button type="submit" id="button-review" data-loading-text="{{ text_loading }}" className="btn btn-primary">{props.state.button_continue}</button>
+                        </div>
+                    </div>
+                </>
+                : props.state.text_login}
+        </form>
+    )
+}
+
+const WriteReviewReduxForm = reduxForm({form: 'write-review'})(WriteReviewForm);
 
 export default Product;

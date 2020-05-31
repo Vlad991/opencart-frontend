@@ -31,6 +31,7 @@ import returnSuccessReducer from "./account/return-success-reducer";
 import sitemapReducer from "./information/sitemap-reducer";
 import manufacturerInfoReducer from "./product/manufacturer-info-reducer";
 import manufacturerReducer from "./product/manufacturer-reducer";
+import reviewReducer from "./product/review-reducer";
 
 let reducers = combineReducers({
     opencartReducer,
@@ -71,7 +72,8 @@ let reducers = combineReducers({
         productReducer,
         searchReducer: productSearchReducer,
         manufacturerReducer,
-        manufacturerInfoReducer
+        manufacturerInfoReducer,
+        reviewReducer
     }),
     form: formReducer,
 });
